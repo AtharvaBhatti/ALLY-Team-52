@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { logo, userimg } from '../assets/images';
-// Assuming you have a user object with properties like username, avatar, etc.
+
 const user = { username: 'John Doe', avatar: userimg };
 
 
@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#F3F6FF] p-3">
+    <nav className="bg-[#F3F6FF] p-4 drop-shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left side */}
         <div className="flex items-center">
