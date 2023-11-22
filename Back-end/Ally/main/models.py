@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class userDetails(models.Model):
+class UserDetails(models.Model):
     ROLE_CHOICES = [
         ('Student', 'Student'),
         ('Alumni', 'Alumni'),
@@ -23,3 +23,20 @@ class userDetails(models.Model):
     courses = models.TextField()
     plan = models.IntegerField()
     endorsements = models.TextField()
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Post(models.Model):
+    forumID = models.IntegerField()
+    postedBy = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
+    postedTime = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+    metaData = models.CharField(max_length=100)
+    likes = models.TextField()
+    comments = models.TextField()
+    likesCount = models.IntegerField()
+    commentsCount = models.IntegerField()
+    tags = models.ManyToManyField(Tag)
