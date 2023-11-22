@@ -25,12 +25,18 @@ class UserDetails(models.Model):
     endorsements = models.TextField()
 
 
+class Forum(models.Model):
+    name = models.CharField(max_length=100)
+    institute = models.CharField(max_length=100)
+    About = models.TextField()
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=100)
 
 
 class Post(models.Model):
-    forumID = models.IntegerField()
+    forumID = models.ForeignKey(Forum, on_delete=models.CASCADE)
     postedBy = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
     postedTime = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
