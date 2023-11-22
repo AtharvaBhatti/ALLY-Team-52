@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from main.views import *
+from main.root import api_root
 
 urlpatterns = [
+    path("", api_root),
     path('admin/', admin.site.urls),
+    path('create_post/', CreatePost.as_view(), name='create_post'),
 ]
