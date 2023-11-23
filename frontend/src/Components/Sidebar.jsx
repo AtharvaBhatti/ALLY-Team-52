@@ -14,7 +14,7 @@ import "./Sidebar.css"
 
 const SidebarPage = () => {
     return (
-      <div style={{ display: "flex", height: "100vh", width: "35vh"}}>
+      <div style={{ display: "flex", height: "100vh", width: "26vh"}}>
         <Sidebar className="app">
             <div style={{height: "100vh", backgroundColor: "rgba(0, 101, 193, 0.05)"}}>
           <Menu>
