@@ -3,13 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/Homepage.jsx";
 import LandingPage from "./Pages/LandingPage.jsx";
 import Navbar from "./Components/Navbar.jsx";
-<<<<<<< HEAD
 import SidebarPage from "./Components/Sidebar.jsx"
 import HomeNav from "./Components/HomeNav.jsx"
-=======
 import SinglePost from "./Pages/Forum/SinglePost.jsx" 
 import Forum from "./Pages/Forum/ForumPage.jsx";
->>>>>>> bb35668beacfc5ec66584d020a795f86f0931253
 
 function App() {
   return (
