@@ -1,0 +1,19 @@
+.menu1 {
+    font-size: 1.16vh;
+    color: rgba(0, 101, 193, 1);
+    font-weight: 600;
+}
+
+.menu2 {
+    font-size: 1.64vh;
+    font-weight: 500;
+    color: rgba(0, 101, 193, 1);
+    background-color: rgba(219, 232, 249, 1);
+    border-radius: 0.93vh;
+    margin-bottom: 1.5vh !important;
+    margin-left: 1vh;
+    gap: 1.40vh;
+    height: 4.66vh;
+    padding-bottom: 5vh;
+    width: 23vh !important;
+}
