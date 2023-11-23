@@ -1,0 +1,47 @@
+.SPF{
+    background-color: #f9f9f9;
+}
+
+.SPForum-Image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .SPForum-Content {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .SPForum-Heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .SPForum-Meta {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .SPForum-Comments {
+    padding: 20px;
+    box-sizing: border-box;
+    
+  }
+
+  .SPForum-Comment-Input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .SPForum-Comment-Button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
