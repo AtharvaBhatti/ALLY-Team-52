@@ -4,11 +4,14 @@ import Homepage from "./Pages/Homepage.jsx";
 import LandingPage from "./Pages/LandingPage.jsx";
 import Navbar from "./Components/Navbar.jsx";
 import SidebarPage from "./Components/Sidebar.jsx"
+import HomeNav from "./Components/HomeNav.jsx"
 
 function App() {
   return (
     <div>
-      <Navbar/>
+      <HomeNav/>
+      {/* <Navbar/> */}
+      {/* <SidebarPage/> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
