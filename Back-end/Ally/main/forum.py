@@ -74,3 +74,32 @@ class AddCommentView(APIView):
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class AddReactionView(APIView):
+    def post(self, request):
+
+        user_id = request.data.get('userID')
+        post_id = request.data.get('postID')
+
+        try:
+            user = UserDetails.objects.get(pk=user_id)
+            post = Post.objects.get(pk=post_id)
+        except UserDetails.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        except Post.DoesNotExist:
+            return Response({"error": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            jsonDec = json.decoder.JSONDecoder()
+            likes =  jsonDec.decode(post.likes)
+            if user_id not in likes.keys():
+                likes[user_id] = user.firstName + " " + user.lastName
+                post.likesCount += 1
+            post.likes = json.dumps(likes)
+            post.save()
+            return Response({"message" : "success"}, status=status.HTTP_201_CREATED)
+        
+        except Exception as e:
+            return Response({"error" : e}, status=status.HTTP_400_BAD_REQUEST)
