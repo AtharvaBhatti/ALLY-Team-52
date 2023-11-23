@@ -62,7 +62,8 @@ class AddCommentView(APIView):
             comment_text = {
                 "Comment" : serializer.validated_data.get('comment'),
                 "byUserID" : user_id,
-                "Timestamp" : datetime.now()
+                "user" : user.firstName + " " + user.lastName,
+                "Timestamp" : str(datetime.now())
             }
             jsonDec = json.decoder.JSONDecoder()
             comments =  jsonDec.decode(post.comments)

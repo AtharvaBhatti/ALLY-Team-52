@@ -22,4 +22,5 @@ urlpatterns = [
     path("", api_root),
     path('admin/', admin.site.urls),
     path('create_post/', CreatePost.as_view(), name='create_post'),
+    path('comment_post/', AddCommentView.as_view(), name='comment_post'),
 ]
