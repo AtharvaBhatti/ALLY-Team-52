@@ -27,6 +27,7 @@ urlpatterns = [
     path('react_post/', AddReactionView.as_view(), name='react_post'),
     path('posts/<int:forumID>/', ListPostView.as_view(), name='post_list'),
     path('comments/<int:postID>/', ListCommentView.as_view(), name='comment_list'),
+    path('likes/<int:postID>/', ListReactionView.as_view(), name='like_list'),
     path('create_hackathon/',createHackathon),
     path('get_hackathon/',getHackathon),
     path('register_hackathon/',registerHackathon),
