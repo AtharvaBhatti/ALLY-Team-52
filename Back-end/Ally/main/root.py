@@ -20,6 +20,19 @@ def api_root(request, format=None):
             ),
             "post_list": reverse(
                 "post_list", request=request, format=format
+            ),
+            "create_hackathon": reverse(
+                "create_hackathon", request=request, format=format
+            ),
+            "get_hackathon": reverse(
+                "get_hackathon", request=request, format=format
+            ),
+            "register_hackathon": reverse(
+                "register_hackathon", request=request, format=format
+            ),
+            "registered_hackathon": reverse(
+                "registered_hackathon", request=request, format=format
             )
+
         }
     )

@@ -53,12 +53,12 @@ class Hackathon(models.Model):
     description=models.TextField()
     conductedBy= models.ForeignKey(UserDetails, on_delete=models.CASCADE)
     institute = models.CharField(max_length=100)
-    openToALL = models.BooleanField(max_length=100) # yes/no
+    openToALL = models.BooleanField() # yes/no
     postedOn = models.DateTimeField(auto_now_add=True)
-    startDate = models.DateTimeField(auto_now_add=False)
-    endDate = models.DateTimeField(auto_now_add=False)
+    startDate = models.DateTimeField()
+    endDate = models.DateTimeField()
     cost = models.IntegerField()
-    registeredCount = models.IntegerField()
+    registeredCount = models.IntegerField(default=0)
     winner = models.CharField(max_length=100)
     runnerUp = models.CharField(max_length=100)
     metaData = models.CharField(max_length=100)
@@ -69,5 +69,5 @@ class HackathonRegistration(models.Model):
     teamLeader = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
     teamMembers = models.TextField()
     submission = models.CharField(max_length=100)
-    submissionTime = models.DateTimeField(auto_now_add=False)
+    submissionTime = models.DateTimeField()
     registeredTime = models.DateTimeField(auto_now_add=True)

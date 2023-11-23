@@ -24,10 +24,30 @@ class PostSerializer(serializers.ModelSerializer):
 class HackathonSerializer(serializers.ModelSerializer):
     class Meta:
         model=Hackathon
-        fields = '__all__'
+        model_names = [
+            'name',
+            'oneLiner',
+            'description',
+            'conductedBy',
+            'institute',
+            'openToALL',
+            'postedOn',
+            'startDate',
+            'endDate',
+            'cost',
+            'metaData',
+
+        ]
+        fields = model_names
 
 class HackathonRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model=HackathonRegistration
-        fields = '__all__'
+        model_names = [
+            'hackathonID',
+            'teamLeader', # email id
+            'teamMembers', # list of email ids
+
+        ]
+        fields = model_names
 

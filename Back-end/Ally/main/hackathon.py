@@ -22,8 +22,11 @@ def createHackathon(request):
     serializer = HackathonSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save(conductedBy=conduct_instance)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 
 @api_view(['GET'])
@@ -35,10 +38,10 @@ def getHackReg(request):
 @api_view(['POST'])
 def registerHackathon(request):
     hackathon_id = request.data.get('hackathonID')
-    leader_id=request.data.get('teamLeader')
+    leader_email=request.data.get('teamLeader')
     try:
         hackathon_instance = Hackathon.objects.get(pk=hackathon_id)
-        leader_instance = UserDetails.objects.get(pk=leader_id)
+        leader_instance = UserDetails.objects.get(pk=leader_email)
 
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -47,6 +50,10 @@ def registerHackathon(request):
 
     serializer = HackathonRegistrationSerializer(data=request.data)
     if serializer.is_valid():
+        hackathon_instance.registeredCount += 1
+        hackathon_instance.save()
         serializer.save(hackathonID=hackathon_instance,teamLeader=leader_instance)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
