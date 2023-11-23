@@ -11,6 +11,15 @@ def api_root(request, format=None):
         {
             "create_post": reverse(
                 "create_post", request=request, format=format
+            ),
+            "comment_post": reverse(
+                "comment_post", request=request, format=format
+            ),
+            "react_post": reverse(
+                "react_post", request=request, format=format
+            ),
+            "post_list": reverse(
+                "post_list", request=request, format=format
             )
         }
     )

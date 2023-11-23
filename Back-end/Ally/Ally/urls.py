@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import *
+from main.forum import *
 from main.root import api_root
+from main.hackathon import *
 
 urlpatterns = [
     path("", api_root),
     path('admin/', admin.site.urls),
     path('create_post/', CreatePost.as_view(), name='create_post'),
+    path('comment_post/', AddCommentView.as_view(), name='comment_post'),
+    path('react_post/', AddReactionView.as_view(), name='react_post'),
+    path('posts/<int:forumID>/', ListPostView.as_view(), name='post_list'),
+    path('create_hackathon/',createHackathon),
+    path('get_hackathon/',getHackathon),
+    path('register_hackathon/',registerHackathon),
+    path('registered_hackathon/',getHackReg),
 ]
