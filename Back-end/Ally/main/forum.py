@@ -1,8 +1,10 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
 from .models import Post, UserDetails, Forum, Tag
-from .serializers import CreatePostSerializer, CommentPostSerializer
+from .serializers import CreatePostSerializer, CommentPostSerializer, PostSerializer
 import json
 from datetime import datetime
 
@@ -103,3 +105,23 @@ class AddReactionView(APIView):
         
         except Exception as e:
             return Response({"error" : e}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+
+class ListPostView(ListAPIView):
+    serializer_class = PostSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        tag_names = self.request.query_params.getlist('tags')
+        forum_id = self.kwargs.get('forumID')
+
+        queryset = Post.objects.filter(tags__name__in=tag_names, forumID=forum_id).prefetch_related('tags')
+        return queryset
