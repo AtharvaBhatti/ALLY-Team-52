@@ -12,9 +12,16 @@ def getHackathon(request):
 
 @api_view(['POST'])
 def createHackathon(request):
+    conductedBy = request.data.get('userID')
+    try:
+        conduct_instance = UserDetails.objects.get(pk=conductedBy)
+
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
     serializer = HackathonSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        serializer.save(conductedBy=conduct_instance)
 
     return Response(serializer.data)
 
@@ -28,13 +35,18 @@ def getHackReg(request):
 @api_view(['POST'])
 def registerHackathon(request):
     hackathon_id = request.data.get('hackathonID')
+    leader_id=request.data.get('teamLeader')
     try:
         hackathon_instance = Hackathon.objects.get(pk=hackathon_id)
+        leader_instance = UserDetails.objects.get(pk=leader_id)
 
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
     serializer = HackathonRegistrationSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(hackathonID=hackathon_instance)
+        serializer.save(hackathonID=hackathon_instance,teamLeader=leader_instance)
 
     return Response(serializer.data, status=status.HTTP_201_CREATED)
