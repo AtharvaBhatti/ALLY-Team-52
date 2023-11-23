@@ -1,0 +1,21 @@
+.Forum-Right-Heading {
+    font-size: 18px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+
+  .Forum-Right-Link {
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  .Forum-right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 10%;
+  }
