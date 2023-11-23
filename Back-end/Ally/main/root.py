@@ -20,6 +20,9 @@ def api_root(request, format=None):
             ),
             "post_list": reverse(
                 "post_list", args=[1], request=request, format=format
+            ),
+            "comment_list": reverse(
+                "comment_list", args=[1], request=request, format=format
             )
         }
     )

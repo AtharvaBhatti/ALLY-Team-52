@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from .models import Post, UserDetails, Forum, Tag
-from .serializers import CreatePostSerializer, CommentPostSerializer, PostSerializer
+from .serializers import CreatePostSerializer, CommentPostSerializer, PostSerializer, CommentSerializer
 from django.db.models import Q
 import json
 from datetime import datetime
@@ -131,3 +131,23 @@ class ListPostView(ListAPIView):
                 queryset = queryset.filter(tags__name=tag_name)
         queryset = queryset.prefetch_related('tags')
         return queryset
+
+class ListCommentView(APIView):
+    def get(self, request, postID):
+
+        try:
+            comments = Post.objects.get(pk=postID).comments
+        except Post.DoesNotExist:
+            return Response({"error": "Post not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            jsonDec = json.decoder.JSONDecoder()
+            comments =  jsonDec.decode(comments)
+            serializer = CommentSerializer(data=comments, many=True)
+            if serializer.is_valid():
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
+        except Exception as e:
+            return Response({"error" : e}, status=status.HTTP_400_BAD_REQUEST)
