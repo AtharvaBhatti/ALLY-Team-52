@@ -5,7 +5,12 @@ import Sidebar from '../../Components/Sidebar.jsx';
 import ForumCard from '../../Components/Forum/ForumCard.jsx';
 import './ForumPage.css'
 import ForumRightBar from '../../Components/Forum/ForumRightBar.jsx';
+import { useLocation } from "react-router-dom";
+
 const SinglePost = () => {
+  const location = useLocation();
+  const { results } = location.state;
+  console.log(results);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('');
   const filterOptions = ['Next', 'React', 'Github'];
@@ -40,17 +45,15 @@ const SinglePost = () => {
                 />
                 </div>
                 <div class="SPF">
-                    <img src="path/to/post-image.jpg" alt="Post Image" class="SPForum-Image"></img>
+                    <img src={results.user_img} alt="Post Image" class="SPForum-Image"></img>
                     <div class="SPForum-Content">
-                    <div class="SPForum-Heading">Post Title Goes Here</div>
+                    <div class="SPForum-Heading">{results.user_question}</div>
                     <div class="SPForum-Meta">
-                        <div>Author Name</div>
+                        <div>{results.user_name}</div>
                         <div>Last Updated: DD/MM/YYYY</div>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit. In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum.
+                        {results.answer}
                     </p>
                     </div>
 
@@ -109,4 +112,4 @@ const CustomDropdown = ({ options, value, onChange }) => {
     );
   };
 
-export default SinglePost
+export default SinglePost;

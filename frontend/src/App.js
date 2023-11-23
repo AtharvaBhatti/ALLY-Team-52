@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/uni1" element={<Homepage />}></Route>
           <Route path="/uni1/forum" element={<Forum />}></Route>
-          <Route path="/uni1/forum/id" element={<SinglePost/>}></Route>
+          <Route path="/uni1/forum/:id" element={<SinglePost/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
