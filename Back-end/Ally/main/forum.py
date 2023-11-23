@@ -5,6 +5,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.pagination import PageNumberPagination
 from .models import Post, UserDetails, Forum, Tag
 from .serializers import CreatePostSerializer, CommentPostSerializer, PostSerializer
+from django.db.models import Q
 import json
 from datetime import datetime
 
@@ -109,7 +110,7 @@ class AddReactionView(APIView):
 
 
 class CustomPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 1
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -123,5 +124,10 @@ class ListPostView(ListAPIView):
         tag_names = self.request.query_params.getlist('tags')
         forum_id = self.kwargs.get('forumID')
 
-        queryset = Post.objects.filter(tags__name__in=tag_names, forumID=forum_id).prefetch_related('tags')
+        queryset = Post.objects.filter(forumID=forum_id)
+        queryset = queryset.order_by('-postedTime')
+        if tag_names:
+            for tag_name in tag_names:
+                queryset = queryset.filter(tags__name=tag_name)
+        queryset = queryset.prefetch_related('tags')
         return queryset

@@ -19,7 +19,7 @@ def api_root(request, format=None):
                 "react_post", request=request, format=format
             ),
             "post_list": reverse(
-                "post_list", request=request, format=format
+                "post_list", args=[1], request=request, format=format
             )
         }
     )
