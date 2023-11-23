@@ -9,8 +9,8 @@ import HomeNav from "./Components/HomeNav.jsx"
 function App() {
   return (
     <div>
-      <HomeNav/>
-      {/* <Navbar/> */}
+      {/* <HomeNav/> */}
+      <Navbar/>
       {/* <SidebarPage/> */}
       <BrowserRouter>
         <Routes>

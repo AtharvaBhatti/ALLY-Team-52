@@ -10,9 +10,9 @@ const HomeNav = () => {
   return (
     <nav className="bg-[#F3F6FF]   p-8">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Left side */}
+        
         <div className="flex items-center space-x-4">
-          {/* Logo */}
+          
           <img src={logo} alt="Logo" className="h-8 w-12" />
           <span className='font-inter text-2xl font-bold leading-9 tracking-wider text-left text-[#0065C1]'>ALLY</span>
 
