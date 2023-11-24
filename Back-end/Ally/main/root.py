@@ -27,7 +27,6 @@ def api_root(request, format=None):
             "like_list": reverse(
                 "like_list", args=[1], request=request, format=format
             ),
-
             "create_hackathon": reverse(
                 "create_hackathon", request=request, format=format
             ),

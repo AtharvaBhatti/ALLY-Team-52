@@ -38,7 +38,7 @@ def getHackReg(request):
 
 @api_view(['POST'])
 def registerHackathon(request):
-    #todo repeat registration checker
+    #todo repeat registration checker for this we will have to maintain a list of all the ids registered for the hackathon
     hackathon_id = request.data.get('hackathonID')
     # should we identify a hackathon by its id? or its name ?( only option is id imo)
     leader_email=request.data.get('leaderEmail')
@@ -50,7 +50,7 @@ def registerHackathon(request):
 
         leader_instance = UserDetails.objects.get(email=leader_email)
         if hackathon_instance.openToALL != 1 and leader_instance.institute!=hackathon_instance.institute:
-            return Response({"error": "Invalid Regsitration"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
 
         members=member_emails.split(',')
         member_ids=[]
@@ -58,7 +58,7 @@ def registerHackathon(request):
             if member != leader_email: # incase someone passes leader email again in member email
                 member_instance=UserDetails.objects.get(email=member)
                 if hackathon_instance.openToALL != 1 and member_instance.institute != hackathon_instance.institute:
-                    return Response({"error": "Invalid Regsitration"}, status=status.HTTP_404_NOT_FOUND)
+                    return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
                 member_ids.append(member_instance.id)
 
     except Hackathon.DoesNotExist:
