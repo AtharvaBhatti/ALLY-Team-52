@@ -51,14 +51,14 @@ class Hackathon(models.Model):
     name = models.CharField(max_length=100)
     oneLiner=models.CharField(max_length=100)
     description=models.TextField()
-    conductedBy= models.ForeignKey(UserDetails, on_delete=models.CASCADE)
+    conductedBy= models.ForeignKey(UserDetails, on_delete=models.CASCADE)  # uss instance ka primary column ( id ) store hoga
     institute = models.CharField(max_length=100)
-    openToALL = models.BooleanField(max_length=100) # yes/no
+    openToALL = models.BooleanField() # yes/no
     postedOn = models.DateTimeField(auto_now_add=True)
-    startDate = models.DateTimeField(auto_now_add=False)
-    endDate = models.DateTimeField(auto_now_add=False)
+    startDate = models.DateTimeField()
+    endDate = models.DateTimeField()
     cost = models.IntegerField()
-    registeredCount = models.IntegerField()
+    registeredCount = models.IntegerField(default=0)
     winner = models.CharField(max_length=100)
     runnerUp = models.CharField(max_length=100)
     metaData = models.CharField(max_length=100)
@@ -66,8 +66,9 @@ class Hackathon(models.Model):
 
 class HackathonRegistration(models.Model):
     hackathonID = models.ForeignKey(Hackathon, on_delete=models.CASCADE)
+    # id is the only unique column in hackathon model we should display the id to users for the purpose of registration
     teamLeader = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
-    teamMembers = models.TextField()
-    submission = models.CharField(max_length=100)
-    submissionTime = models.DateTimeField(auto_now_add=False)
+    teamMembers = models.TextField() # email ids seperated by comms
+    submission = models.CharField(max_length=100) # what will submission column hold ? the link ?
+    submissionTime = models.DateTimeField(null=True,blank=True)
     registeredTime = models.DateTimeField(auto_now_add=True)

@@ -98,4 +98,4 @@ const CustomDropdown = ({ options, value, onChange }) => {
     );
   };
 
-export default ForumPage
+export default ForumPage;

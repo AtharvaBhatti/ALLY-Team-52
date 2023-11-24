@@ -20,6 +20,26 @@ def api_root(request, format=None):
             ),
             "post_list": reverse(
                 "post_list", args=[1], request=request, format=format
+            ),
+            "comment_list": reverse(
+                "comment_list", args=[1], request=request, format=format
+            ),
+            "like_list": reverse(
+                "like_list", args=[1], request=request, format=format
+            ),
+
+            "create_hackathon": reverse(
+                "create_hackathon", request=request, format=format
+            ),
+            "get_hackathon": reverse(
+                "get_hackathon", request=request, format=format
+            ),
+            "register_hackathon": reverse(
+                "register_hackathon", request=request, format=format
+            ),
+            "registered_hackathon": reverse(
+                "registered_hackathon", request=request, format=format
             )
+
         }
     )

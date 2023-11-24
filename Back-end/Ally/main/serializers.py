@@ -21,13 +21,35 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         exclude = ('likes', 'comments')
 
+class CommentSerializer(serializers.Serializer):
+    Comment = serializers.CharField()
+    user = serializers.CharField()
+    byUserID = serializers.IntegerField()
+    Timestamp = serializers.CharField()
+
 class HackathonSerializer(serializers.ModelSerializer):
     class Meta:
         model=Hackathon
-        fields = '__all__'
+        model_names = [
+            'name',
+            'oneLiner',
+            'description',
+            'institute',
+            'openToALL',
+            'startDate',
+            'endDate',
+            'cost',
+
+        ]
+        fields = model_names
 
 class HackathonRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model=HackathonRegistration
-        fields = '__all__'
+        model_names = [
+            'hackathonID',
+
+
+        ]
+        fields = model_names
 

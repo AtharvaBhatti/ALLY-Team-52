@@ -1,11 +1,16 @@
 import './SinglePost.css'
 import React, { useState } from 'react'
-import { filter, posts } from '../../assets/images';
+import { filter, posts, arrow } from '../../assets/images';
 import Sidebar from '../../Components/Sidebar.jsx';
 import ForumCard from '../../Components/Forum/ForumCard.jsx';
 import './ForumPage.css'
 import ForumRightBar from '../../Components/Forum/ForumRightBar.jsx';
+import { useLocation } from "react-router-dom";
+
 const SinglePost = () => {
+  const location = useLocation();
+  const { results } = location.state;
+  console.log(results);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBy, setFilterBy] = useState('');
   const filterOptions = ['Next', 'React', 'Github'];
@@ -39,36 +44,39 @@ const SinglePost = () => {
                     onChange={handleFilterChange}
                 />
                 </div>
-                <div className='middleSection'>
-                <div className="SPF">
+
+<div className='middleSection'><div class="SPF">
+<div className="forum-post-header">
+              <div className="forum-user-info">
+              <img src={results.user_img} alt="Post Image" class="forum-user-image"></img>
+                <div className="forum-user-details">
+                  <div className="forum-user-name">@{results.user_name}</div>
+                  <div className="forum-last-seen">{results.user_last_seen}</div>
+                </div>
+              </div>
+            </div>
+                    
                     <div class="SPForum-Content">
-                    <div class="SPForum-Heading">Post Title Goes Here</div>
+                    <div class="SPForum-Heading">{results.user_question}</div>
                     <div class="SPForum-Meta">
-                        <div>Author Name</div>
+                        <div>{results.user_name}</div>
                         <div>Last Updated: DD/MM/YYYY</div>
                     </div>
-                    <p className="startPara">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit. In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit. In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit.
-                        </p>
-                        <p>
-                                    In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit. In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum.
-</p><p>
-                                    In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac eros justo. Sed vel urna vitae
-                        ipsum ullamcorper tincidunt eu vel velit. In hac habitasse platea dictumst. Proin in nisi felis.
-                        Curabitur id urna vel elit dignissim condimentum.
+                    <p>
+                        {results.answer}
                     </p>
                     <img src={posts} alt="Post Image" class="SPForum-Image"></img>
                     </div>
-
+                    <div class="forum-post-footer">
+            <div className='forum-footer'>
+            <div className="forum-tags">
+              <div className="forum-tag">{results.tag1}</div>
+              <div className="forum-tag">{results.tag2}</div>
+              <div className="forum-tag">{results.tag3}</div>
+            </div>
+            </div>
+            <button class="SPForum-Vote-Button"><img src={arrow} className="arrow-img"></img> Vote </button>
+            </div>
                     <div class="SPForum-Comments">
                     <textarea class="SPForum-Comment-Input" placeholder="Type your comment here..."></textarea>
                     <button class="SPForum-Comment-Button">Submit Comment</button>
@@ -128,4 +136,4 @@ const CustomDropdown = ({ options, value, onChange }) => {
     );
   };
 
-export default SinglePost
+export default SinglePost;
