@@ -28,14 +28,11 @@ class HackathonSerializer(serializers.ModelSerializer):
             'name',
             'oneLiner',
             'description',
-            'conductedBy',
             'institute',
             'openToALL',
-            'postedOn',
             'startDate',
             'endDate',
             'cost',
-            'metaData',
 
         ]
         fields = model_names
@@ -45,8 +42,7 @@ class HackathonRegistrationSerializer(serializers.ModelSerializer):
         model=HackathonRegistration
         model_names = [
             'hackathonID',
-            'teamLeader', # email id
-            'teamMembers', # list of email ids
+
 
         ]
         fields = model_names

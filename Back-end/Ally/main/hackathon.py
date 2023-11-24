@@ -11,10 +11,11 @@ def getHackathon(request):
     return Response(serializer.data)
 
 @api_view(['POST'])
-def createHackathon(request):
-    conductedBy = request.data.get('userID')
+def createHackathon(request): # todo register winners and other winners method
+    conductedBy = request.data.get('email') # conductedBy will be an email id passed in the request
     try:
-        conduct_instance = UserDetails.objects.get(pk=conductedBy)
+        conduct_instance = UserDetails.objects.get(email=conductedBy)
+        # conduct_instance  = UserDetails object (1)  where 1 is the row number
 
     except UserDetails.DoesNotExist:
         return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -37,11 +38,28 @@ def getHackReg(request):
 
 @api_view(['POST'])
 def registerHackathon(request):
+    #todo repeat registration checker
     hackathon_id = request.data.get('hackathonID')
-    leader_email=request.data.get('teamLeader')
+    # should we identify a hackathon by its id? or its name ?( only option is id imo)
+    leader_email=request.data.get('leaderEmail')
+    print(leader_email)
+    member_emails=request.data.get('memberEmails')
+    print(member_emails)
     try:
-        hackathon_instance = Hackathon.objects.get(pk=hackathon_id)
-        leader_instance = UserDetails.objects.get(pk=leader_email)
+        hackathon_instance = Hackathon.objects.get(id=hackathon_id)
+
+        leader_instance = UserDetails.objects.get(email=leader_email)
+        if hackathon_instance.openToALL != 1 and leader_instance.institute!=hackathon_instance.institute:
+            return Response({"error": "Invalid Regsitration"}, status=status.HTTP_404_NOT_FOUND)
+
+        members=member_emails.split(',')
+        member_ids=[]
+        for member in members:
+            if member != leader_email: # incase someone passes leader email again in member email
+                member_instance=UserDetails.objects.get(email=member)
+                if hackathon_instance.openToALL != 1 and member_instance.institute != hackathon_instance.institute:
+                    return Response({"error": "Invalid Regsitration"}, status=status.HTTP_404_NOT_FOUND)
+                member_ids.append(member_instance.id)
 
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -50,9 +68,9 @@ def registerHackathon(request):
 
     serializer = HackathonRegistrationSerializer(data=request.data)
     if serializer.is_valid():
-        hackathon_instance.registeredCount += 1
+        hackathon_instance.registeredCount += 1 # should we count the number of teams or number of people registered
         hackathon_instance.save()
-        serializer.save(hackathonID=hackathon_instance,teamLeader=leader_instance)
+        serializer.save(hackathonID=hackathon_instance,teamLeader=leader_instance,teamMembers=member_ids)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
