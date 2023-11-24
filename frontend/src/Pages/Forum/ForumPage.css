@@ -5,11 +5,18 @@ body{
     display: flex;
 }
 .forumMain{
-    width: 65%;
+    width: 85%;
     padding: 3%;
 }
 .forumRightBar{
-    width: 20%;
-    padding: 2%;
-    padding-left: 0% !important;
+    width: 40%;
+    padding: 3%;
+    margin-left: 20px;
+}
+.middleSection{
+    display: flex;
+    padding-left: 3%;
+}
+.card{
+    margin-top: 30px;
 }

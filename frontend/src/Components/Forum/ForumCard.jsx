@@ -1,12 +1,12 @@
 import React from 'react'
-import { filter } from '../../assets/images';
+import { filter,userimg} from '../../assets/images';
 import './ForumCard.css'
 import { useNavigate } from "react-router-dom";
 
 const forums = [
   {
       "id": 1,
-      "user_img": "user1.jpg",
+      "user_img": [userimg],
       "user_name": "John Doe",
       "user_last_seen": "Last seen 2 hours ago",
       "user_question": "How to create a responsive UI using HTML and CSS?",
@@ -20,7 +20,7 @@ const forums = [
   },
   {
       "id": 2,
-      "user_img": "user2.jpg",
+      "user_img": [userimg],
       "user_name": "Golaginya",
       "user_last_seen": "Last seen 5 min ago",
       "user_question": "How to path KDE on FreeBSD?",
@@ -34,7 +34,7 @@ const forums = [
   },
   {
       "id": 3,
-      "user_img": "user3.jpg",
+      "user_img": [userimg],
       "user_name": "Linuxoid",
       "user_last_seen": "Last seen 25 min ago",
       "user_question": "What is the difference between Java and Javascript?",
@@ -48,7 +48,7 @@ const forums = [
   },
   {
       "id": 4,
-      "user_img": "user4.jpg",
+      "user_img": [userimg],
       "user_name": "Lola",
       "user_last_seen": "Last seen 2 days ago",
       "user_question": "I want to study Svelte JS Framework. What is the best resource should I use?",
@@ -80,24 +80,26 @@ const ForumCard = () => {
                   <div className="forum-last-seen">{forum.user_last_seen}</div>
                 </div>
               </div>
+              <div className="forum-three-dots">&#8942;</div>
             </div>
             <div className="forum-post-content">
               <div className="forum-question">{forum.user_question}</div>
               <div className="forum-answer">{forum.answer}</div>
             </div>
+            <div class="forum-post-footer">
             <div className="forum-tags">
               <div className="forum-tag">{forum.tag1}</div>
               <div className="forum-tag">{forum.tag2}</div>
               <div className="forum-tag">{forum.tag3}</div>
             </div>
             <div className="forum-post-actions">
-              <div className="forum-three-dots">&#8942;</div>
               <div className="forum-actions-icons">
                 <div className="forum-action-icon">👁️ {forum.views}</div>
                 <div className="forum-action-icon">💬 {forum.comments}</div>
                 <div className="forum-action-icon">👍 {forum.upvotes}</div>
               </div>
             </div>
+          </div>
           </div>
       ))}
       </div>

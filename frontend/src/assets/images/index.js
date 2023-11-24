@@ -5,6 +5,7 @@ import posts from './posts.png';
 import course1 from './course1.png';
 import course2 from './course2.png';
 import hackathon from './hackathon.png';
+import arrow from './up-arrow.png';
 
-export { logo, user as userimg , filter , posts , course1 , course2 , hackathon};
+export { logo, user as userimg , filter , posts , course1 , course2 , hackathon, arrow};
 

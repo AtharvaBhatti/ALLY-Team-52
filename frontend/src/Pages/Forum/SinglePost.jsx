@@ -1,6 +1,6 @@
 import './SinglePost.css'
 import React, { useState } from 'react'
-import { filter } from '../../assets/images';
+import { filter, posts, arrow } from '../../assets/images';
 import Sidebar from '../../Components/Sidebar.jsx';
 import ForumCard from '../../Components/Forum/ForumCard.jsx';
 import './ForumPage.css'
@@ -44,8 +44,18 @@ const SinglePost = () => {
                     onChange={handleFilterChange}
                 />
                 </div>
-                <div class="SPF">
-                    <img src={results.user_img} alt="Post Image" class="SPForum-Image"></img>
+
+<div className='middleSection'><div class="SPF">
+<div className="forum-post-header">
+              <div className="forum-user-info">
+              <img src={results.user_img} alt="Post Image" class="forum-user-image"></img>
+                <div className="forum-user-details">
+                  <div className="forum-user-name">@{results.user_name}</div>
+                  <div className="forum-last-seen">{results.user_last_seen}</div>
+                </div>
+              </div>
+            </div>
+                    
                     <div class="SPForum-Content">
                     <div class="SPForum-Heading">{results.user_question}</div>
                     <div class="SPForum-Meta">
@@ -55,16 +65,30 @@ const SinglePost = () => {
                     <p>
                         {results.answer}
                     </p>
+                    <img src={posts} alt="Post Image" class="SPForum-Image"></img>
                     </div>
-
+                    <div class="forum-post-footer">
+            <div className='forum-footer'>
+            <div className="forum-tags">
+              <div className="forum-tag">{results.tag1}</div>
+              <div className="forum-tag">{results.tag2}</div>
+              <div className="forum-tag">{results.tag3}</div>
+            </div>
+            </div>
+            <button class="SPForum-Vote-Button"><img src={arrow} className="arrow-img"></img> Vote </button>
+            </div>
                     <div class="SPForum-Comments">
                     <textarea class="SPForum-Comment-Input" placeholder="Type your comment here..."></textarea>
                     <button class="SPForum-Comment-Button">Submit Comment</button>
                     </div>
                 </div>
-            </div>
+                {/* <div className='postCard'>
+                  <ForumCard/>
+                </div> */}
             <div className="forumRightBar">
                 <ForumRightBar/>
+            </div>
+            </div>
             </div>
         </div>
     )

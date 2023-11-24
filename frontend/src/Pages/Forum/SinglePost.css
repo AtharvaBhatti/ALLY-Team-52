@@ -1,11 +1,90 @@
+.forumMain{
+  width: 85%;
+  padding: 3%;
+}
+
+.middleSection{
+  display: flex;
+  padding-left: 3%;
+}
+
+.postCard{
+  margin-top: 30px;
+}
+
 .SPF{
-    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 30px;
+    margin-top: 40px;
+    width: 85%;
+}
+
+.forum-post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+
+.forum-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.forum-user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-left: 10px;
+  object-fit: cover;
+}
+
+.forum-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.forum-user-name {
+  font-weight: bold;
+}
+
+.forum-last-seen {
+  color: #555555;
+  font-size: x-small;
+}
+
+.forum-tags {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; 
+  margin-top: 3px;
+  
+  position: relative;
+}
+
+.forum-tag {
+  background-color: #f3f3f3;
+  color: #555555;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: x-small;
+  margin: 5px;
 }
 
 .SPForum-Image {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
+    border-radius: 0.3rem;
+    padding-top: 30px;
   }
 
   .SPForum-Content {
@@ -13,35 +92,80 @@
     box-sizing: border-box;
   }
 
+  p {
+    text-align: justify;
+    text-indent: 20px;
+    margin-bottom: 20px;
+  }
+
+  .startPara{
+    text-indent: 0;
+  }
+
   .SPForum-Heading {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
   }
 
   .SPForum-Meta {
     display: flex;
     justify-content: space-between;
-    color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #eee;
+    color: #555555;
+    font-size: small;
   }
 
   .SPForum-Comments {
     padding: 20px;
     box-sizing: border-box;
-    
   }
 
   .SPForum-Comment-Input {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee; 
+    outline: none;
+    transition: border-color 0.3s;
   }
+
+  .SPForum-Comment-Input:focus {
+    border-color: #007bff; 
+}
 
   .SPForum-Comment-Button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: small;
+    margin: 5px;
+  }
+
+  .SPForum-Vote-Button{
+    background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: x-small;
+  margin: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  }
+
+  .arrow-img{
+    height: 10px;
+    margin-top: 0.1rem;
+    margin-right: 0.5 rem;
   }
