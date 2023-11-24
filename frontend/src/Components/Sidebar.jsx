@@ -31,7 +31,7 @@ const SidebarPage = () => {
             >
               Home
             </MenuItem>
-            <MenuItem icon={<DescriptionOutlinedIcon />} className="menu2"> Forums </MenuItem>
+            <MenuItem component={<Link to="/uni1/forum" className="link" />} icon={<DescriptionOutlinedIcon />} className="menu2"> Forums </MenuItem>
             <MenuItem icon={<PersonIcon />} className="menu2"> Students </MenuItem>
             <SubMenu label="Seminars" icon={<AirplayOutlinedIcon />} className="menu2">
               {/* <MenuItem icon={<AccountBalanceRoundedIcon />} className="menu3">
