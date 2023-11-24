@@ -54,19 +54,18 @@ const Homepage = () => {
   };
 
   return (
-    <div className='bg-[#F3F6FF] m-0 p-0 min-h-fit'>
+    <div className='bg-[#F3F6FF] z--10 m-0 p-0 min-h-fit'>
       <div className='flex flex-col justify-center mx-4 md:mx-16 py-8'>
-        <div className='flex space-x-4 items-center mb-4'>
+        <div className='flex z-0 space-x-4 items-center mb-4'>
           {/* Search Input */}
           <input
             type='text'
             placeholder='Search'
             value={searchTerm}
             onChange={handleSearchChange}
-            className='p-3 relative border w-full border-gray-300 rounded-full pl-10'
+            className='p-3 relative border placeholder:text-blue-500 placeholder:font-bold w-full border-gray-300 rounded-full pl-10'
           />
 
-          {/* Custom Dropdown */}
           <CustomDropdown
             options={filterOptions}
             value={filterBy || 'Filters'}
@@ -133,7 +132,7 @@ const CustomDropdown = ({ options, value, onChange }) => {
 
       {/* Dropdown Options */}
       {isOpen && (
-        <div className='absolute mt-2 bg-white border border-gray-300 rounded'>
+        <div className='absolute mt-2 z-50 bg-white border border-gray-300 rounded'>
           {options.map((option) => (
             <div
               key={option}

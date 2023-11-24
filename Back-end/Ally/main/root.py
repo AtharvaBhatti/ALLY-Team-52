@@ -18,9 +18,16 @@ def api_root(request, format=None):
             "react_post": reverse(
                 "react_post", request=request, format=format
             ),
-          """  "post_list": reverse(
-                "post_list", request=request, format=format
-            ),"""
+            "post_list": reverse(
+                "post_list", args=[1], request=request, format=format
+            ),
+            "comment_list": reverse(
+                "comment_list", args=[1], request=request, format=format
+            ),
+            "like_list": reverse(
+                "like_list", args=[1], request=request, format=format
+            ),
+
             "create_hackathon": reverse(
                 "create_hackathon", request=request, format=format
             ),

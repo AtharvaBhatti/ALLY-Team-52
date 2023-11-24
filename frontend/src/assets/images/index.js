@@ -4,6 +4,7 @@ import filter from './filter.png';
 import posts from './posts.png';
 import course1 from './course1.png';
 import course2 from './course2.png';
+import hackathon from './hackathon.png';
 
-export { logo, user as userimg , filter , posts , course1 , course2};
+export { logo, user as userimg , filter , posts , course1 , course2 , hackathon};
 

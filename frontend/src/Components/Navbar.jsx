@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#F3F6FF] p-4 drop-shadow-lg">
+    <nav className="bg-[#F3F6FF] z-50 p-4 drop-shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left side */}
         <div className="flex items-center">
@@ -29,7 +29,7 @@ const Navbar = () => {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center">
+        <div className="flex z-50 items-center">
           {/* Greeting and Avatar */}
           <div className="flex p-2 md:p-4 rounded-full bg-white items-center mr-4">
             <img
@@ -40,7 +40,7 @@ const Navbar = () => {
             <span class="text-sky-600 mx-0 text-sm md:text-xl md:mx-2 text-[17px] font-semibold font-['Inter']">Hi, {user.username}</span>
 
           {/* Dropdown */}
-          <div className="relative">
+          <div className="z-50 relative">
             <button
               onClick={toggleDropdown}
               onBlur={closeDropdown}
@@ -50,16 +50,16 @@ const Navbar = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-6 w-48 bg-white rounded shadow-lg">
+              <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg">
                 <ul>
-                  <li className="py-2 px-4 hover:bg-gray-200 cursor-pointer">
+                  <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Your Profile
                   </li>
-                  <li className="py-2 px-4 hover:bg-gray-200 cursor-pointer">
+                  <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Settings
                   </li>
                   <li
-                    className="py-2 px-4 hover:bg-gray-200 cursor-pointer"
+                    className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
                     onClick={() => {
                         // Add logout functionality
                     }}
