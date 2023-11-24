@@ -25,7 +25,7 @@
 
 .Forum-Right-List li::before {
   content: "•"; 
-  color: #007bff;
+  color:  rgba(0, 101, 193, 1) ;
   font-size: 1.5em; 
   position: absolute;
   left: 15;
@@ -37,7 +37,7 @@
 .Forum-Right-Link {
   margin-left :20px;
   text-decoration: none;
-  color: #007bff;
+  color:  rgba(0, 101, 193, 1) ;
 }
 
 .Forum-Right-Link:hover {

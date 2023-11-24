@@ -49,7 +49,7 @@
   }
 
   .forum-question {
-    color: #007bff;
+    color:  rgba(0, 101, 193, 1);
     font-weight: bold;
     cursor: pointer;
   }

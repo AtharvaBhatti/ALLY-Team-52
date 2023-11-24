@@ -153,11 +153,11 @@
   }
 
   .SPForum-Comment-Input:focus {
-    border-color: #007bff; 
+    border-color:  rgba(0, 101, 193, 1);
 }
 
   .SPForum-Comment-Button {
-    background-color: #007bff;
+    background-color: rgba(0, 101, 193, 1);
     color: #fff;
     border: none;
     cursor: pointer;
@@ -174,7 +174,7 @@
     background-color: #1e338d;
   }
   .SPForum-Vote-Button{
-    background-color: #007bff;
+    background-color:  rgba(0, 101, 193, 1);
   color: #fff;
   padding: 10px;
   border-radius: 5px;
