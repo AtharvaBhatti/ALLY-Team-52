@@ -66,7 +66,7 @@ const ForumCard = () => {
     const nav = useNavigate();
     function handleclick(forum){
       console.log(forum);
-      nav("/unil/forum/${forum.id}", { state: { results: forum } });
+      nav("/uni1/forum/${forum.id}", { state: { results: forum } });
     }
     return (
       <div>
