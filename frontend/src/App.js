@@ -19,7 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/uni1" element={<Homepage />}></Route>
-          <Route path="/uni1/forum" element={<Forum />}></Route>
+          <Route path="/uni1/forum/new" element={<Forum tag={"New"}/>}></Route>
+          <Route path="/uni1/forum/hot" element={<Forum tag={"Hot"}/>}></Route>
+          <Route path="/uni1/forum/closed" element={<Forum tag={"Closed"}/>}></Route>
           <Route path="/uni1/forum/:id" element={<SinglePost />}></Route>
           <Route path="/uni1/hackathon" element={<Hackathons />}></Route>
         </Routes>

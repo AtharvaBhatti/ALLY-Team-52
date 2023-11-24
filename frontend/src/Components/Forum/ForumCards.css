@@ -51,13 +51,16 @@
   .forum-question {
     color: #007bff;
     font-weight: bold;
+    cursor: pointer;
   }
-
+  .forum-question:hover{
+    text-decoration: underline;
+    color: #1e338d;
+  }
   .forum-answer {
     color: #555;
-    max-height: 80px;
-    overflow: hidden;
     margin-top: 5px;
+    cursor: pointer;
   }
 
   .forum-tags {

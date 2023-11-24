@@ -2,10 +2,12 @@ import './SinglePost.css'
 import React, { useState } from 'react'
 import { filter, posts, arrow } from '../../assets/images';
 import Sidebar from '../../Components/Sidebar.jsx';
-import ForumCard from '../../Components/Forum/ForumCard.jsx';
+import ForumCard from '../../Components/Forum/ForumCards.jsx';
 import './ForumPage.css'
 import ForumRightBar from '../../Components/Forum/ForumRightBar.jsx';
+import '../../Pages/Forum/ForumPage.css'
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const SinglePost = () => {
   const location = useLocation();
@@ -21,6 +23,11 @@ const SinglePost = () => {
   const handleFilterChange = (option) => {
     setFilterBy(option);
   };
+    const navigate = useNavigate(); // Initialize useHistory
+  
+    const handleGoBack = () => {
+      navigate(-1); // Go back to the previous page
+    };
     return (
         <div className='forumPage'>
             <div className="sideBar">
@@ -28,6 +35,7 @@ const SinglePost = () => {
             </div>
             <div className="forumMain">
             <div className='flex space-x-4 items-center mb-4'>
+            
                 {/* Search Input */}
                 <input
                     type='text'
@@ -45,23 +53,33 @@ const SinglePost = () => {
                 />
                 </div>
 
-<div className='middleSection'><div class="SPF">
-<div className="forum-post-header">
-              <div className="forum-user-info">
+          <div className='middleSection'>
+            <div class="SPF">
+        
+            <div className="SF-post-header">
+              <div className="forum-back-arrow">
+              <button onClick={handleGoBack} className='back-button'>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </button>
+              <div className="forum-three-dots">&#8942;</div>
+            </div>
+            <div className='forum-info-dots'>
+            <div className="forum-user-info">
               <img src={results.user_img} alt="Post Image" class="forum-user-image"></img>
                 <div className="forum-user-details">
                   <div className="forum-user-name">@{results.user_name}</div>
                   <div className="forum-last-seen">{results.user_last_seen}</div>
                 </div>
+                
               </div>
+              
+            </div>
+              
             </div>
                     
                     <div class="SPForum-Content">
                     <div class="SPForum-Heading">{results.user_question}</div>
-                    <div class="SPForum-Meta">
-                        <div>{results.user_name}</div>
-                        <div>Last Updated: DD/MM/YYYY</div>
-                    </div>
+                    
                     <p>
                         {results.answer}
                     </p>
