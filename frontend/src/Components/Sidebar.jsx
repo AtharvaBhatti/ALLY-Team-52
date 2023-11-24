@@ -14,9 +14,9 @@ import "./Sidebar.css"
 
 const SidebarPage = () => {
     return (
-      <div style={{ display: "flex", height: "100vh", width: "26vh"}}>
+      <div style={{ display: "flex", height: "100%", width: "20%"}}>
         <Sidebar className="app">
-            <div style={{height: "100vh", backgroundColor: "rgba(0, 101, 193, 0.05)"}}>
+            <div style={{height: "100%", backgroundColor: "rgba(0, 101, 193, 0.05)", overflow:"hidden"}}>
           <Menu>
             <MenuItem
             //   component={<Link to="/" className="link" />}
@@ -31,7 +31,7 @@ const SidebarPage = () => {
             >
               Home
             </MenuItem>
-            <MenuItem component={<Link to="/uni1/forum" className="link" />} icon={<DescriptionOutlinedIcon />} className="menu2"> Forums </MenuItem>
+            <MenuItem component={<Link to="/uni1/forum/new" className="link" />} icon={<DescriptionOutlinedIcon />} className="menu2"> Forums </MenuItem>
             <MenuItem icon={<PersonIcon />} className="menu2"> Students </MenuItem>
             <SubMenu label="Seminars" icon={<AirplayOutlinedIcon />} className="menu2">
               {/* <MenuItem icon={<AccountBalanceRoundedIcon />} className="menu3">
