@@ -7,12 +7,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     overflow: hidden;
+    padding: 20px;
   }
 
   .forum-post-header {
     display: flex;
     align-items: center;
     padding: 10px;
+    position: relative;
   }
 
   .forum-user-info {
@@ -24,7 +26,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 15px;
     object-fit: cover;
   }
 
@@ -38,7 +40,8 @@
   }
 
   .forum-last-seen {
-    color: #555;
+    color: #555555;
+    font-size: x-small;
   }
 
   .forum-post-content {
@@ -58,38 +61,52 @@
   }
 
   .forum-tags {
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    border-top: 1px solid #eee;
+    gap: 5px; 
+    margin-top: 3px;
+    
+    position: relative;
   }
 
   .forum-tag {
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px;
-    border-radius: 3px;
+    background-color: #f3f3f3;
+    color: #555555;
+    padding: 8px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: x-small;
+    margin: 5px;
   }
 
   .forum-post-actions {
     display: flex;
+    position: relative;
     justify-content: space-between;
-    padding: 10px;
-    border-top: 1px solid #eee;
   }
 
   .forum-actions-icons {
     display: flex;
+    align-items: center;
   }
 
   .forum-action-icon {
-    margin-right: 10px;
+    margin-right: 20px;
     cursor: pointer;
   }
 
   .forum-three-dots {
     font-size: 20px;
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
     cursor: pointer;
+  }
+
+  .forum-post-footer{
+    position: relative;
+    display: flex;
+    border-top: 1px solid #eee;
+    justify-content: space-between; 
   }

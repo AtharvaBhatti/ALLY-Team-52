@@ -3,7 +3,7 @@ import './ForumRightBar.css'
 const ForumRightBar = () => {
     return (
         <div class="Forum-right-sidebar">
-    <div class="Forum-Right-Heading">Must-Read Posts</div>
+    <div class="Forum-Right-Heading"> ⭐ Must-Read Posts</div>
     <ul class="Forum-Right-List">
       <li><a href="#" class="Forum-Right-Link">Link 1</a></li>
       <li><a href="#" class="Forum-Right-Link">Link 2</a></li>
@@ -11,7 +11,7 @@ const ForumRightBar = () => {
       <li><a href="#" class="Forum-Right-Link">Link 4</a></li>
     </ul>
 
-    <div class="Forum-Right-Heading">Featured Links</div>
+    <div class="Forum-Right-Heading"> 🔗 Featured Links</div>
     <ul class="Forum-Right-List">
       <li><a href="#" class="Forum-Right-Link">Link 5</a></li>
       <li><a href="#" class="Forum-Right-Link">Link 6</a></li>

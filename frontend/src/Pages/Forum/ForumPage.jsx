@@ -21,6 +21,7 @@ const ForumPage = () => {
                 <Sidebar />
             </div>
             <div className="forumMain">
+              <div>
             <div className='flex space-x-4 items-center mb-4'>
                 {/* Search Input */}
                 <input
@@ -38,10 +39,18 @@ const ForumPage = () => {
                     onChange={handleFilterChange}
                 />
                 </div>
+                </div>
+            
+            <div className='middleSection'>
+              <div className="card">
                 <ForumCard />
+                <ForumCard />
+                <ForumCard />
+              </div>
+              <div className="forumRightBar">
+                  <ForumRightBar/>
+              </div>
             </div>
-            <div className="forumRightBar">
-                <ForumRightBar/>
             </div>
         </div>
     )

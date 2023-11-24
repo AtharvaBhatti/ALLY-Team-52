@@ -1,21 +1,45 @@
-.Forum-Right-Heading {
-    font-size: 18px;
-    color: #007bff;
-    margin-bottom: 10px;
-  }
+.Forum-right-sidebar {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .Forum-Right-Link {
-    color: #007bff;
-    text-decoration: none;
-    margin-bottom: 5px;
-  }
-  .Forum-right-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #fff;
-    border-radius: 0.3rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    padding: 10%;
-  }
+.Forum-Right-Heading {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.Forum-Right-List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Forum-Right-List li {
+  position: relative;
+  padding-left: 20px; 
+}
+
+.Forum-Right-List li::before {
+  content: "•"; 
+  color: #007bff;
+  font-size: 1.5em; 
+  position: absolute;
+  left: 15;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 0.5em;
+}
+
+.Forum-Right-Link {
+  margin-left :20px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.Forum-Right-Link:hover {
+  text-decoration: underline;
+}
