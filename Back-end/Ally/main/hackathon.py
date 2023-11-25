@@ -3,6 +3,7 @@ from rest_framework.response import Response # any python data we pass into it w
 from rest_framework.decorators import api_view
 from .models import HackathonRegistration,Hackathon, UserDetails
 from .serializers import HackathonSerializer,HackathonRegistrationSerializer
+import time
 import json
 
 
@@ -29,9 +30,7 @@ def registerHackathon(request):
     hackathon_id = request.data.get('hackathonID')
     # should we identify a hackathon by its id? or its name ?( only option is id imo)
     leader_email=request.data.get('leaderEmail')
-    print(leader_email)
     member_emails=request.data.get('memberEmails')
-    print(member_emails)
     try:
         hackathon_instance = Hackathon.objects.get(id=hackathon_id)
 
@@ -48,9 +47,6 @@ def registerHackathon(request):
                     return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
                 member_ids.append(member_instance.id)
 
-        """member_ids.append(leader_instance.id)
-        # the teamMembers field of the db will contain the list of all the team member ids including the leader"""
-
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
     except UserDetails.DoesNotExist:
@@ -64,6 +60,63 @@ def registerHackathon(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def submitHackathon(request):
+
+    hackathon_id = request.data.get('hackathonID')
+    leader_email=request.data.get('userID')
+    submit=request.data.get('submission')
+    try:
+
+
+        leader_instance = UserDetails.objects.get(email=leader_email)
+        submission_instance = HackathonRegistration.objects.get(teamLeader=leader_instance)
+        if submission_instance.id != hackathon_id:
+            return Response({"error": "Invalid Submission"}, status=status.HTTP_404_NOT_FOUND)
+
+        submission_instance.submission = submit
+        submission_instance.submissionTime = time.strftime("%Y-%m-%d %H:%M:%S")
+        submission_instance.save()
+        return Response("Data Uploaded Successfully", status=status.HTTP_201_CREATED)
+
+
+
+    except Hackathon.DoesNotExist:
+        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['POST'])
+def winnerHackathon(request):
+
+    hackathon_id = request.data.get('hackathonID')
+    conductedBy=request.data.get('userID')
+    winner=request.data.get('winner')
+    runnerUp=request.data.get('runnerUp')
+    otherWinners=request.data.get('otherWinners')
+
+    try:
+
+
+        host_instance = UserDetails.objects.get(email=conductedBy)
+        hackathon_instance = Hackathon.objects.get(id=hackathon_id)
+        if hackathon_instance.conductedBy != host_instance:
+            return Response({"error": "Invalid Access"}, status=status.HTTP_404_NOT_FOUND)
+
+        hackathon_instance.winner = winner
+        hackathon_instance.runnerUp = runnerUp
+        hackathon_instance.otherWinners=otherWinners
+        hackathon_instance.save()
+        return Response("Data Successfully Uploaded", status=status.HTTP_201_CREATED)
+
+
+
+    except Hackathon.DoesNotExist:
+        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 def listHackathon(request,institute): # institute specific + open to all
@@ -131,7 +184,8 @@ def getHackReg(request, hackathonID):
                 members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
                                      "email": user_instance.email, "institute": user_instance.institute})
 
-            data.append({"teamLeader": leader_data, "teamMembers": members_data, "submission": registration.submission,
+            data.append({"Registration_ID":registration.id,"teamLeader": leader_data, "teamMembers": members_data,
+                         "submission": registration.submission,
                          "registeredTime": registration.registeredTime, "submissionTime": registration.submissionTime})
 
         # list of dictionaries returned

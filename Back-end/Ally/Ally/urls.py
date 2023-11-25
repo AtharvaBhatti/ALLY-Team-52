@@ -33,6 +33,8 @@ urlpatterns = [
     path('register_hackathon/',registerHackathon,name="register_hackathon"),
     path('registered_hackathon/<int:hackathonID>/',getHackReg,name="registered_hackathon"),
     path('view_hackathon/<int:hackathonID>/',viewHackathon,name="view_hackathon"),
+    path('submit_hackathon/',submitHackathon,name="submit_hackathon"),
+    path('winner_hackathon/',winnerHackathon,name="winner_hackathon"),
 
 
 ]
