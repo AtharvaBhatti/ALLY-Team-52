@@ -4,32 +4,7 @@ from rest_framework.decorators import api_view
 from .models import HackathonRegistration,Hackathon, UserDetails
 from .serializers import HackathonSerializer,HackathonRegistrationSerializer
 import json
-@api_view(['GET'])
-def getHackathon(request,institute): # institute specific + open to all
-    try:
-        institute_specific=Hackathon.objects.filter(institute=institute)
-        opentoall=Hackathon.objects.filter(openToALL=1)
 
-        data=[]
-        for hackathon_instance in opentoall:
-            if(hackathon_instance.institute!=institute):
-                data.append({"id":hackathon_instance.id,"name": hackathon_instance.name,
-                             "oneLiner": hackathon_instance.oneLiner,"description":hackathon_instance.description,
-                             "institute":hackathon_instance.institute,"startDate":hackathon_instance.startDate,
-                             "endDate":hackathon_instance.endDate})
-
-        for hackathon_instance in institute_specific:
-            data.append({"id": hackathon_instance.id, "name": hackathon_instance.name,
-                         "oneLiner": hackathon_instance.oneLiner, "description": hackathon_instance.description,
-                         "institute": hackathon_instance.institute, "startDate": hackathon_instance.startDate,
-                         "endDate": hackathon_instance.endDate})
-
-
-
-        return Response(data, status=status.HTTP_200_OK)
-
-    except Hackathon.DoesNotExist:
-        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['POST'])
 def createHackathon(request): # todo register winners and other winners method
@@ -47,46 +22,6 @@ def createHackathon(request): # todo register winners and other winners method
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-@api_view(['GET']) # for all users to see all the ppl who registered for a hackathon
-# if you want only the host to view it then pass host id also in request and compare it to hackathon conducted by
-def getHackReg(request,hackathonID):
-
-    try:
-        registrations=HackathonRegistration.objects.filter(hackathonID=hackathonID)
-        registered_list=[]
-        for registration in registrations:
-
-            # registration is a hackathon _registration instance == HackathonRegistration object (2)
-            # matlab in short we can use registration.teamMembers vaghera
-            string=registration.teamMembers
-            string=string.strip('[]')
-
-            member_list=string.split(',')
-
-            for member in member_list:
-                member=member.strip()
-                registered_list.append(int(member))
-
-        user_data=[]
-        for user_id in registered_list:
-            user_instance=UserDetails.objects.get(id=user_id)
-
-
-            user_data.append({"firstName":user_instance.firstName,"lastName": user_instance.lastName,"email": user_instance.email,"institute": user_instance.institute})
-
-
-        # list of dictionaries returned
-        return Response(user_data, status=status.HTTP_200_OK)
-
-    except Hackathon.DoesNotExist:
-        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
-
-
-
 
 @api_view(['POST'])
 def registerHackathon(request):
@@ -113,8 +48,8 @@ def registerHackathon(request):
                     return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
                 member_ids.append(member_instance.id)
 
-        member_ids.append(leader_instance.id)
-        # the teamMembers field of the db will contain the list of all the team member ids including the leader
+        """member_ids.append(leader_instance.id)
+        # the teamMembers field of the db will contain the list of all the team member ids including the leader"""
 
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -130,3 +65,104 @@ def registerHackathon(request):
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def listHackathon(request,institute): # institute specific + open to all
+    try:
+        institute_specific=Hackathon.objects.filter(institute=institute)
+        opentoall=Hackathon.objects.filter(openToALL=1)
+
+        data=[]
+        for hackathon_instance in opentoall:
+            if(hackathon_instance.institute!=institute):
+                data.append({"id":hackathon_instance.id,"name": hackathon_instance.name,
+                             "oneLiner": hackathon_instance.oneLiner,"description":hackathon_instance.description,
+                             "institute":hackathon_instance.institute,"startDate":hackathon_instance.startDate,
+                             "endDate":hackathon_instance.endDate})
+
+        for hackathon_instance in institute_specific:
+            data.append({"id": hackathon_instance.id, "name": hackathon_instance.name,
+                         "institute": hackathon_instance.institute,"oneLiner": hackathon_instance.oneLiner,
+                         "startDate": hackathon_instance.startDate,
+                         "endDate": hackathon_instance.endDate,"cost":hackathon_instance.cost})
+
+
+
+        return Response(data, status=status.HTTP_200_OK)
+
+    except Hackathon.DoesNotExist:
+        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+@api_view(['GET'])  # for all users to see all the ppl who registered for a hackathon
+# if you want only the host to view it then pass host id also in request and compare it to hackathon conducted by
+def getHackReg(request, hackathonID):
+    try:
+        registrations = HackathonRegistration.objects.filter(hackathonID=hackathonID)
+
+        data = []
+        for registration in registrations:
+            registered_list = []
+            members_data = []
+
+            # registration is a hackathon _registration instance == HackathonRegistration object (2)
+            # matlab in short we can use registration.teamMembers vaghera
+            teamLeader = registration.teamLeader
+            """
+            teamLeader was a foreign key in the database
+            thus if we print teamLeader we get =
+            UserDetails object (2)
+
+            thus teamLeader.id will guve the id
+            """
+            leader_instance = UserDetails.objects.get(id=teamLeader.id)
+            leader_data = {"firstName": leader_instance.firstName,
+                           "lastName": leader_instance.lastName, "email": leader_instance.email,
+                           "institute": leader_instance.institute}
+
+            string = registration.teamMembers
+            string = string.strip('[]')
+
+            member_list = string.split(',')
+
+            for member in member_list:
+                member = member.strip()
+                registered_list.append(int(member))
+
+            for user_id in registered_list:
+                user_instance = UserDetails.objects.get(id=user_id)
+                members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
+                                     "email": user_instance.email, "institute": user_instance.institute})
+
+            data.append({"teamLeader": leader_data, "teamMembers": members_data, "submission": registration.submission,
+                         "registeredTime": registration.registeredTime, "submissionTime": registration.submissionTime})
+
+        # list of dictionaries returned
+        return Response(data, status=status.HTTP_200_OK)
+
+    except Hackathon.DoesNotExist:
+        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def viewHackathon(request, hackathonID):
+    try:
+        hackathon_instance = Hackathon.objects.get(id=hackathonID)
+
+        data = {"id": hackathon_instance.id, "name": hackathon_instance.name,
+                "oneLiner": hackathon_instance.oneLiner,
+                "description":hackathon_instance.description,"institute": hackathon_instance.institute,
+                "openToALL":hackathon_instance.openToALL,"postedOn":hackathon_instance.postedOn,
+                "startDate": hackathon_instance.startDate,
+                "endDate": hackathon_instance.endDate,"cost":hackathon_instance.cost,
+                "registeredCount":hackathon_instance.registeredCount,"winner":hackathon_instance.winner,
+                "runnerUp":hackathon_instance.runnerUp,"metaData":hackathon_instance.metaData,
+                "conductedBy":hackathon_instance.conductedBy.id}
+
+
+        #  dictionary returned
+        return Response(data, status=status.HTTP_200_OK)
+
+    except Hackathon.DoesNotExist:
+        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
