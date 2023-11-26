@@ -48,6 +48,12 @@ def api_root(request, format=None):
             ),
             "view_hackathon": reverse(
                 "view_hackathon",args=[1], request=request, format=format
+            ),
+            "create_seminar": reverse(
+                "create_seminar", request=request, format=format
+            ),
+            "register_seminar": reverse(
+                "register_seminar", request=request, format=format
             )
 
 

@@ -31,6 +31,7 @@ def registerHackathon(request):
     # should we identify a hackathon by its id? or its name ?( only option is id imo)
     leader_email=request.data.get('leaderEmail')
     member_emails=request.data.get('memberEmails')
+    member_emails=member_emails.strip(',')
     try:
         hackathon_instance = Hackathon.objects.get(id=hackathon_id)
 

@@ -18,6 +18,7 @@ from django.urls import path
 from main.forum import *
 from main.root import api_root
 from main.hackathon import *
+from main.seminar import *
 
 urlpatterns = [
     path("", api_root),
@@ -35,6 +36,8 @@ urlpatterns = [
     path('view_hackathon/<int:hackathonID>/',viewHackathon,name="view_hackathon"),
     path('submit_hackathon/',submitHackathon,name="submit_hackathon"),
     path('winner_hackathon/',winnerHackathon,name="winner_hackathon"),
+    path('create_seminar/',createSeminar,name="create_seminar"),
+    path('register_seminar/',registerSeminar,name="register_seminar"),
 
 
 ]
