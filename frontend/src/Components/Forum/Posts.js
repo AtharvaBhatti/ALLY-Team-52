@@ -12,7 +12,41 @@ export const New = [
         "tag3": "Responsive Design",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[
+            {
+                "id": 1,
+                "user_img": [userimg],
+                "user_name": "John Doe",
+                "dat_time": "21st October 20:28 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "likes": 155
+            },
+            {
+                "id": 2,
+                "user_img": [userimg],
+                "user_name": "Jane Smith",
+                "dat_time": "22nd October 12:45 IST",
+                "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 42
+            },
+            {
+                "id": 3,
+                "user_img": [userimg],
+                "user_name": "Alice Johnson",
+                "dat_time": "23rd October 08:15 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 27
+            },
+            {
+                "id": 4,
+                "user_img": [userimg],
+                "user_name": "Bob Williams",
+                "dat_time": "24th October 15:30 IST",
+                "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 63
+            }
+        ]
     },
     {
         "id": 2,
@@ -26,7 +60,41 @@ export const New = [
         "tag3": "overflow",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[
+            {
+                "id": 1,
+                "user_img": [userimg],
+                "user_name": "John Doe",
+                "dat_time": "21st October 20:28 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "likes": 155
+            },
+            {
+                "id": 2,
+                "user_img": [userimg],
+                "user_name": "Jane Smith",
+                "dat_time": "22nd October 12:45 IST",
+                "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 42
+            },
+            {
+                "id": 3,
+                "user_img": [userimg],
+                "user_name": "Alice Johnson",
+                "dat_time": "23rd October 08:15 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 27
+            },
+            {
+                "id": 4,
+                "user_img": [userimg],
+                "user_name": "Bob Williams",
+                "dat_time": "24th October 15:30 IST",
+                "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 63
+            }
+        ]
     },
     {
         "id": 3,
@@ -40,7 +108,41 @@ export const New = [
         "tag3": "code",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[
+            {
+                "id": 1,
+                "user_img": [userimg],
+                "user_name": "John Doe",
+                "dat_time": "21st October 20:28 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "likes": 155
+            },
+            {
+                "id": 2,
+                "user_img": [userimg],
+                "user_name": "Jane Smith",
+                "dat_time": "22nd October 12:45 IST",
+                "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 42
+            },
+            {
+                "id": 3,
+                "user_img": [userimg],
+                "user_name": "Alice Johnson",
+                "dat_time": "23rd October 08:15 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 27
+            },
+            {
+                "id": 4,
+                "user_img": [userimg],
+                "user_name": "Bob Williams",
+                "dat_time": "24th October 15:30 IST",
+                "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 63
+            }
+        ]
     },
     {
         "id": 4,
@@ -54,7 +156,41 @@ export const New = [
         "tag3": "recommendations",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[
+            {
+                "id": 1,
+                "user_img": [userimg],
+                "user_name": "John Doe",
+                "dat_time": "21st October 20:28 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "likes": 155
+            },
+            {
+                "id": 2,
+                "user_img": [userimg],
+                "user_name": "Jane Smith",
+                "dat_time": "22nd October 12:45 IST",
+                "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 42
+            },
+            {
+                "id": 3,
+                "user_img": [userimg],
+                "user_name": "Alice Johnson",
+                "dat_time": "23rd October 08:15 IST",
+                "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 27
+            },
+            {
+                "id": 4,
+                "user_img": [userimg],
+                "user_name": "Bob Williams",
+                "dat_time": "24th October 15:30 IST",
+                "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "likes": 63
+            }
+        ]
     }
   ]
   export const Hot = [
@@ -70,7 +206,41 @@ export const New = [
       "tag3": "Optimization",
       "views": 200,
       "comments": 20,
-      "upvotes": 180
+      "upvotes": 180,
+      "comments_in_words":[
+        {
+            "id": 1,
+            "user_img": [userimg],
+            "user_name": "John Doe",
+            "dat_time": "21st October 20:28 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "likes": 155
+        },
+        {
+            "id": 2,
+            "user_img": [userimg],
+            "user_name": "Jane Smith",
+            "dat_time": "22nd October 12:45 IST",
+            "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 42
+        },
+        {
+            "id": 3,
+            "user_img": [userimg],
+            "user_name": "Alice Johnson",
+            "dat_time": "23rd October 08:15 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 27
+        },
+        {
+            "id": 4,
+            "user_img": [userimg],
+            "user_name": "Bob Williams",
+            "dat_time": "24th October 15:30 IST",
+            "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 63
+        }
+    ]
     },
     {
       "id": 6,
@@ -84,7 +254,41 @@ export const New = [
       "tag3": "Best Practices",
       "views": 180,
       "comments": 15,
-      "upvotes": 160
+      "upvotes": 160,
+      "comments_in_words":[
+        {
+            "id": 1,
+            "user_img": [userimg],
+            "user_name": "John Doe",
+            "dat_time": "21st October 20:28 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "likes": 155
+        },
+        {
+            "id": 2,
+            "user_img": [userimg],
+            "user_name": "Jane Smith",
+            "dat_time": "22nd October 12:45 IST",
+            "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 42
+        },
+        {
+            "id": 3,
+            "user_img": [userimg],
+            "user_name": "Alice Johnson",
+            "dat_time": "23rd October 08:15 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 27
+        },
+        {
+            "id": 4,
+            "user_img": [userimg],
+            "user_name": "Bob Williams",
+            "dat_time": "24th October 15:30 IST",
+            "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 63
+        }
+    ]
     },
     {
       "id": 7,
@@ -98,7 +302,41 @@ export const New = [
       "tag3": "Best Practices",
       "views": 180,
       "comments": 15,
-      "upvotes": 160
+      "upvotes": 160,
+      "comments_in_words":[
+        {
+            "id": 1,
+            "user_img": [userimg],
+            "user_name": "John Doe",
+            "dat_time": "21st October 20:28 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "likes": 155
+        },
+        {
+            "id": 2,
+            "user_img": [userimg],
+            "user_name": "Jane Smith",
+            "dat_time": "22nd October 12:45 IST",
+            "answer": "Another insightful comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 42
+        },
+        {
+            "id": 3,
+            "user_img": [userimg],
+            "user_name": "Alice Johnson",
+            "dat_time": "23rd October 08:15 IST",
+            "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 27
+        },
+        {
+            "id": 4,
+            "user_img": [userimg],
+            "user_name": "Bob Williams",
+            "dat_time": "24th October 15:30 IST",
+            "answer": "Yet another comment Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "likes": 63
+        }
+    ]
     }]
   
   
@@ -115,7 +353,8 @@ export  const Top = [
         "tag3": "Responsive Design",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 2,
@@ -129,7 +368,8 @@ export  const Top = [
         "tag3": "overflow",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 3,
@@ -143,7 +383,8 @@ export  const Top = [
         "tag3": "code",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 4,
@@ -157,7 +398,8 @@ export  const Top = [
         "tag3": "recommendations",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     }
   ]
 export  const Closed = [
@@ -173,7 +415,8 @@ export  const Closed = [
         "tag3": "Responsive Design",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 2,
@@ -187,7 +430,8 @@ export  const Closed = [
         "tag3": "overflow",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 3,
@@ -201,7 +445,8 @@ export  const Closed = [
         "tag3": "code",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     },
     {
         "id": 4,
@@ -215,7 +460,8 @@ export  const Closed = [
         "tag3": "recommendations",
         "views": 125,
         "comments": 15,
-        "upvotes": 155
+        "upvotes": 155,
+        "comments_in_words":[]
     }
   ]
 

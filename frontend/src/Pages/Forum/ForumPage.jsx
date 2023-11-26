@@ -23,6 +23,7 @@ const ForumPage = ({tag}) => {
   const handleTagClick = (tag) => {
     nav(`/uni1/forum/${tag}`)
   }
+
   const posts={
     New: New, Hot: Hot, Closed: Closed
   }
@@ -31,9 +32,9 @@ const ForumPage = ({tag}) => {
             <div className="sideBar">
                 <Sidebar />
             </div>
-            <div className="forumMain">
+            <div className="forumMain" >
               
-            <div className='flex space-x-4 items-center mb-4 '>
+            <div className='flex space-x-4 items-center mb-4 filtersButton'>
                 {/* Search Input */}
                 <input
                     type='text'
