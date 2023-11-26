@@ -12,9 +12,8 @@ import Hackathons from "./Pages/Hackathons.jsx";
 function App() {
   return (
     <div>
-      {/* <HomeNav/> */}
-      <Navbar />
-      {/* <SidebarPage/> */}
+      
+        <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />

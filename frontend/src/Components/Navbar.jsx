@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { logo, userimg } from '../assets/images';
-
 const user = { username: 'John Doe', avatar: userimg };
 
 
@@ -17,7 +16,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#F3F6FF] z-50 p-4 drop-shadow-lg">
+
+    <nav className="bg-[#F3F6FF] z-50 p-4 drop-shadow-lg" >
       <div className="container mx-auto flex justify-between items-center">
         {/* Left side */}
         <div className="flex items-center">
@@ -50,7 +50,7 @@ const Navbar = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg">
+              <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg" >
                 <ul>
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Your Profile

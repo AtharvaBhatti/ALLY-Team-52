@@ -2,7 +2,7 @@ import './SinglePost.css'
 import React, { useState } from 'react'
 import { filter, posts, arrow } from '../../assets/images';
 import Sidebar from '../../Components/Sidebar.jsx';
-import ForumCard from '../../Components/Forum/ForumCards.jsx';
+import CommentCard from '../../Components/Forum/CommentCards.jsx';
 import './ForumPage.css'
 import ForumRightBar from '../../Components/Forum/ForumRightBar.jsx';
 import '../../Pages/Forum/ForumPage.css'
@@ -24,7 +24,15 @@ const SinglePost = () => {
     setFilterBy(option);
   };
     const navigate = useNavigate(); // Initialize useHistory
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setIsDropdownOpen(!isDropdownOpen);
+    };
   
+    const closeDropdown = () => {
+      setIsDropdownOpen(false);
+    };
     const handleGoBack = () => {
       navigate(-1); // Go back to the previous page
     };
@@ -56,12 +64,33 @@ const SinglePost = () => {
           <div className='middleSection'>
             <div class="SPF">
         
+          
             <div className="SF-post-header">
               <div className="forum-back-arrow">
               <button onClick={handleGoBack} className='back-button'>
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
               </button>
-              <div className="forum-three-dots">&#8942;</div>
+              <div className="forum-three-dots" onClick={toggleDropdown} onBlur={closeDropdown}>&#8942;</div>
+              {isDropdownOpen && (
+              <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg" >
+                <ul>
+                  <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
+                    Copy Link
+                  </li>
+                  <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
+                    Share
+                  </li>
+                  <li
+                    className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
+                    onClick={() => {
+                        // Add logout functionality
+                    }}
+                    >
+                    Report User
+                  </li>
+                </ul>
+              </div>
+            )}
             </div>
             <div className='forum-info-dots'>
             <div className="forum-user-info">
@@ -85,29 +114,38 @@ const SinglePost = () => {
                     </p>
                     <img src={posts} alt="Post Image" class="SPForum-Image"></img>
                     </div>
+
                     <div class="forum-post-footer">
-            <div className='forum-footer'>
-            <div className="forum-tags">
-              <div className="forum-tag">{results.tag1}</div>
-              <div className="forum-tag">{results.tag2}</div>
-              <div className="forum-tag">{results.tag3}</div>
-            </div>
-            </div>
-            <button class="SPForum-Vote-Button"><img src={arrow} className="arrow-img"></img> Vote </button>
-            </div>
+                    <div className='forum-footer'>
+                    <div className="forum-tags">
+                      <div className="forum-tag">{results.tag1}</div>
+                      <div className="forum-tag">{results.tag2}</div>
+                      <div className="forum-tag">{results.tag3}</div>
+                    </div>
+                    </div>
+                    <button class="SPForum-Vote-Button"><img src={arrow} className="arrow-img"></img> Vote </button>
+                    </div>
+
                     <div class="SPForum-Comments">
                     <textarea class="SPForum-Comment-Input" placeholder="Type your comment here..."></textarea>
                     <button class="SPForum-Comment-Button">Submit Comment</button>
                     </div>
+
+                <div className="forum-comments">
+                  <CommentCard comments={results.comments_in_words}/>
                 </div>
-                {/* <div className='postCard'>
-                  <ForumCard/>
-                </div> */}
+             <div/>  
+             
+            
+            
+            
+            </div>
             <div className="forumRightBar">
                 <ForumRightBar/>
             </div>
-            </div>
-            </div>
+        </div>
+        
+        </div>
         </div>
     )
 }
