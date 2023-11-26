@@ -29,9 +29,12 @@ urlpatterns = [
     path('comments/<int:postID>/', ListCommentView.as_view(), name='comment_list'),
     path('likes/<int:postID>/', ListReactionView.as_view(), name='like_list'),
     path('create_hackathon/',createHackathon,name="create_hackathon"),
-    path('get_hackathon/',getHackathon,name="get_hackathon"),
+    path('get_hackathon/<str:institute>/',listHackathon,name="list_hackathon"),
     path('register_hackathon/',registerHackathon,name="register_hackathon"),
-    path('registered_hackathon/',getHackReg,name="registered_hackathon"),
+    path('registered_hackathon/<int:hackathonID>/',getHackReg,name="registered_hackathon"),
+    path('view_hackathon/<int:hackathonID>/',viewHackathon,name="view_hackathon"),
+    path('submit_hackathon/',submitHackathon,name="submit_hackathon"),
+    path('winner_hackathon/',winnerHackathon,name="winner_hackathon"),
 
 
 ]

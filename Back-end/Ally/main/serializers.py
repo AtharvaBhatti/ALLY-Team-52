@@ -53,3 +53,4 @@ class HackathonRegistrationSerializer(serializers.ModelSerializer):
         ]
         fields = model_names
 
+
