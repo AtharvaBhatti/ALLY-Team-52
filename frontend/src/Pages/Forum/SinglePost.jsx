@@ -75,10 +75,10 @@ const SinglePost = () => {
               <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg" >
                 <ul>
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
-                    Your Profile
+                    Copy Link
                   </li>
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
-                    Settings
+                    Share
                   </li>
                   <li
                     className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
@@ -86,7 +86,7 @@ const SinglePost = () => {
                         // Add logout functionality
                     }}
                     >
-                    Logout
+                    Report User
                   </li>
                 </ul>
               </div>
