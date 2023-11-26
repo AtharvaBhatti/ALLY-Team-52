@@ -12,10 +12,17 @@
     border-radius: 0.93vh;
     margin-bottom: 0.5rem !important;
     margin-left: 0.5rem;
-    height: 2.2rem;
-    padding-bottom: 5vh;
+    max-height: 2.2rem;
+    padding-bottom: 3rem;
 }
 .menu1:hover{
     background-color: rgba(0, 101, 193, 1) !important;
     color: white !important;
+}
+@media screen and (max-width: 740px) {
+
+    .sidebarMain{
+        width: 0 !important;
+        visibility: hidden;
+    }
 }

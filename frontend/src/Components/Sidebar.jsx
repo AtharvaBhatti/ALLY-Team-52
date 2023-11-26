@@ -14,9 +14,9 @@ import "./Sidebar.css"
 
 const SidebarPage = () => {
     return (
-      <div style={{ display: "flex", height: "100%", width: "20%"}}>
+      <div className="sidebarMain" style={{ zIndex: -5 , position: "fixed", display: "flex", height: "120vh", width: "20%", top: "10px"}}>
         <Sidebar className="app">
-            <div style={{height: "100%", backgroundColor: "rgba(0, 101, 193, 0.05)", overflow:"hidden"}}>
+            <div style={{height: "100%", backgroundColor: "rgba(0, 101, 193, 0.05)", overflow:"hidden", paddingTop:"150px"}}>
           <Menu>
             <MenuItem
             //   component={<Link to="/" className="link" />}
