@@ -87,4 +87,5 @@ class Seminar(models.Model):
     cost = models.IntegerField()
     registeredCount = models.IntegerField(default=0)
     meetLink = models.CharField(max_length=100)
+    metaData = models.CharField(max_length=100,default="")
     registeredUsers = models.TextField(default="") # list of users

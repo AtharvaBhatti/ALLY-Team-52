@@ -30,7 +30,7 @@ urlpatterns = [
     path('comments/<int:postID>/', ListCommentView.as_view(), name='comment_list'),
     path('likes/<int:postID>/', ListReactionView.as_view(), name='like_list'),
     path('create_hackathon/',createHackathon,name="create_hackathon"),
-    path('get_hackathon/<str:institute>/',listHackathon,name="list_hackathon"),
+    path('list_hackathon/<str:institute>/',listHackathon,name="list_hackathon"),
     path('register_hackathon/',registerHackathon,name="register_hackathon"),
     path('registered_hackathon/<int:hackathonID>/',getHackReg,name="registered_hackathon"),
     path('view_hackathon/<int:hackathonID>/',viewHackathon,name="view_hackathon"),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('winner_hackathon/',winnerHackathon,name="winner_hackathon"),
     path('create_seminar/',createSeminar,name="create_seminar"),
     path('register_seminar/',registerSeminar,name="register_seminar"),
+    path('list_seminar/<str:institute>/',listSeminar,name="list_seminar"),
+    path('view_seminar/<int:seminarID>/',viewSeminar,name="view_seminar"),
 
 
 ]

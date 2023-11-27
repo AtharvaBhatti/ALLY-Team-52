@@ -54,6 +54,12 @@ def api_root(request, format=None):
             ),
             "register_seminar": reverse(
                 "register_seminar", request=request, format=format
+            ),
+            "list_seminar": reverse(
+                "list_seminar", args=["IIT Bhilai"], request=request, format=format
+            ),
+            "view_seminar": reverse(
+                "view_seminar", args=[1], request=request, format=format
             )
 
 

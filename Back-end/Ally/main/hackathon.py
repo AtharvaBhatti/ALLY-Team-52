@@ -42,6 +42,7 @@ def registerHackathon(request):
         members=member_emails.split(',')
         member_ids=[]
         for member in members:
+            member=member.strip()
             if member != leader_email: # incase someone passes leader email again in member email
                 member_instance=UserDetails.objects.get(email=member)
                 if hackathon_instance.openToALL != 1 and member_instance.institute != hackathon_instance.institute:

@@ -43,17 +43,86 @@ def registerSeminar(request):
 
         if seminar_instance.registeredUsers=="":
             seminar_instance.registeredUsers=f"{user_instance.id}"
+            seminar_instance.registeredCount = seminar_instance.registeredCount + 1
             seminar_instance.save()
             return Response(seminar_instance.meetLink, status=status.HTTP_201_CREATED)
         else:
             seminar_instance.registeredUsers = seminar_instance.registeredUsers + f",{user_instance.id}"
+            seminar_instance.registeredCount = seminar_instance.registeredCount + 1
             seminar_instance.save()
             return Response(seminar_instance.meetLink, status=status.HTTP_201_CREATED)
 
 
     except Seminar.DoesNotExist:
-        return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"error": "seminar not found"}, status=status.HTTP_404_NOT_FOUND)
     except UserDetails.DoesNotExist:
         return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
 
+
+@api_view(['GET'])
+def listSeminar(request,institute): # institute specific + open to all
+    try:
+        institute_specific=Seminar.objects.filter(institute=institute)
+        opentoall=Seminar.objects.filter(openToALL=1)
+
+        data=[]
+
+        for seminar_instance in opentoall:
+            if(seminar_instance.institute!=institute):
+                data.append({"id":seminar_instance.id,"name": seminar_instance.name,
+                             "oneLiner": seminar_instance.oneLiner,"description":seminar_instance.description,
+                             "institute":seminar_instance.institute,"startDate":seminar_instance.startDate,
+                             "endDate":seminar_instance.endDate})
+
+        for seminar_instance in institute_specific:
+            data.append({"id": seminar_instance.id, "name": seminar_instance.name,
+                         "institute": seminar_instance.institute,"oneLiner": seminar_instance.oneLiner,
+                         "startDate": seminar_instance.startDate,
+                         "endDate": seminar_instance.endDate,"cost":seminar_instance.cost})
+
+
+        return Response(data, status=status.HTTP_200_OK)
+
+    except Seminar.DoesNotExist:
+        return Response({"error": "Seminar not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+@api_view(['GET'])
+def viewSeminar(request, seminarID):
+    try:
+        seminar_instance = Seminar.objects.get(id=seminarID)
+        registered_list = []
+        members_data = []
+        string = seminar_instance.registeredUsers
+
+
+        member_list = string.split(',')
+
+        for member in member_list:
+            member = member.strip()
+            registered_list.append(int(member))
+
+        for user_id in registered_list:
+            user_instance = UserDetails.objects.get(id=user_id)
+            members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
+                                 "email": user_instance.email, "institute": user_instance.institute})
+
+        data = {"id": seminar_instance.id, "name": seminar_instance.name,
+                "oneLiner": seminar_instance.oneLiner,
+                "description":seminar_instance.description,"institute": seminar_instance.institute,
+                "openToALL":seminar_instance.openToALL,"postedOn":seminar_instance.postedOn,
+                "startDate": seminar_instance.startDate,
+                "endDate": seminar_instance.endDate,"cost":seminar_instance.cost,
+                "registeredCount":seminar_instance.registeredCount,
+                "registeredUsers":members_data,
+                "metaData":seminar_instance.metaData,
+                "conductedBy":seminar_instance.conductedBy.id}
+
+
+        #  dictionary returned
+        return Response(data, status=status.HTTP_200_OK)
+
+    except Seminar.DoesNotExist:
+        return Response({"error": "Seminar not found"}, status=status.HTTP_404_NOT_FOUND)
+    except UserDetails.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
