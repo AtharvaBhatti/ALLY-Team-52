@@ -40,5 +40,5 @@ urlpatterns = [
     path('create_seminar/',createSeminar,name="create_seminar"),
     path('register_seminar/',registerSeminar,name="register_seminar"),
     path('send_message/', ConversationCreateView.as_view(), name='send_message'),
-
+    path('message_details/', ConversationDetailView.as_view(), name='message_details'),
 ]
