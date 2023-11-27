@@ -54,8 +54,9 @@ def api_root(request, format=None):
             ),
             "register_seminar": reverse(
                 "register_seminar", request=request, format=format
-            )
-
-
+            ),
+            "send_message": reverse(
+                "send_message", request=request, format=format
+            ),
         }
     )

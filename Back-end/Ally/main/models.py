@@ -88,3 +88,10 @@ class Seminar(models.Model):
     registeredCount = models.IntegerField(default=0)
     meetLink = models.CharField(max_length=100)
     registeredUsers = models.TextField(default="") # list of users
+
+
+class Conversation(models.Model):
+    sentBy = models.ForeignKey(UserDetails, on_delete=models.CASCADE, related_name='sent_conversations')
+    recievedBy = models.ForeignKey(UserDetails, on_delete=models.CASCADE, related_name='received_conversations')
+    timeSent = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()

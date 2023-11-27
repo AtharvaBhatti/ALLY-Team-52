@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar
+from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar, Conversation
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,3 +71,9 @@ class SeminarSerializer(serializers.ModelSerializer):
 
         ]
         fields = model_names
+        
+
+class ConversationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Conversation
+        fields = ('message',)
