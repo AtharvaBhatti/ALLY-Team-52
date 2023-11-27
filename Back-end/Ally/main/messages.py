@@ -33,8 +33,15 @@ class ConversationCreateView(APIView):
 
 
 
+class CustomPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size' 
+    max_page_size = 100
+
+
+
 class ConversationDetailView(generics.ListAPIView):
-    pagination_class = PageNumberPagination
+    pagination_class = CustomPageNumberPagination
 
     def get_queryset(self):
         sender_id = self.request.query_params.get('sender_id')
@@ -52,7 +59,7 @@ class ConversationDetailView(generics.ListAPIView):
 
         sender_id = self.request.query_params.get('sender_id')
         receiver_id = self.request.query_params.get('receiver_id')
-
+    
         sender = UserDetails.objects.get(pk=sender_id)
         receiver = UserDetails.objects.get(pk=receiver_id)
 
@@ -65,10 +72,12 @@ class ConversationDetailView(generics.ListAPIView):
             paginated_response = self.get_paginated_response(serializer.data)
             paginated_response.data[sender_id] = { "name" : sender_details['name'], "currentUser" : True}
             paginated_response.data[receiver_id] = { "name" : receiver_details['name'], "currentUser" : False}
-            return Response(paginated_response)
+            return paginated_response
 
         serializer = ConversationDetailSerializer(queryset, many=True)
         response_data = serializer.data
-        response_data[sender_id] = { "name" : sender_details['name'], "currentUser" : True}
-        response_data[receiver_id] = { "name" : receiver_details['name'], "currentUser" : False}
-        return Response(response_data)
+        data = {}
+        data["results"] = response_data
+        data[sender_id] = { "name" : sender_details['name'], "currentUser" : True}
+        data[receiver_id] = { "name" : receiver_details['name'], "currentUser" : False}
+        return Response(data)

@@ -19,6 +19,7 @@ from main.forum import *
 from main.root import api_root
 from main.hackathon import *
 from main.seminar import *
+from main.messages import *
 
 urlpatterns = [
     path("", api_root),

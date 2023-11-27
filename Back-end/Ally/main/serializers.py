@@ -80,12 +80,10 @@ class ConversationSerializer(serializers.ModelSerializer):
 
 
 class ConversationDetailSerializer(serializers.ModelSerializer):
-    message = serializers.CharField()
-    sent_at = serializers.DateTimeField(source='timeSent')
 
     class Meta:
         model = Conversation
-        fields = ['message', 'sent_at']
+        fields = '__all__'
 
 
 class UserNamesSerializer(serializers.ModelSerializer):
