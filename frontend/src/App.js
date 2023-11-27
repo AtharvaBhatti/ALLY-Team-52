@@ -8,6 +8,7 @@ import HomeNav from "./Components/HomeNav.jsx"
 import SinglePost from "./Pages/Forum/SinglePost.jsx" 
 import Forum from "./Pages/Forum/ForumPage.jsx";
 import Hackathons from "./Pages/Hackathons.jsx";
+import Upskill from "./Pages/Upskill/UpskillPage.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/uni1/forum/closed" element={<Forum tag={"Closed"}/>}></Route>
           <Route path="/uni1/forum/:id" element={<SinglePost />}></Route>
           <Route path="/uni1/hackathon" element={<Hackathons />}></Route>
+          <Route path="/uni1/upskill" element={<Upskill />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
