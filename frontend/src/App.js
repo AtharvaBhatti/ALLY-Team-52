@@ -13,9 +13,8 @@ import Upskill from "./Pages/Upskill/UpskillPage.jsx";
 function App() {
   return (
     <div>
-      {/* <HomeNav/> */}
-      <Navbar />
-      {/* <SidebarPage/> */}
+      
+        <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />

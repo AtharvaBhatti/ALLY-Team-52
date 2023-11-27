@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Hackathon , HackathonRegistration, Tag
+from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -53,3 +53,21 @@ class HackathonRegistrationSerializer(serializers.ModelSerializer):
         ]
         fields = model_names
 
+
+class SeminarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Seminar
+        model_names = [
+            'name',
+            'oneLiner',
+            'description',
+            'institute',
+            'openToALL',
+            'startDate',
+            'endDate',
+            'cost',
+            'meetLink', # assuming we are scheduling meetings and links will be submitted at time of seminar creation
+
+
+        ]
+        fields = model_names

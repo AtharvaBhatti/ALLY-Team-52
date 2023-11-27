@@ -72,3 +72,19 @@ class HackathonRegistration(models.Model):
     submission = models.CharField(max_length=100) # what will submission column hold ? the link ?
     submissionTime = models.DateTimeField(null=True,blank=True)
     registeredTime = models.DateTimeField(auto_now_add=True)
+
+
+class Seminar(models.Model):
+    name = models.CharField(max_length=100)
+    oneLiner=models.CharField(max_length=100)
+    description=models.TextField()
+    conductedBy= models.ForeignKey(UserDetails, on_delete=models.CASCADE)  # uss instance ka primary column ( id ) store hoga
+    institute = models.CharField(max_length=100)
+    openToALL = models.BooleanField() # yes/no
+    postedOn = models.DateTimeField(auto_now_add=True)
+    startDate = models.DateTimeField()
+    endDate = models.DateTimeField()
+    cost = models.IntegerField()
+    registeredCount = models.IntegerField(default=0)
+    meetLink = models.CharField(max_length=100)
+    registeredUsers = models.TextField(default="") # list of users
