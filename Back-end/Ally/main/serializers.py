@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar
+from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar, Conversation, UserDetails
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,3 +71,29 @@ class SeminarSerializer(serializers.ModelSerializer):
 
         ]
         fields = model_names
+        
+
+class ConversationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Conversation
+        fields = ('message',)
+
+
+class ConversationDetailSerializer(serializers.ModelSerializer):
+    message = serializers.CharField()
+    sent_at = serializers.DateTimeField(source='timeSent')
+
+    class Meta:
+        model = Conversation
+        fields = ['message', 'sent_at']
+
+
+class UserNamesSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = UserDetails
+        fields = ['id', 'name']
+    
+    def get_name(self, obj):
+        return obj.firstName + " " + obj.lastName

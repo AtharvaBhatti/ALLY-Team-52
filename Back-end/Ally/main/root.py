@@ -60,6 +60,12 @@ def api_root(request, format=None):
             ),
             "view_seminar": reverse(
                 "view_seminar", args=[1], request=request, format=format
+            ),
+            "send_message": reverse(
+                "send_message", request=request, format=format
+            ),
+            "message_details": reverse(
+                "message_details", request=request, format=format
             )
 
 
