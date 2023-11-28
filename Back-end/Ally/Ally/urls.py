@@ -43,6 +43,5 @@ urlpatterns = [
     path('view_seminar/<int:seminarID>/',viewSeminar,name="view_seminar"),
     path('send_message/', ConversationCreateView.as_view(), name='send_message'),
     path('message_details/', ConversationDetailView.as_view(), name='message_details'),
-
-
+    path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
 ]

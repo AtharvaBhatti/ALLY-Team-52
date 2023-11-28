@@ -3,9 +3,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
-from django.db.models import Q
+from django.db.models import Q, CharField, Value
+from django.db.models.functions import Concat
 from .models import Conversation, UserDetails
-from .serializers import ConversationSerializer, UserNamesSerializer, ConversationDetailSerializer
+from .serializers import ConversationSerializer, UserNamesSerializer, ConversationDetailSerializer, LastConversationSerializer
 
 
 
@@ -81,3 +82,29 @@ class ConversationDetailView(generics.ListAPIView):
         data[sender_id] = { "name" : sender_details['name'], "currentUser" : True}
         data[receiver_id] = { "name" : receiver_details['name'], "currentUser" : False}
         return Response(data)
+
+
+
+class LastConversationWithUserAPIView(generics.ListAPIView):
+    serializer_class = LastConversationSerializer
+    pagination_class = CustomPageNumberPagination
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id'] 
+
+        conversations = Conversation.objects.filter(
+            Q(sentBy__id=user_id) | Q(recievedBy__id=user_id)
+        ).annotate(
+            sent_name=Concat('sentBy__firstName', Value(' '), 'sentBy__lastName', output_field=CharField()),
+            recieved_name=Concat('recievedBy__firstName', Value(' '), 'recievedBy__lastName', output_field=CharField())
+        ).order_by('-timeSent')
+
+        distinct_conversations = []
+        conversation_ids_seen = set()
+        for conv in conversations:
+            other_user_id = conv.sentBy_id if conv.recievedBy_id == user_id else conv.recievedBy_id
+            if other_user_id not in conversation_ids_seen:
+                distinct_conversations.append(conv)
+                conversation_ids_seen.add(other_user_id)
+
+        return distinct_conversations

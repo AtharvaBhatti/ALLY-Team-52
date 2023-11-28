@@ -86,6 +86,15 @@ class ConversationDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class LastConversationSerializer(serializers.ModelSerializer):
+    sent_name = serializers.CharField()
+    recieved_name = serializers.CharField()
+
+    class Meta:
+        model = Conversation
+        fields = '__all__'
+
+
 class UserNamesSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
     

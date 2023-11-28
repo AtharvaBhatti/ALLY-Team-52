@@ -66,8 +66,10 @@ def api_root(request, format=None):
             ),
             "message_details": reverse(
                 "message_details", request=request, format=format
+            ),
+            "user_conversations": reverse(
+                "user_conversations", args=[1], request=request, format=format
             )
-
 
         }
     )
