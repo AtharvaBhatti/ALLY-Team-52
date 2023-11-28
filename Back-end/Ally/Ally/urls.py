@@ -20,6 +20,7 @@ from main.root import api_root
 from main.hackathon import *
 from main.seminar import *
 from main.messages import *
+from main.general import *
 
 urlpatterns = [
     path("", api_root),
@@ -44,4 +45,5 @@ urlpatterns = [
     path('send_message/', ConversationCreateView.as_view(), name='send_message'),
     path('message_details/', ConversationDetailView.as_view(), name='message_details'),
     path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
+    path('endorse/', EndorsementAPIView.as_view(), name='endorse'),
 ]

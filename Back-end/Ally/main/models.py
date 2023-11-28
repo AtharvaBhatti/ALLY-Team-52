@@ -22,7 +22,7 @@ class UserDetails(models.Model):
     techStack = models.TextField()
     courses = models.TextField()
     plan = models.IntegerField()
-    endorsements = models.TextField()
+    endorsements = models.TextField(default='[]')
 
 
 class Forum(models.Model):

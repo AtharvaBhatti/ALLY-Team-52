@@ -69,7 +69,9 @@ def api_root(request, format=None):
             ),
             "user_conversations": reverse(
                 "user_conversations", args=[1], request=request, format=format
-            )
-
+            ),
+            "endorse": reverse(
+                "endorse", request=request, format=format
+            ),
         }
     )
