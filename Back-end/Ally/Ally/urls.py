@@ -46,4 +46,5 @@ urlpatterns = [
     path('message_details/', ConversationDetailView.as_view(), name='message_details'),
     path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
     path('endorse/', EndorsementAPIView.as_view(), name='endorse'),
+    path('endorsements/<int:user_id>/', EndorsementListAPIView.as_view(), name='endorsement_list'),
 ]

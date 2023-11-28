@@ -73,5 +73,8 @@ def api_root(request, format=None):
             "endorse": reverse(
                 "endorse", request=request, format=format
             ),
+            "endorsement_list": reverse(
+                "endorsement_list", args=[1], request=request, format=format
+            )
         }
     )
