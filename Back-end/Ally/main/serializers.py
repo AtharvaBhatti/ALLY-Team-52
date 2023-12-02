@@ -111,3 +111,10 @@ class StudentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDetails
         fields = ['id', 'firstName', 'lastName', 'branch', 'yearOfPassing']
+
+
+class AlumniListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserDetails
+        fields = ['id', 'firstName', 'lastName', 'yearsOfExperience', 'company']

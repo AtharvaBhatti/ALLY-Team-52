@@ -48,4 +48,5 @@ urlpatterns = [
     path('endorse/', EndorsementAPIView.as_view(), name='endorse'),
     path('endorsements/<int:user_id>/', EndorsementListAPIView.as_view(), name='endorsement_list'),
     path('student_list', GetStudentListView.as_view(), name="student_list"),
+    path('alumni_list', GetAlumniListView.as_view(), name="alumni_list"),
 ]
