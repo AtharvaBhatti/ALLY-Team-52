@@ -104,3 +104,10 @@ class UserNamesSerializer(serializers.ModelSerializer):
     
     def get_name(self, obj):
         return obj.firstName + " " + obj.lastName
+
+
+class StudentListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserDetails
+        fields = ['id', 'firstName', 'lastName', 'branch', 'yearOfPassing']

@@ -1,6 +1,12 @@
 from django.db import models
 
 # Create your models here.
+
+class TechStacks(models.Model):
+    name = models.CharField(max_length=100)
+    score = models.FloatField()
+
+
 class UserDetails(models.Model):
     ROLE_CHOICES = [
         ('Student', 'Student'),
@@ -19,7 +25,7 @@ class UserDetails(models.Model):
     yearsOfExperience = models.IntegerField()
     company = models.CharField(max_length=100)
     currentScore = models.IntegerField()
-    techStack = models.TextField()
+    techStack = models.ManyToManyField(TechStacks)
     courses = models.TextField()
     plan = models.IntegerField()
     endorsements = models.TextField(default='[]')

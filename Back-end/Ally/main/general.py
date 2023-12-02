@@ -3,7 +3,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import UserDetails
-from .serializers import UserNamesSerializer
+from .serializers import UserNamesSerializer, StudentListSerializer
+from django.db.models import Q, F, Value, FloatField, Sum, Case, When
 
 
 
@@ -42,4 +43,38 @@ class EndorsementListAPIView(APIView):
         endorsing_users = UserDetails.objects.filter(id__in=endorsements)
         serializer = UserNamesSerializer(endorsing_users, many=True)
 
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+class GetStudentListView(APIView):
+    def post(self, request, *args, **kwargs):
+
+        institute_name = request.data.get('instituteName')
+        tech_stacks = request.data.get('techStacks', None)
+        name = request.data.get('name', None)
+        year = request.data.get('year', None)
+        branch = request.data.get('branch', None)
+
+        users = UserDetails.objects.filter(institute=institute_name)
+
+        if name is not None:
+            users = users.filter(Q(firstName__icontains=name) | Q(lastName__icontains=name))
+
+        if year is not None:
+            users = users.filter(yearOfPassing=year)
+
+        if branch is not None:
+            users = users.filter(branch=branch)
+
+        if tech_stacks is not None:            
+            case_conditions = [When(techStack__name=stack, then=F('techStack__score')) for stack in tech_stacks]
+            users = users.annotate(
+                avg_value=
+                    Sum(
+                        Case(*case_conditions, default=Value(0), output_field=FloatField())
+                    )/len(tech_stacks),
+            ).order_by('-avg_value')
+        
+        serializer = StudentListSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

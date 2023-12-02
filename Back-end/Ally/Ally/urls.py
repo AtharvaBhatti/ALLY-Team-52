@@ -47,4 +47,5 @@ urlpatterns = [
     path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
     path('endorse/', EndorsementAPIView.as_view(), name='endorse'),
     path('endorsements/<int:user_id>/', EndorsementListAPIView.as_view(), name='endorsement_list'),
+    path('student_list', GetStudentListView.as_view(), name="student_list"),
 ]
