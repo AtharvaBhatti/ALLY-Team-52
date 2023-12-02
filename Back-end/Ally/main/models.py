@@ -102,3 +102,9 @@ class Conversation(models.Model):
     recievedBy = models.ForeignKey(UserDetails, on_delete=models.CASCADE, related_name='received_conversations')
     timeSent = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
+
+
+class Plan(models.Model):
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    details = models.TextField()
