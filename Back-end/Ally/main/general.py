@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from .models import UserDetails
 from .serializers import UserNamesSerializer, StudentListSerializer, AlumniListSerializer
 from django.db.models import Q, F, Value, FloatField, Sum, Case, When
+from rest_framework.pagination import PageNumberPagination
 
 
 
@@ -47,7 +48,16 @@ class EndorsementListAPIView(APIView):
 
 
 
+class CustomPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size' 
+    max_page_size = 100
+
+
+
 class GetStudentListView(APIView):
+    pagination_class = CustomPageNumberPagination
+
     def post(self, request, *args, **kwargs):
 
         institute_name = request.data.get('instituteName')
@@ -76,12 +86,16 @@ class GetStudentListView(APIView):
                     )/len(tech_stacks),
             ).order_by('-avg_value')
         
-        serializer = StudentListSerializer(users, many=True)
+        paginator = self.pagination_class()
+        paginated_users = paginator.paginate_queryset(users, request)
+        serializer = StudentListSerializer(paginated_users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
 class GetAlumniListView(APIView):
+    pagination_class = CustomPageNumberPagination
+
     def post(self, request, *args, **kwargs):
 
         institute_name = request.data.get('instituteName')
@@ -114,5 +128,7 @@ class GetAlumniListView(APIView):
                     )/len(tech_stacks),
             ).order_by('-avg_value')
         
-        serializer = AlumniListSerializer(users, many=True)
+        paginator = self.pagination_class()
+        paginated_users = paginator.paginate_queryset(users, request)
+        serializer = AlumniListSerializer(paginated_users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

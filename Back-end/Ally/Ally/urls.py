@@ -21,6 +21,7 @@ from main.hackathon import *
 from main.seminar import *
 from main.messages import *
 from main.general import *
+from main.plans import *
 
 urlpatterns = [
     path("", api_root),
@@ -47,6 +48,7 @@ urlpatterns = [
     path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
     path('endorse/', EndorsementAPIView.as_view(), name='endorse'),
     path('endorsements/<int:user_id>/', EndorsementListAPIView.as_view(), name='endorsement_list'),
-    path('student_list', GetStudentListView.as_view(), name="student_list"),
-    path('alumni_list', GetAlumniListView.as_view(), name="alumni_list"),
+    path('student_list/', GetStudentListView.as_view(), name="student_list"),
+    path('alumni_list/', GetAlumniListView.as_view(), name="alumni_list"),
+    path('plan_list/', PlanListAPIView.as_view(), name="plan_list"),
 ]

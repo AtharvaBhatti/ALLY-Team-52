@@ -81,6 +81,9 @@ def api_root(request, format=None):
             ),
             "alumni_list": reverse(
                 "alumni_list", request=request, format=format
+            ),
+            "plan_list": reverse(
+                "plan_list", request=request, format=format
             )
         }
     )

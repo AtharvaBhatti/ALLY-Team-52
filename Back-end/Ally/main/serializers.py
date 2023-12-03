@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar, Conversation, UserDetails
+from .models import Post, Hackathon , HackathonRegistration, Tag, Seminar, Conversation, UserDetails, Plan
 
 class CreatePostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -118,3 +118,9 @@ class AlumniListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDetails
         fields = ['id', 'firstName', 'lastName', 'yearsOfExperience', 'company']
+
+
+class PlanListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plan
+        fields = ('id', 'name', 'cost')
