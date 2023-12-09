@@ -1,0 +1,85 @@
+body{
+    background-color: rgba(210, 219, 234, 0.535);
+}
+.forumPage{
+    display: flex;
+}
+.forumMain{
+    margin-left: 250px !important;
+    width: 80% !important;
+    padding: 2%;
+}
+.forumRightBar{
+    width:40%;
+    padding: 3%;
+    margin-left: 20px;
+}
+.middleSection{
+    width: 100% !important;
+    display: flex;
+    padding-left: 3%;
+  
+}
+.sidebar{
+    position: "fixed"; z-index:1 ;
+}
+.Forum-cards{
+    min-width: 70%;
+    margin-top: 30px;
+}
+.page-forum-tag {
+    background-color: #f3f3f3;
+    color: #555555;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: small;
+    margin: 0.5rem 0.5rem 0 0;
+  }
+  .page-forum-tags{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; 
+    margin-top: 3px;
+    
+    position: relative;
+    margin-left: 3%;
+  }
+
+@media screen and (max-width: 1500px) {
+   
+    .middleSection{
+        flex-direction: column;
+        padding: 0 3% 0 3%;
+        
+    }
+    .forumRightBar{
+        width: 100%;
+        padding: 0%;
+        margin-left: 0;
+    }
+    
+}
+@media screen and (max-width: 940px) {
+    .filtersButton{
+        margin-right: 4%;
+    }
+}
+@media screen and (max-width: 740px) {
+
+    .sidebar{
+        width: 0 !important;
+        display: hidden;
+    }
+    .forumMain{
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 3%;
+        padding-right: 3%;
+    }
+    .filtersButton{
+        margin-right: 4%;
+    }
+}
+
