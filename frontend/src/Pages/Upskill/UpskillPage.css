@@ -1,0 +1,83 @@
+body{
+    background-color: rgba(210, 219, 234, 0.535);
+}
+.upskillPage{
+    display: flex;
+}
+.upskillMain{
+    width: 80% !important;
+    padding: 2%;
+}
+.upskillHeading{
+    font-size: 1.98vh;
+    color: rgba(0, 101, 193, 1);
+    font-weight: 600;
+}
+.upskillSubheading1{
+    font-size: 2.91vh;
+    color: rgba(33, 33, 47, 1);
+    font-weight: 600;
+    line-height: 7.73vh;
+}
+.upskillSubheading2{
+    font-size: 2.91vh;
+    color: rgba(0, 101, 193, 1);
+    font-weight: 600;
+    line-height: 7.73vh;
+}
+.upskillFilter{
+    margin-left: auto !important;
+    margin-right: -2.5vh !important;
+}
+.upskill-middleSection{
+    width: 100% !important;
+    display: flex;
+    padding-left: 3%;
+}
+.upskill-cards{
+    min-width: 70%;
+    margin-top: 30px;
+}
+.page-upskill-tag {
+    background-color: #f3f3f3;
+    color: #555555;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: small;
+    margin: 0.5rem 0.5rem 0 0;
+  }
+  .page-upskill-tags{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; 
+    margin-top: 3px;
+    
+    position: relative;
+    margin-left: 3%;
+  }
+@media screen and (max-width: 1500px) {
+   
+    .upskill-middleSection{
+        flex-direction: column;
+        padding: 0 3% 0 3%;
+        
+    }
+    .upskillRightBar{
+        width: 100%;
+        padding: 0%;
+        margin-left: 0;
+    }
+    
+}
+.Upskill-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vh;
+    justify-content: space-between; /* Adjust as needed */
+  }
+
+.upskillOngoing{
+    font-size: 2.34vh;
+}
