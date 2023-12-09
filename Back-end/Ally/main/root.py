@@ -103,5 +103,8 @@ def api_root(request, format=None):
             "course_complete": reverse(
                 "course_complete", request=request, format=format
             ),
+            "view_userprofile": reverse(
+                "view_userprofile", args=[1], request=request, format=format
+            ),
         }
     )

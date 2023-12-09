@@ -23,7 +23,7 @@ from main.messages import *
 from main.general import *
 from main.plans import *
 from main.courses import *
-
+from main.profile import *
 urlpatterns = [
     path("", api_root),
     path('admin/', admin.site.urls),
@@ -58,4 +58,5 @@ urlpatterns = [
     path('view_course/<int:course_id>/<int:user_id>/', DetailedCourseView.as_view(), name="view_course"),
     path('course_register/', RegisterCourseView.as_view(), name="course_register"),
     path('course_complete/', CompleteCourseView.as_view(), name="course_complete"),
+    path('view_userprofile/<int:userID>/', viewUser, name='view_userprofile'),
 ]
