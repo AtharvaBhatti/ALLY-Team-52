@@ -26,7 +26,7 @@ function App() {
           <Route path="/uni1/forum/closed" element={<Forum tag={"Closed"}/>}></Route>
           <Route path="/uni1/forum/:id" element={<SinglePost />}></Route>
           <Route path="/uni1/hackathon" element={<Hackathons />}></Route>
-          <Route path="/uni1/upskill" element={<Upskill />}></Route>
+          <Route path="/uni1/courses" element={<Upskill />}></Route>
           <Route path="/uni1/students" element={<Students />}></Route>
           <Route path="/uni1/alumini" element={<Alumini />}></Route>
         </Routes>

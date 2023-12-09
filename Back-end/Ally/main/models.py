@@ -115,6 +115,15 @@ class Courses(models.Model):
     description = models.TextField()
     conductedBy = models.CharField(max_length=100)
     postedOn = models.DateField()
-    registeredCount = models.IntegerField()
+    registeredCount = models.IntegerField(default=0)
     cost = models.IntegerField()
     tags = models.ManyToManyField(Tag)
+
+class Projects(models.Model):
+    description=models.TextField()
+    organization=models.TextField()
+    domain=models.CharField(max_length=100)
+    participants = models.TextField(default="")  # list of users
+    status=models.BooleanField() # yes/no
+    mentoredBy = models.CharField(max_length=100)
+    interestedBy= models.CharField(max_length=100)

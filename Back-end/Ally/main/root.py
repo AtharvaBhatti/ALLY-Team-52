@@ -59,7 +59,7 @@ def api_root(request, format=None):
                 "list_seminar", args=["IIT Bhilai"], request=request, format=format
             ),
             "view_seminar": reverse(
-                "view_seminar", args=[1], request=request, format=format
+                "view_seminar", args=[1,1], request=request, format=format
             ),
             "send_message": reverse(
                 "send_message", request=request, format=format
@@ -102,6 +102,15 @@ def api_root(request, format=None):
             ),
             "course_complete": reverse(
                 "course_complete", request=request, format=format
+            ),
+            "view_userprofile": reverse(
+                "view_userprofile", args=[1], request=request, format=format
+            ),
+            "project_team_recommendations": reverse(
+                "project_team_recommendations", args=[1], request=request, format=format
+            ),
+            "send_project_invite": reverse(
+                "send_project_invite", request=request, format=format
             ),
         }
     )

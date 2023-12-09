@@ -120,6 +120,7 @@ class AlumniListSerializer(serializers.ModelSerializer):
         fields = ['id', 'firstName', 'lastName', 'yearsOfExperience', 'company']
 
 
+
 class PlanListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plan
@@ -130,7 +131,7 @@ class PlanListSerializer(serializers.ModelSerializer):
 class CourseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courses
-        fields = ('id', 'oneLiner', 'cost', 'registeredCount')
+        fields = ('id', 'oneLiner', 'cost', 'registeredCount','conductedBy','description')
 
 
 
@@ -139,4 +140,9 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Courses
+        fields = '__all__'
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserDetails
         fields = '__all__'
