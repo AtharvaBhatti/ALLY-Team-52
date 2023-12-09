@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response # any python data we pass into it will be rendered out as json data by response
 from rest_framework.decorators import api_view
-from .models import  UserDetails , Seminar
+from .models import  UserDetails , Seminar ,Conversation
 from .serializers import  SeminarSerializer
 
 import time
@@ -22,7 +22,7 @@ def createSeminar(request):
 
     serializer = SeminarSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save(conductedBy=conduct_instance)
+        serializer.save(conductedBy=conduct_instance, meetLink="https://meet.google.com/aie-awuu-yec") # meetLink hardcoded here
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -41,6 +41,18 @@ def registerSeminar(request):
             return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
 
 
+        conversation_instance = Conversation()
+        conversation_instance.message={"id": seminar_instance.id, "name": seminar_instance.name,
+                         "institute": seminar_instance.institute,"oneLiner": seminar_instance.oneLiner,
+                         "startDate": seminar_instance.startDate,
+                         "endDate": seminar_instance.endDate,"cost":seminar_instance.cost,
+                         "message":"You have successfully registered for the Seminar ! "}
+
+        conversation_instance.recievedBy=user_instance
+        messenger_instance=UserDetails.objects.get(id=3) # hardcoded messenger id
+        conversation_instance.sentBy=messenger_instance
+
+        conversation_instance.save()
         if seminar_instance.registeredUsers=="":
             seminar_instance.registeredUsers=f"{user_instance.id}"
             seminar_instance.registeredCount = seminar_instance.registeredCount + 1
@@ -88,35 +100,53 @@ def listSeminar(request,institute): # institute specific + open to all
         return Response({"error": "Seminar not found"}, status=status.HTTP_404_NOT_FOUND)
     
 @api_view(['GET'])
-def viewSeminar(request, seminarID):
+def viewSeminar(request, userID,seminarID):
     try:
         seminar_instance = Seminar.objects.get(id=seminarID)
+        viewer_instance=UserDetails.objects.get(id=userID)
+        viewer=viewer_instance.id
+        isRegistered=0
         registered_list = []
         members_data = []
         string = seminar_instance.registeredUsers
 
+        if string != '':
+            member_list = string.split(',')
 
-        member_list = string.split(',')
+            for member in member_list:
+                member = member.strip()
+                registered_list.append(int(member))
 
-        for member in member_list:
-            member = member.strip()
-            registered_list.append(int(member))
+            for user_id in registered_list:
+                if viewer==user_id:
+                    isRegistered=1
+                user_instance = UserDetails.objects.get(id=user_id)
+                members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
+                                     "email": user_instance.email, "institute": user_instance.institute})
+        if isRegistered == 0:
+            data = {"id": seminar_instance.id, "name": seminar_instance.name,
+                    "oneLiner": seminar_instance.oneLiner,
+                    "description":seminar_instance.description,"institute": seminar_instance.institute,
+                    "openToALL":seminar_instance.openToALL,"postedOn":seminar_instance.postedOn,
+                    "startDate": seminar_instance.startDate,
+                    "endDate": seminar_instance.endDate,"cost":seminar_instance.cost,
+                    "registeredCount":seminar_instance.registeredCount,
+                    "registeredUsers":members_data,
+                    "metaData":seminar_instance.metaData,
+                    "conductedBy":seminar_instance.conductedBy.id}
+        if isRegistered == 1:
+            data = {"id": seminar_instance.id, "name": seminar_instance.name,
+                    "oneLiner": seminar_instance.oneLiner,
+                    "description":seminar_instance.description,"institute": seminar_instance.institute,
+                    "openToALL":seminar_instance.openToALL,"postedOn":seminar_instance.postedOn,
+                    "startDate": seminar_instance.startDate,
+                    "endDate": seminar_instance.endDate,"cost":seminar_instance.cost,
+                    "registeredCount":seminar_instance.registeredCount,
+                    "registeredUsers":members_data,
+                    "metaData":seminar_instance.metaData,
+                    "conductedBy":seminar_instance.conductedBy.id,
+                    "meetLink":seminar_instance.meetLink}
 
-        for user_id in registered_list:
-            user_instance = UserDetails.objects.get(id=user_id)
-            members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
-                                 "email": user_instance.email, "institute": user_instance.institute})
-
-        data = {"id": seminar_instance.id, "name": seminar_instance.name,
-                "oneLiner": seminar_instance.oneLiner,
-                "description":seminar_instance.description,"institute": seminar_instance.institute,
-                "openToALL":seminar_instance.openToALL,"postedOn":seminar_instance.postedOn,
-                "startDate": seminar_instance.startDate,
-                "endDate": seminar_instance.endDate,"cost":seminar_instance.cost,
-                "registeredCount":seminar_instance.registeredCount,
-                "registeredUsers":members_data,
-                "metaData":seminar_instance.metaData,
-                "conductedBy":seminar_instance.conductedBy.id}
 
 
         #  dictionary returned

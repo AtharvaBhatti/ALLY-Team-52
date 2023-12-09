@@ -23,6 +23,8 @@ from main.messages import *
 from main.general import *
 from main.plans import *
 from main.courses import *
+from main.profile import *
+from main.project import *
 
 urlpatterns = [
     path("", api_root),
@@ -43,7 +45,7 @@ urlpatterns = [
     path('create_seminar/',createSeminar,name="create_seminar"),
     path('register_seminar/',registerSeminar,name="register_seminar"),
     path('list_seminar/<str:institute>/',listSeminar,name="list_seminar"),
-    path('view_seminar/<int:seminarID>/',viewSeminar,name="view_seminar"),
+    path('view_seminar/<int:userID>/<int:seminarID>/',viewSeminar,name="view_seminar"),
     path('send_message/', ConversationCreateView.as_view(), name='send_message'),
     path('message_details/', ConversationDetailView.as_view(), name='message_details'),
     path('user_conversations/<int:user_id>/', LastConversationWithUserAPIView.as_view(), name='user_conversations'),
@@ -58,4 +60,7 @@ urlpatterns = [
     path('view_course/<int:course_id>/<int:user_id>/', DetailedCourseView.as_view(), name="view_course"),
     path('course_register/', RegisterCourseView.as_view(), name="course_register"),
     path('course_complete/', CompleteCourseView.as_view(), name="course_complete"),
+    path('view_userprofile/<int:userID>/', viewUser, name='view_userprofile'),
+    path('project_team_recommendations/<int:projectID>/',projectTeamRecommendations , name='project_team_recommendations'),
+    path('send_project_invite/',sendProjectInvite,name="send_project_invite"),
 ]
