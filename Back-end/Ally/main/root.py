@@ -106,5 +106,11 @@ def api_root(request, format=None):
             "view_userprofile": reverse(
                 "view_userprofile", args=[1], request=request, format=format
             ),
+            "project_team_recommendations": reverse(
+                "project_team_recommendations", args=[1], request=request, format=format
+            ),
+            "send_project_invite": reverse(
+                "send_project_invite", request=request, format=format
+            ),
         }
     )

@@ -24,6 +24,8 @@ from main.general import *
 from main.plans import *
 from main.courses import *
 from main.profile import *
+from main.project import *
+
 urlpatterns = [
     path("", api_root),
     path('admin/', admin.site.urls),
@@ -59,4 +61,6 @@ urlpatterns = [
     path('course_register/', RegisterCourseView.as_view(), name="course_register"),
     path('course_complete/', CompleteCourseView.as_view(), name="course_complete"),
     path('view_userprofile/<int:userID>/', viewUser, name='view_userprofile'),
+    path('project_team_recommendations/<int:projectID>/',projectTeamRecommendations , name='project_team_recommendations'),
+    path('send_project_invite/',sendProjectInvite,name="send_project_invite"),
 ]
