@@ -25,22 +25,21 @@ class DetailedCourseView(APIView):
         except UserDetails.DoesNotExist:
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND) 
 
-        serializer = CourseSerializer(course)
-        if serializer.is_valid():      
-            data = serializer.data
-            jsonDec = json.decoder.JSONDecoder()
-            courses_done = jsonDec.decode(user.courses)
-            if course_id in courses_done.keys():
-                data["is_registered"] = True
-                data["status"] = courses_done[course_id]["status"]
-                data["registeredOn"] = courses_done[course_id]["registeredOn"]
-                if courses_done[course_id]["status"] == "completed":
-                    data["completedOn"] = courses_done[course_id]["completedOn"]
-            else:
-                data["is_registered"] = False
-            return Response(data, status=status.HTTP_200_OK)
+        serializer = CourseSerializer(course)      
+        data = serializer.data
+        jsonDec = json.decoder.JSONDecoder()
+        courses_done = jsonDec.decode(user.courses)
+        course_id = str(course_id)
+        if course_id in courses_done.keys():
+            data["is_registered"] = True
+            data["status"] = courses_done[course_id]["status"]
+            data["registeredOn"] = courses_done[course_id]["registeredOn"]
+            if courses_done[course_id]["status"] == "completed":
+                data["completedOn"] = courses_done[course_id]["completedOn"]
+        else:
+            data["is_registered"] = False
+        return Response(data, status=status.HTTP_200_OK)
         
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -58,6 +57,7 @@ class RegisterCourseView(APIView):
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
         try:
+            course_id = str(course_id)
             jsonDec = json.decoder.JSONDecoder()
             courses_done = jsonDec.decode(user.courses)
             if course_id in courses_done.keys():
@@ -92,6 +92,7 @@ class CompleteCourseView(APIView):
             return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
         try:
+            course_id = str(course_id)
             jsonDec = json.decoder.JSONDecoder()
             courses_done = jsonDec.decode(user.courses)
             if course_id not in courses_done.keys():

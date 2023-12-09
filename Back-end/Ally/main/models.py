@@ -115,6 +115,6 @@ class Courses(models.Model):
     description = models.TextField()
     conductedBy = models.CharField(max_length=100)
     postedOn = models.DateField()
-    registeredCount = models.IntegerField()
+    registeredCount = models.IntegerField(default=0)
     cost = models.IntegerField()
     tags = models.ManyToManyField(Tag)
