@@ -20,6 +20,24 @@ const Seminars = () => {
             date: 'February 20, 2023',
             imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
         },
+        {
+            title: 'Seminar 3',
+            description: 'Description for Seminar 2',
+            date: 'February 20, 2023',
+            imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
+        },
+        {
+            title: 'Seminar 4',
+            description: 'Description for Seminar 2',
+            date: 'February 20, 2023',
+            imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
+        },
+        {
+            title: 'Seminar 5',
+            description: 'Description for Seminar 2',
+            date: 'February 20, 2023',
+            imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
+        }
         // Add more seminar data as needed
     ];
 
@@ -44,11 +62,11 @@ const Seminars = () => {
                         {/* Custom Dropdown */}
 
                     </div >
-                    <div className="text-[#0065C1]">
+                    <div className="text-[#0065C1] text-xl font-bold pb-3">
                         Seminars
                     </div>
 
-                    <div className="flex-col">
+                    <div className="grid grid-cols-4 gap-4">
                         {seminars.map((seminar, index) => (
                             <SeminarListItem
                                 key={index}
