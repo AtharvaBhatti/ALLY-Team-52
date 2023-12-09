@@ -91,5 +91,17 @@ def api_root(request, format=None):
             "register_plan": reverse(
                 "register_plan", request=request, format=format
             ),
+            "course_list": reverse(
+                "course_list", request=request, format=format
+            ),
+            "view_course": reverse(
+                "view_course", args=[1, 1], request=request, format=format
+            ),
+            "course_register": reverse(
+                "course_register", request=request, format=format
+            ),
+            "course_complete": reverse(
+                "course_complete", request=request, format=format
+            ),
         }
     )

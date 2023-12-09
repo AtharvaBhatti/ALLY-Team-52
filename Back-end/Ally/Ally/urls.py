@@ -22,6 +22,7 @@ from main.seminar import *
 from main.messages import *
 from main.general import *
 from main.plans import *
+from main.courses import *
 
 urlpatterns = [
     path("", api_root),
@@ -51,6 +52,10 @@ urlpatterns = [
     path('student_list/', GetStudentListView.as_view(), name="student_list"),
     path('alumni_list/', GetAlumniListView.as_view(), name="alumni_list"),
     path('plan_list/', PlanListAPIView.as_view(), name="plan_list"),
-    path('view_plan/<int:plan_id>/', PlanListAPIView.as_view(), name="plan_list"),
+    path('view_plan/<int:plan_id>/', PlanListAPIView.as_view(), name="view_plan"),
     path('register_plan/', PlanListAPIView.as_view(), name="register_plan"),
+    path('course_list/', CourseListAPIView.as_view(), name="course_list"),
+    path('view_course/<int:course_id>/<int:user_id>/', DetailedCourseView.as_view(), name="view_course"),
+    path('course_register/', RegisterCourseView.as_view(), name="course_register"),
+    path('course_complete/', CompleteCourseView.as_view(), name="course_complete"),
 ]

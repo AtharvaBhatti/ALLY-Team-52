@@ -26,7 +26,7 @@ class UserDetails(models.Model):
     company = models.CharField(max_length=100)
     currentScore = models.IntegerField()
     techStack = models.ManyToManyField(TechStacks)
-    courses = models.TextField()
+    courses = models.TextField(default='{}')
     plan = models.IntegerField()
     endorsements = models.TextField(default='[]')
 
@@ -108,3 +108,13 @@ class Plan(models.Model):
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
     details = models.TextField()
+
+
+class Courses(models.Model):
+    oneLiner = models.TextField()
+    description = models.TextField()
+    conductedBy = models.CharField(max_length=100)
+    postedOn = models.DateField()
+    registeredCount = models.IntegerField()
+    cost = models.IntegerField()
+    tags = models.ManyToManyField(Tag)

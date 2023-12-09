@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+../Back-end/Ally/Ally/__pycache__
+../Back-end/Ally/main/__pycache__
+../Back-end/Ally/main/migrations/__pycache__
 # testing
 /coverage
 
