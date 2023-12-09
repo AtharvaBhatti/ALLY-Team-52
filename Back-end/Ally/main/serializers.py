@@ -131,3 +131,12 @@ class CourseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courses
         fields = ('id', 'oneLiner', 'cost', 'registeredCount')
+
+
+
+class CourseSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Courses
+        fields = '__all__'

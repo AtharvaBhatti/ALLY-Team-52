@@ -94,5 +94,8 @@ def api_root(request, format=None):
             "course_list": reverse(
                 "course_list", request=request, format=format
             ),
+            "view_course": reverse(
+                "view_course", args=[1, 1], request=request, format=format
+            ),
         }
     )

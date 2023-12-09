@@ -55,4 +55,5 @@ urlpatterns = [
     path('view_plan/<int:plan_id>/', PlanListAPIView.as_view(), name="view_plan"),
     path('register_plan/', PlanListAPIView.as_view(), name="register_plan"),
     path('course_list/', CourseListAPIView.as_view(), name="course_list"),
+    path('view_course/<int:course_id>/<int:user_id>/', DetailedCourseView.as_view(), name="view_course"),
 ]
