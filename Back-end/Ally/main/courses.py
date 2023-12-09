@@ -71,6 +71,8 @@ class RegisterCourseView(APIView):
                 courses_done[course_id] = data
                 user.courses = json.dumps(courses_done)
                 user.save()
+                course.registeredCount += 1
+                course.save()
                 return Response({"message" : "course registered successfully"}, status=status.HTTP_200_OK)
         
         except Exception as e:
