@@ -8,7 +8,7 @@ const ForumCard = ({ Posts }) => {
   console.log(Posts);
 
   const [dropdownStates, setDropdownStates] = useState(Posts.map(() => false));
-
+  const [newposts, setnewposts] = useState(Posts)
   const toggleDropdown = (index) => {
     setDropdownStates((prevStates) => {
       const newStates = [...prevStates];
@@ -21,9 +21,45 @@ const ForumCard = ({ Posts }) => {
     setDropdownStates(Posts.map(() => false));
   };
 
-  function handleclick(forum) {
-    nav(`/uni1/forum/${forum.id}`, { state: { results: forum } });
+  function handleclick(post) {
+    nav(`/uni1/forum/${post.id}`, { state: { post: post } });
   }
+const handleLike = (post) => {
+  const apiUrl = "http://127.0.0.1:8000/react_post/";
+
+  // Assuming that you have the user ID
+  const userID = 1;
+
+  // Make an API request to increment the likes count
+  fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userID: userID,
+      postID: post.id,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Update the likes count in the UI
+      console.log("Comment submitted successfully:", data);
+      setnewposts((prevPosts) =>
+        prevPosts.map((p) =>
+          p.id === post.id ? { ...p, likesCount: p.likesCount + 1 } : p
+        )
+      );
+    })
+    .catch((error) => {
+      console.error("Error liking post:", error);
+    });
+};
 
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -35,14 +71,18 @@ const ForumCard = ({ Posts }) => {
 
   return (
     <div>
-      {Posts.map((forum, index) => (
-        <div className="forum-post-card" key={forum.id}>
+      {newposts.map((post, index) => (
+        <div className="forum-post-card" key={post.id}>
           <div className="forum-post-header">
             <div className="forum-user-info">
-              <img src={forum.user_img} alt="User Image" className="forum-user-image"></img>
+              {/* <img
+                src={forum.user_img}
+                alt="User Image"
+                className="forum-user-image"
+              ></img> */}
               <div className="forum-user-details">
-                <div className="forum-user-name">{forum.user_name}</div>
-                <div className="forum-last-seen">{forum.user_last_seen}</div>
+                <div className="forum-user-name">{post.content}</div>
+                <div className="forum-last-seen">{post.content}</div>
               </div>
             </div>
             <div
@@ -53,7 +93,10 @@ const ForumCard = ({ Posts }) => {
               &#8942;
             </div>
             {dropdownStates[index] && (
-              <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg" style={{ marginTop: '140px' }}>
+              <div
+                className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg"
+                style={{ marginTop: "140px" }}
+              >
                 <ul>
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Copy Link
@@ -61,9 +104,7 @@ const ForumCard = ({ Posts }) => {
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Share
                   </li>
-                  <li
-                    className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
-                  >
+                  <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                     Report User
                   </li>
                 </ul>
@@ -71,31 +112,39 @@ const ForumCard = ({ Posts }) => {
             )}
           </div>
           <div className="forum-post-content">
-            <div className="forum-question" onClick={() => handleclick(forum)}>
-              {forum.user_question}
+            <div className="forum-question" onClick={() => handleclick(post)}>
+              {post.content}
             </div>
-            <div className="forum-answer" onClick={() => handleclick(forum)}>
-              {truncateText(forum.answer, 200)}
+            <div className="forum-answer" onClick={() => handleclick(post)}>
+              {truncateText(post.content, 200)}
             </div>
           </div>
           <div class="forum-post-footer">
             <div className="forum-tags">
-              <div className="forum-tag">{forum.tag1}</div>
-              <div className="forum-tag">{forum.tag2}</div>
-              <div className="forum-tag">{forum.tag3}</div>
+              {post.tags.map((tag, index) => (
+                <div className="forum-tag" key={index}>
+                  {tag.name}
+                </div>
+              ))}
             </div>
             <div className="forum-post-actions">
-              <div className="forum-actions-icons" onClick={() => handleclick(forum)}>
+              <div className="forum-actions-icons">
                 <div className="forum-action-icon">
-                  <i class="fa fa-eye" aria-hidden="true"></i> {forum.views}
+                  <i class="fa fa-eye" aria-hidden="true"></i> {post.likesCount}
                 </div>
-                <div className="forum-action-icon">
+                <div
+                  className="forum-action-icon"
+                  onClick={() => handleclick(post)}
+                >
                   <i class="fa fa-comment" aria-hidden="true"></i>
-                  {forum.comments}
+                  {post.commentsCount}
                 </div>
-                <div className="forum-action-icon">
-                  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                  {forum.upvotes}
+                <div
+                  className="forum-action-icon"
+                  onClick={() => handleLike(post)}
+                >
+                  <i className="fa fa-thumbs-up" aria-hidden="true"></i>{" "}
+                  {post.likesCount}
                 </div>
               </div>
             </div>
