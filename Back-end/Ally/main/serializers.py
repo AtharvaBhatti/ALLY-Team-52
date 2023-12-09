@@ -131,7 +131,7 @@ class PlanListSerializer(serializers.ModelSerializer):
 class CourseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courses
-        fields = ('id', 'oneLiner', 'cost', 'registeredCount')
+        fields = ('id', 'oneLiner', 'cost', 'registeredCount','conductedBy','description')
 
 
 
