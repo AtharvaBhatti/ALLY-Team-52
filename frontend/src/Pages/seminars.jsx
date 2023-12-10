@@ -44,23 +44,21 @@ const Seminars = () => {
     const [seminarFilter, setSeminarFilter] = useState("All");
 
     const filteredSeminars = seminars.filter((seminar) => {
+        const currentDate = new Date();
+        const seminarDate = new Date(seminar.date);
+    
         if (seminarFilter === "All") {
-            return true; // Show all seminars if "All" is selected
+            return true;
         } else if (seminarFilter === "Ongoing") {
-            // Add logic to filter ongoing seminars based on date comparison (e.g., ongoing seminars have a date in the past)
-            // Replace the below condition with your logic
-            return new Date(seminar.date) === new Date();
+            return seminarDate === currentDate; // Check if seminar date is in the past or today
         } else if (seminarFilter === "Completed") {
-            // Add logic to filter completed seminars based on date comparison (e.g., completed seminars have a date in the past)
-            // Replace the below condition with your logic
-            return new Date(seminar.date) < new Date();
+            return seminarDate < currentDate; // Check if seminar date is in the past
         } else if (seminarFilter === "Upcoming") {
-            // Add logic to filter upcoming seminars based on date comparison (e.g., upcoming seminars have a date in the future)
-            // Replace the below condition with your logic
-            return new Date(seminar.date) > new Date();
+            return seminarDate > currentDate; // Check if seminar date is in the future
         }
         return true;
     });
+    
 
     return (
         <div>
