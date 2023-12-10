@@ -9,9 +9,8 @@ body{
     padding: 2%;
 }
 .upskillHeading{
-    font-size: 1.98vh;
     color: rgba(0, 101, 193, 1);
-    font-weight: 600;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .upskillSubheading1{
     font-size: 2.91vh;
