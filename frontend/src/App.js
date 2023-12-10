@@ -13,7 +13,7 @@ import Students from "./Pages/Students.jsx";
 import Alumini from "./Pages/Alumini.jsx";
 import Seminars from "./Pages/seminars.jsx";
 
-import Messaging from "./Pages/Messaging.jsx";
+import MessagingComponent from "./Pages/Messaging.jsx"
 
 import Profile from "./Pages/profilePage.jsx";
 
@@ -39,6 +39,7 @@ function App() {
           <Route path="/uni1/upskill" element={<Upskill />}></Route>
           <Route path="/uni1/seminars" element={<Seminars />}></Route>
           <Route path="/uni1/profile" element={<Profile />}></Route>
+          <Route path="/uni1/message" element={<MessagingComponent />}></Route>
 
 
         </Routes>
