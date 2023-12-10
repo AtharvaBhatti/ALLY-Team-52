@@ -11,7 +11,7 @@ const Seminars = () => {
         {
             title: 'Seminar 1',
             description: 'Description for Seminar 1',
-            date: 'January 15, 2023',
+            date: 'January 15, 2024',
             imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
         },
         {
@@ -23,13 +23,13 @@ const Seminars = () => {
         {
             title: 'Seminar 3',
             description: 'Description for Seminar 2',
-            date: 'February 20, 2023',
+            date: 'February 20, 2024',
             imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
         },
         {
             title: 'Seminar 4',
             description: 'Description for Seminar 2',
-            date: 'February 20, 2023',
+            date: 'December 10, 2023',
             imageUrl: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650',
         },
         {
@@ -41,6 +41,27 @@ const Seminars = () => {
         // Add more seminar data as needed
     ];
 
+    const [seminarFilter, setSeminarFilter] = useState("All");
+
+    const filteredSeminars = seminars.filter((seminar) => {
+        if (seminarFilter === "All") {
+            return true; // Show all seminars if "All" is selected
+        } else if (seminarFilter === "Ongoing") {
+            // Add logic to filter ongoing seminars based on date comparison (e.g., ongoing seminars have a date in the past)
+            // Replace the below condition with your logic
+            return new Date(seminar.date) === new Date();
+        } else if (seminarFilter === "Completed") {
+            // Add logic to filter completed seminars based on date comparison (e.g., completed seminars have a date in the past)
+            // Replace the below condition with your logic
+            return new Date(seminar.date) < new Date();
+        } else if (seminarFilter === "Upcoming") {
+            // Add logic to filter upcoming seminars based on date comparison (e.g., upcoming seminars have a date in the future)
+            // Replace the below condition with your logic
+            return new Date(seminar.date) > new Date();
+        }
+        return true;
+    });
+
     return (
         <div>
             <div className="forumPage">
@@ -50,7 +71,10 @@ const Seminars = () => {
                 </div>
                 <div className="forumMain ">
 
-                    <div className="flex space-x-4 items-center mb-4 filtersButton">
+                    <div className="flex space-x-4 items-center mb-4 filtersButton ">
+                        <div className="text-[#0065C1] text-xl font-bold pb-3">
+                            Seminars
+                        </div>
                         {/* Search Input */}
                         <input
                             type="text"
@@ -58,16 +82,19 @@ const Seminars = () => {
 
                             className="p-3 relative border w-full border-gray-300 rounded-full pl-10"
                         />
+                        <button onClick={() => setSeminarFilter("All")}>All</button>
+                        <button onClick={() => setSeminarFilter("Ongoing")}>Ongoing</button>
+                        <button onClick={() => setSeminarFilter("Completed")}>Completed</button>
+                        <button onClick={() => setSeminarFilter("Upcoming")}>Upcoming</button>
+
 
                         {/* Custom Dropdown */}
 
                     </div >
-                    <div className="text-[#0065C1] text-xl font-bold pb-3">
-                        Seminars
-                    </div>
+
 
                     <div className="grid grid-cols-4 gap-4">
-                        {seminars.map((seminar, index) => (
+                        {filteredSeminars.map((seminar, index) => (
                             <SeminarListItem
                                 key={index}
                                 title={seminar.title}
@@ -81,7 +108,7 @@ const Seminars = () => {
             </div>
 
 
-        </div>
+        </div >
     );
 };
 
