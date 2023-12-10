@@ -53,7 +53,7 @@ const Homepage = () => {
 
   return (
     <div className='flex '>
-      <div className="w-[250px] ">
+      <div className="w-[250px] z-1 ">
         <Sidebar />
       </div>
       <div className='flex-1'>
