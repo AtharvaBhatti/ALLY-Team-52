@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { filter } from '../assets/images';
 import Posts from '../Components/Posts';
+import Sidebar from "../Components/Sidebar.jsx";
 
 const FeaturedPosts = ({ isSelected, onClick }) => (
   <div
@@ -55,6 +56,7 @@ const Homepage = () => {
 
   return (
     <div className='bg-[#F3F6FF] z--10 m-0 p-0 min-h-fit'>
+    <Sidebar />
       <div className='flex flex-col justify-center mx-4 md:mx-16 py-8'>
         <div className='flex z-0 space-x-4 items-center mb-4'>
           {/* Search Input */}
