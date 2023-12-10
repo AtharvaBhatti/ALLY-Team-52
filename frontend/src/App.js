@@ -9,6 +9,8 @@ import SinglePost from "./Pages/Forum/SinglePost.jsx"
 import Forum from "./Pages/Forum/ForumPage.jsx";
 import Hackathons from "./Pages/Hackathons.jsx";
 import Upskill from "./Pages/Upskill/UpskillPage.jsx";
+import Students from "./Pages/Students.jsx";
+import Alumini from "./Pages/Alumini.jsx";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/uni1/forum/:id" element={<SinglePost />}></Route>
           <Route path="/uni1/hackathon" element={<Hackathons />}></Route>
           <Route path="/uni1/courses" element={<Upskill />}></Route>
+          <Route path="/uni1/students" element={<Students />}></Route>
+          <Route path="/uni1/alumini" element={<Alumini />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
