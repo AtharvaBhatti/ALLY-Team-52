@@ -134,12 +134,12 @@ def listHackathon(request,institute): # institute specific + open to all
                 data.append({"id":hackathon_instance.id,"name": hackathon_instance.name,
                              "oneLiner": hackathon_instance.oneLiner,"description":hackathon_instance.description,
                              "institute":hackathon_instance.institute,"startDate":hackathon_instance.startDate,
-                             "endDate":hackathon_instance.endDate})
+                             "endDate":hackathon_instance.endDate,"cost":hackathon_instance.cost})
 
         for hackathon_instance in institute_specific:
             data.append({"id": hackathon_instance.id, "name": hackathon_instance.name,
                          "institute": hackathon_instance.institute,"oneLiner": hackathon_instance.oneLiner,
-                         "startDate": hackathon_instance.startDate,
+                         "startDate": hackathon_instance.startDate,"description":hackathon_instance.description,
                          "endDate": hackathon_instance.endDate,"cost":hackathon_instance.cost})
 
 
