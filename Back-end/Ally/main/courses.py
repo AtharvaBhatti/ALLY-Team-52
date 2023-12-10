@@ -110,3 +110,5 @@ class CompleteCourseView(APIView):
         
         except Exception as e:
             return Response({"error" : e}, status=status.HTTP_400_BAD_REQUEST)
+
+
