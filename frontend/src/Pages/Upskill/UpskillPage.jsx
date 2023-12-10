@@ -11,7 +11,7 @@ const UpskillPage = ({ tag }) => {
   const filterOptions = ["Next", "React", "Github"];
 
   const [courses, setcourses] = useState([]);
-  const [regcourses, setregcourses] = useState([])
+  const [regcourses, setregcourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const handleFilterChange = (option) => {
@@ -35,6 +35,34 @@ const UpskillPage = ({ tag }) => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+useEffect(() => {
+  const apiUrl = "http://localhost:8000/view_userprofile/1/";
+
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      try {
+        // Parse the JSON string in the 'courses' property
+        const coursesArray = JSON.parse(data.courses);
+
+        // Assuming coursesArray is an array of objects with a 'courseId' property
+        const courseIds = coursesArray.map((course) => course.courseId);
+
+        setregcourses(courseIds);
+        console.log(courseIds);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}, []);
+
 
   return (
     <div className="upskillPage md:mt-4 flex justify-between">
@@ -68,7 +96,7 @@ const UpskillPage = ({ tag }) => {
         <div className="upskill-middleSection">
           <div className="Upskill-cards-container">
             {courses.map((course) => (
-                <UpskilBigCards course = {course}/>
+              <UpskilBigCards course={course} />
             ))}
           </div>
         </div>
@@ -82,7 +110,9 @@ const UpskillPage = ({ tag }) => {
         </div>
         <div className="upskill-middleSection">
           <div className="Upskill-cards-container">
-      
+            {regcourses.map((courseid) => (
+              <UpskilSmallCards courseid={courseid} />
+            ))}
           </div>
         </div>
       </div>
