@@ -23,7 +23,7 @@ const SidebarPage = () => {
     nav(`/uni1/forums`);
   };
   const handleStudentsClick = () => {
-    nav(`/students`);
+    nav(`/uni1/students`);
   };
   const handleSeminarsClick = () => {
     nav(`/uni1/seminars`);
