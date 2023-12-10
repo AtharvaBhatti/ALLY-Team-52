@@ -1,14 +1,22 @@
-import React,{ useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import React, { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Checkbox from "@mui/material/Checkbox";
 
-export default function ScrollDialog({ onClose,seminarDetails }) {
+export default function ScrollDialog({ onClose, seminarDetails }) {
   const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
+  const [scroll, setScroll] = React.useState("paper");
+  const [studentList, setStudentList] = useState([]);
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -20,10 +28,12 @@ export default function ScrollDialog({ onClose,seminarDetails }) {
     onClose();
   };
   useEffect(() => {
-    // Fetch data from the API using seminarDetails and update dialogData state
-    // You can use a library like axios for making API requests
-    // Example: axios.get(`your_api_url/${seminarDetails.id}`).then(response => setDialogData(response.data));
-}, [seminarDetails]);
+    fetch("http://127.0.0.1:8000/project_team_recommendations/1/") // Replace with your API endpoint
+      .then((response) => response.json())
+      .then((data) => setStudentList(data))
+      .catch((error) => console.error("Error fetching data:", error));
+    console.log(studentList);
+  }, [studentList]);
 
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
@@ -47,21 +57,31 @@ export default function ScrollDialog({ onClose,seminarDetails }) {
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title">Invite Talent</DialogTitle>
-        <DialogContent dividers={scroll === 'paper'}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
-            {[...new Array(50)]
-              .map(
-                () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-              )
-              .join('\n')}
-          </DialogContentText>
+        <DialogContent dividers={scroll === "paper"}>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>S.No</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Years of Experience</TableCell>
+                  <TableCell>Select for Team</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {studentList.map((student, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{student.name}</TableCell>
+                    <TableCell>{student.yearsOfExperience}</TableCell>
+                    <TableCell>
+                      <Checkbox />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
