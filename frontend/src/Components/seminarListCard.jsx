@@ -1,10 +1,16 @@
-import React from 'react';
-
+import React,{useState} from 'react';
+import ScrollDialog from './Seminar_Team_Popup';
 const SeminarListItem = ({ title, description, date, imageUrl }) => {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
     const handleClick = () => {
-        // Functionality for the "Know More" button
-        console.log(`Clicked "Know More" for ${title}`);
+        setIsDialogOpen(true);
     };
+
+    const handleCloseDialog = () => {
+        setIsDialogOpen(false);
+    };
+
 
     return (
         <div className="max-w-xs rounded overflow-hidden shadow-lg">
@@ -24,6 +30,10 @@ const SeminarListItem = ({ title, description, date, imageUrl }) => {
                     Know More
                 </button>
             </div>
+            {isDialogOpen && (
+                <ScrollDialog onClose={handleCloseDialog} seminarDetails={{ title, description, date }} />
+            )}
+
         </div>
     );
 };

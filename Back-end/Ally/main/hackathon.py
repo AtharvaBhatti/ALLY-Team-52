@@ -39,15 +39,17 @@ def registerHackathon(request):
         if hackathon_instance.openToALL != 1 and leader_instance.institute!=hackathon_instance.institute:
             return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
 
-        members=member_emails.split(',')
-        member_ids=[]
-        for member in members:
-            member=member.strip()
-            if member != leader_email: # incase someone passes leader email again in member email
-                member_instance=UserDetails.objects.get(email=member)
-                if hackathon_instance.openToALL != 1 and member_instance.institute != hackathon_instance.institute:
-                    return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
-                member_ids.append(member_instance.id)
+        member_ids = []
+        if member_emails != "":
+            members=member_emails.split(',')
+
+            for member in members:
+                member=member.strip()
+                if member != leader_email: # incase someone passes leader email again in member email
+                    member_instance=UserDetails.objects.get(email=member)
+                    if hackathon_instance.openToALL != 1 and member_instance.institute != hackathon_instance.institute:
+                        return Response({"error": "Invalid Registration"}, status=status.HTTP_404_NOT_FOUND)
+                    member_ids.append(member_instance.id)
 
     except Hackathon.DoesNotExist:
         return Response({"error": "Hackathon not found"}, status=status.HTTP_404_NOT_FOUND)
@@ -173,18 +175,19 @@ def getHackReg(request, hackathonID):
                            "institute": leader_instance.institute}
 
             string = registration.teamMembers
-            string = string.strip('[]')
+            if string !="[]":
+                string = string.strip('[]')
 
-            member_list = string.split(',')
+                member_list = string.split(',')
 
-            for member in member_list:
-                member = member.strip()
-                registered_list.append(int(member))
+                for member in member_list:
+                    member = member.strip()
+                    registered_list.append(int(member))
 
-            for user_id in registered_list:
-                user_instance = UserDetails.objects.get(id=user_id)
-                members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
-                                     "email": user_instance.email, "institute": user_instance.institute})
+                for user_id in registered_list:
+                    user_instance = UserDetails.objects.get(id=user_id)
+                    members_data.append({"firstName": user_instance.firstName, "lastName": user_instance.lastName,
+                                         "email": user_instance.email, "institute": user_instance.institute})
 
             data.append({"Registration_ID":registration.id,"teamLeader": leader_data, "teamMembers": members_data,
                          "submission": registration.submission,

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { filter } from '../assets/images';
 import Posts from '../Components/Posts';
+import Sidebar from "../Components/Sidebar.jsx";
 
 const FeaturedPosts = ({ isSelected, onClick }) => (
   <div
     onClick={onClick}
-    className={`cursor-pointer p-4 ${
-      isSelected ? 'border-b-4 border-blue-500' : ''
-    }`}
+    className={`cursor-pointer p-4 ${isSelected ? 'border-b-4 border-blue-500' : ''
+      }`}
   >
     Featured Posts
   </div>
@@ -16,9 +16,8 @@ const FeaturedPosts = ({ isSelected, onClick }) => (
 const Hackathons = ({ isSelected, onClick }) => (
   <div
     onClick={onClick}
-    className={`cursor-pointer p-4 ${
-      isSelected ? 'border-b-4 border-blue-500' : ''
-    }`}
+    className={`cursor-pointer p-4 ${isSelected ? 'border-b-4 border-blue-500' : ''
+      }`}
   >
     Hackathons
   </div>
@@ -27,9 +26,8 @@ const Hackathons = ({ isSelected, onClick }) => (
 const ListedProjects = ({ isSelected, onClick }) => (
   <div
     onClick={onClick}
-    className={`cursor-pointer p-4 ${
-      isSelected ? 'border-b-4 border-blue-500' : ''
-    }`}
+    className={`cursor-pointer p-4 ${isSelected ? 'border-b-4 border-blue-500' : ''
+      }`}
   >
     Listed Projects
   </div>
@@ -54,55 +52,65 @@ const Homepage = () => {
   };
 
   return (
-    <div className='bg-[#F3F6FF] z--10 m-0 p-0 min-h-fit'>
-      <div className='flex flex-col justify-center mx-4 md:mx-16 py-8'>
-        <div className='flex z-0 space-x-4 items-center mb-4'>
-          {/* Search Input */}
-          <input
-            type='text'
-            placeholder='Search'
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className='p-3 relative border placeholder:text-blue-500 placeholder:font-bold w-full border-gray-300 rounded-full pl-10'
-          />
-
-          <CustomDropdown
-            options={filterOptions}
-            value={filterBy || 'Filters'}
-            onChange={handleFilterChange}
-          />
-        </div>
-
-        {/* Tabs */}
-        <div className='flex w-fit border-b-2 border-black space-x-4'>
-          <FeaturedPosts
-            isSelected={selectedTab === 'Featured Posts'}
-            onClick={() => handleTabChange('Featured Posts')}
-          />
-          <Hackathons
-            isSelected={selectedTab === 'Hackathons'}
-            onClick={() => handleTabChange('Hackathons')}
-          />
-          <ListedProjects
-            isSelected={selectedTab === 'Listed Projects'}
-            onClick={() => handleTabChange('Listed Projects')}
-          />
-        </div>
-
-        {/* Content based on the selected tab */}
-        {selectedTab === 'Featured Posts' && (
-          <div className='my-4'>
-            <Posts/>
-          </div>
-        )}
-        {selectedTab === 'Hackathons' && (
-          <div className='mt-4'>Content for Hackathons</div>
-        )}
-        {selectedTab === 'Listed Projects' && (
-          <div className='mt-4'>Content for Listed Projects</div>
-        )}
+    <div className='flex '>
+      <div className="w-[250px] z-1 ">
+        <Sidebar />
       </div>
+      <div className='flex-1'>
+        <div className='bg-[#F3F6FF]  m-0 p-0 min-h-fit'>
+
+          <div className='flex flex-col justify-center mx-2 md:mx-16 py-8 '>
+            <div className='flex z-0 space-x-4 items-center mb-4'>
+              {/* Search Input */}
+              <input
+                type='text'
+                placeholder='Search'
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className='p-3 relative border placeholder:text-blue-500 placeholder:font-bold w-full border-gray-300 rounded-full pl-10'
+              />
+
+              <CustomDropdown
+                options={filterOptions}
+                value={filterBy || 'Filters'}
+                onChange={handleFilterChange}
+              />
+            </div>
+
+            {/* Tabs */}
+            <div className='flex w-fit border-b-2 border-black space-x-4'>
+              <FeaturedPosts
+                isSelected={selectedTab === 'Featured Posts'}
+                onClick={() => handleTabChange('Featured Posts')}
+              />
+              <Hackathons
+                isSelected={selectedTab === 'Hackathons'}
+                onClick={() => handleTabChange('Hackathons')}
+              />
+              <ListedProjects
+                isSelected={selectedTab === 'Listed Projects'}
+                onClick={() => handleTabChange('Listed Projects')}
+              />
+            </div>
+
+            {/* Content based on the selected tab */}
+            {selectedTab === 'Featured Posts' && (
+              <div className='my-4'>
+                <Posts />
+              </div>
+            )}
+            {selectedTab === 'Hackathons' && (
+              <div className='mt-4'>Content for Hackathons</div>
+            )}
+            {selectedTab === 'Listed Projects' && (
+              <div className='mt-4'>Content for Listed Projects</div>
+            )}
+          </div>
+        </div>
+      </div>
+
     </div>
+
   );
 };
 
@@ -125,7 +133,7 @@ const CustomDropdown = ({ options, value, onChange }) => {
         className='flex items-center cursor-pointer'
       >
         {/* Filter Symbol */}
-        <img src={filter} className='mr-2 h-6 w-6'/>
+        <img src={filter} className='mr-2 h-6 w-6' />
         {/* Selected Text */}
         <div>{value}</div>
       </div>
