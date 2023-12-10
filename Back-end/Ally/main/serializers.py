@@ -146,3 +146,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDetails
         exclude = ('courses',)
+
+class ShowAllStudentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserDetails
+        fields= ( 'id','firstName','lastName','branch','institute','currentScore','techStack','type','email')
+
+class ShowAllAlumniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserDetails
+        fields= ( 'id','firstName','lastName','yearOfPassing','institute',
+                  'yearsOfExperience','techStack','type','email','company')

@@ -112,5 +112,11 @@ def api_root(request, format=None):
             "send_project_invite": reverse(
                 "send_project_invite", request=request, format=format
             ),
+            "all_students": reverse(
+                "all_students", request=request, format=format
+            ),
+            "all_alumni": reverse(
+                "all_alumni", request=request, format=format
+            ),
         }
     )

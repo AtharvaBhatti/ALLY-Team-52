@@ -12,7 +12,11 @@ import Upskill from "./Pages/Upskill/UpskillPage.jsx";
 import Students from "./Pages/Students.jsx";
 import Alumini from "./Pages/Alumini.jsx";
 import Seminars from "./Pages/seminars.jsx";
+
 import Messaging from "./Pages/Messaging.jsx";
+
+import Profile from "./Pages/profilePage.jsx";
+
 
 function App() {
   return (
@@ -30,7 +34,13 @@ function App() {
           <Route path="/uni1/hackathon" element={<Hackathons />}></Route>
           <Route path="/uni1/courses" element={<Upskill />}></Route>
           <Route path="/uni1/students" element={<Students />}></Route>
-          <Route path="/uni1/alumini" element={<Alumini />}></Route>
+
+          <Route path="/uni1/alumni" element={<Alumini />}></Route>
+          <Route path="/uni1/upskill" element={<Upskill />}></Route>
+          <Route path="/uni1/seminars" element={<Seminars />}></Route>
+          <Route path="/uni1/profile" element={<Profile />}></Route>
+
+
         </Routes>
       </BrowserRouter>
     </div>
