@@ -145,4 +145,4 @@ class CourseSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDetails
-        fields = '__all__'
+        exclude = ('courses',)
