@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { hackathon } from "../assets/images";
 import Sidebar from "../Components/Sidebar.jsx";
-import ScrollDialog from '../Components/Seminar_Team_Popup.jsx';
+import ScrollDialog from '../Components/Team_Popup.jsx';
 
 const Hackathons = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

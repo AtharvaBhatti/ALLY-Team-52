@@ -18,6 +18,9 @@ const Navbar = () => {
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
+  const handleClickProfile = () =>{
+
+  }
 
   return (
     <nav className="bg-[#F3F6FF] sticky top-0 z-50 p-4 drop-shadow-lg">
@@ -62,7 +65,7 @@ const Navbar = () => {
               {isDropdownOpen && (
                 <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg">
                   <ul>
-                    <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
+                    <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer" onClick={handleClickProfile}>
                       Your Profile
                     </li>
                     <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">

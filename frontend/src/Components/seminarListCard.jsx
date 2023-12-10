@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import ScrollDialog from './Seminar_Team_Popup';
+import ScrollDialog from './seminarDetailsPopup';
 const SeminarListItem = ({ title, description, date, imageUrl }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 

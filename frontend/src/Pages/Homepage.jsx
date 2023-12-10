@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { filter } from '../assets/images';
 import Posts from '../Components/Posts';
 import Sidebar from "../Components/Sidebar.jsx";
+import { hackathon } from "../assets/images";
+import ScrollDialog from '../Components/Team_Popup.jsx';
 
 const FeaturedPosts = ({ isSelected, onClick }) => (
   <div
@@ -50,6 +52,29 @@ const Homepage = () => {
   const handleTabChange = (tabName) => {
     setSelectedTab(tabName);
   };
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  };
+  const [hackathonData, setHackathonData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from your API endpoint
+    fetch('http://127.0.0.1:8000/get_hackathon/IIT%20Bhilai/') // Replace with your API endpoint
+      .then((response) => response.json())
+      .then((data) => setHackathonData(data))
+      .catch((error) => console.error("Error fetching data:", error));
+    console.log(hackathonData)
+  }, []);
+  const title = 'hey';
+  const description = 'hshxhdx';
+  const date = '12-12-1122';
 
   return (
     <div className='flex '>
@@ -100,7 +125,41 @@ const Homepage = () => {
               </div>
             )}
             {selectedTab === 'Hackathons' && (
-              <div className='mt-4'>Content for Hackathons</div>
+              <div className='mt-4'>
+              
+              <div className="md:flex md:gap-6 md:my-8 my-8 mb-40 mx-8">
+            {/* Display hackathonData */}
+            {hackathonData.map((event) => (
+              <div key={event.startDate} className="md:w-[320px] w-full mb-8 md:mb-0">
+                <div className="h-[250px] shadow-lg">
+                  <img
+                    src={hackathon}
+                    alt=""
+                    className="h-[250px] w-full object-cover"
+                  />
+                </div>
+                <div className="md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
+                  <div>
+                    <div className="text-sky-600 text-xl font-bold font-inter">
+                      {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short' })}
+                    </div>
+                    <div className="text-black text-3xl font-bold font-inter">
+                      {new Date(event.startDate).getDate()}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sky-600 text-[20px] font-bold font-inter">
+                      {event.oneLiner}
+                    </div>
+                    <div className="text-neutral-600 text-[15px] font-normal font-inter">
+                      {event.description}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+              </div>
             )}
             {selectedTab === 'Listed Projects' && (
               <div className='mt-4'>Content for Listed Projects</div>
