@@ -1,9 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { logo, userimg } from "../assets/images";
+import { useNavigate } from "react-router-dom";
+
+
 const user = { username: "John Doe", avatar: userimg };
 
+
 const Navbar = () => {
+  
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -65,9 +70,7 @@ const Navbar = () => {
                     </li>
                     <li
                       className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
-                      onClick={() => {
-                        // Add logout functionality
-                      }}
+                      
                     >
                       Logout
                     </li>
