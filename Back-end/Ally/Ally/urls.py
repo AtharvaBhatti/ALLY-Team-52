@@ -53,6 +53,7 @@ urlpatterns = [
     path('endorsements/<int:user_id>/', EndorsementListAPIView.as_view(), name='endorsement_list'),
     path('student_list/', GetStudentListView.as_view(), name="student_list"),
     path('all_students/', showAllStudents, name="all_students"),
+    path('all_alumni/', showAllAlumni, name="all_alumni"),
     path('alumni_list/', GetAlumniListView.as_view(), name="alumni_list"),
     path('plan_list/', PlanListAPIView.as_view(), name="plan_list"),
     path('view_plan/<int:plan_id>/', PlanListAPIView.as_view(), name="view_plan"),

@@ -152,6 +152,22 @@ def showAllStudents(request):
 
 
     return Response(data, status=status.HTTP_200_OK)
-        
+@api_view(['GET'])
+def showAllAlumni(request):
+    user_instances=UserDetails.objects.filter(type='Alumni')
+    serializer = ShowAllStudentsSerializer(user_instances, many=True)
+    data=serializer.data
+    print(data[0]['techStack'])
+    for user in data:
+        TechStack=[]
+        for techStack in user['techStack']:
+            TechStack.append(TechStacks.objects.get(id=techStack).name)
+
+        user['techStack']=TechStack
+
+
+
+    return Response(data, status=status.HTTP_200_OK)
+
 
 
