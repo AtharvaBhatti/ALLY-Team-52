@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-ui/core": "^4.12.4",
@@ -15,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "core-js-pure": "^3.34.0",
     "flowbite-react": "^0.7.0",
+    "mdb-react-ui-kit": "^7.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
