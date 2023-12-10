@@ -85,7 +85,7 @@ export default function ScrollDialog({ onClose, seminarDetails }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleClose}>Create</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
