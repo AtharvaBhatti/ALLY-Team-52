@@ -38,7 +38,7 @@ const SidebarPage = () => {
     nav(`/uni1`);
   };
   const handleHackathonsClick = () => {
-    nav(`/uni1/hackathons`);
+    nav(`/uni1/hackathon`);
   };
   return (
     <div className="sidebarMain " style={{ position: "fixed", display: "flex", height: "120vh", width: "20%", top: "10px" }}>
