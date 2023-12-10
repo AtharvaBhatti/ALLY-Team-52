@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from .models import UserDetails , TechStacks
-from .serializers import UserNamesSerializer, StudentListSerializer, AlumniListSerializer , ShowAllStudentsSerializer
+from .serializers import UserNamesSerializer, StudentListSerializer, AlumniListSerializer , ShowAllStudentsSerializer,ShowAllAlumniSerializer
 from django.db.models import Q, F, Value, FloatField, Sum, Case, When
 from rest_framework.pagination import PageNumberPagination
 
@@ -152,6 +152,22 @@ def showAllStudents(request):
 
 
     return Response(data, status=status.HTTP_200_OK)
-        
+@api_view(['GET'])
+def showAllAlumni(request):
+    user_instances=UserDetails.objects.filter(type='Alumni')
+    serializer = ShowAllAlumniSerializer(user_instances, many=True)
+    data=serializer.data
+    print(data[0]['techStack'])
+    for user in data:
+        TechStack=[]
+        for techStack in user['techStack']:
+            TechStack.append(TechStacks.objects.get(id=techStack).name)
+
+        user['techStack']=TechStack
+
+
+
+    return Response(data, status=status.HTTP_200_OK)
+
 
 

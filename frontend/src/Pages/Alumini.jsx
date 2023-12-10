@@ -19,7 +19,7 @@ import {
 import userImage from "../assets/images/user.png";
 
 // Dummy data
-const aluminiData = [
+const alumniData = [
   {
     id: 1,
     name: "Goldy Rogers",
@@ -264,10 +264,10 @@ function getBrightness(color) {
   );
 }
 
-const AluminiRow = ({ alumini }) => (
+const AluminiRow = ({ alumni }) => (
   <tr
     className="border-b-2 border-gray-200  m-14 cursor-pointer "
-    onClick={() => console.log(alumini.company)}
+    onClick={() => console.log(alumni.company)}
   >
     <td className="p-2 flex items-center justify-start font-inter font-normal">
       <img
@@ -277,11 +277,11 @@ const AluminiRow = ({ alumini }) => (
       />
       <div className="flex-col justify-start text-left">
         <span style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }}>
-          {alumini.name}
+          {alumni.firstName+" "+alumni.lastName}
         </span>
         <br />
         <span style={{ color: "#5E5873BF", fontSize: "14px" }}>
-          {alumini.email}
+          {alumni.email}
         </span>
       </div>
     </td>
@@ -290,14 +290,14 @@ const AluminiRow = ({ alumini }) => (
         style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }}
         className="font-inter font-normal"
       >
-        {alumini.company}
+        {alumni.company}
       </span>
       <br />
       <span
         style={{ color: "#5E5873BF", fontSize: "14px" }}
         className="font-inter font-normal"
       >
-        {alumini.passoutYear}
+        {alumni.yearOfPassing}
       </span>
     </td>
     <td className="p-2 flex justify-center">
@@ -305,12 +305,12 @@ const AluminiRow = ({ alumini }) => (
         className="w-12 h-12 rounded-full flex items-center justify-center text-white"
         style={{ backgroundColor: "#0065C1" }}
       >
-        +{alumini.yearsOfExp}
+        +{alumni.yearsOfExperience}
       </div>
     </td>
     
     <td className="p-2">
-      {alumini.techStack.slice(0, 2).map((tech, index) => {
+      {alumni.techStack.slice(0, 2).map((tech, index) => {
         const color = getRandomColor();
         const backgroundColor = getLowerIntensityColor(color);
         return (
@@ -324,7 +324,7 @@ const AluminiRow = ({ alumini }) => (
         );
       })}
 
-      {alumini.techStack.length > 2 && (
+      {alumni.techStack.length > 2 && (
         <OverlayTrigger
           trigger="hover"
           placement="top"
@@ -343,7 +343,7 @@ const AluminiRow = ({ alumini }) => (
                 overflowWrap: 'anywhere', // Prevents tooltip from breaking onto multiple lines
               }}
               >
-                {alumini.techStack.map((tech, index) => (
+                {alumni.techStack.map((tech, index) => (
                   <span
                     key={index}
                     className="rounded-md p-1 mr-2 font-inter font-bold"
@@ -368,7 +368,7 @@ const AluminiRow = ({ alumini }) => (
               color: 'black',
             }}
           >
-            +{alumini.techStack.length - 2}
+            +{alumni.techStack.length - 2}
           </span>
         </OverlayTrigger>
       )}
@@ -380,35 +380,48 @@ const AluminiRow = ({ alumini }) => (
 );
 
 function AluminTable() {
-  const [alumini, setAlumini] = useState(aluminiData);
+  const [alumni, setAlumini] = useState([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
   const [itemsPerPage, setItemsPerPage] = React.useState(8);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/alumini_list/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        instituteName: "IIT Bhilai",
-      }),
-    })
-      .then((response) => console.log(response.body))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+    async function fetchData() {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/all_alumni/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-  const filteredAlumini = alumini.filter((alumini) => {
+            const data = await response.json();
+
+            setAlumini(data);
+            // console.log(data, 'server'); // Log the fetched data
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    fetchData();
+}, []);
+
+  const filteredAlumini = alumni.filter((alumni) => {
     const searchWords = search.toLowerCase().split(" ");
     return searchWords.every(
       (word) =>
-        alumini.name.toLowerCase().includes(word) ||
-        alumini.techStack.some((tech) => tech.toLowerCase().includes(word)) ||
-        alumini.company.toLowerCase().includes(word) ||
-        alumini.email.toLowerCase().includes(word) ||
-        alumini.passoutYear.toLowerCase().includes(word) ||
-        alumini.yearsOfExp.toString().includes(word)
+        alumni.firstName.toLowerCase().includes(word) ||
+        alumni.lastName.toLowerCase().includes(word) ||
+        alumni.techStack.some((tech) => tech.toLowerCase().includes(word)) ||
+        alumni.company.toLowerCase().includes(word) ||
+        alumni.email.toLowerCase().includes(word) ||
+        alumni.yearOfPassing.toLowerCase().includes(word) ||
+        alumni.yearsOfExperience.toString().includes(word)
     );
   });
 
@@ -476,8 +489,8 @@ function AluminTable() {
               </tr>
             </thead>
             <tbody className="p-14 text-center">
-              {currentItems.map((alumini) => (
-                <AluminiRow key={alumini.id} alumini={alumini} />
+              {currentItems.map((alumni) => (
+                <AluminiRow key={alumni.id} alumni={alumni} />
               ))}
             </tbody>
           </table>

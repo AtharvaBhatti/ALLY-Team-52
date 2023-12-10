@@ -10,6 +10,7 @@ import {
     faStar,
     faCode,
     faMessage,
+    faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
 import userImage from "../assets/images/user.png";
 
@@ -271,7 +272,7 @@ const StudentRow = ({ student }) => (
             />
             <div className="flex-col justify-start text-left">
                 <span style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }}>
-                    {student.name}
+                    {student.firstName+" "+student.lastName}
                 </span>
                 <br />
                 <span style={{ color: "#5E5873BF", fontSize: "14px" }}>
@@ -279,19 +280,19 @@ const StudentRow = ({ student }) => (
                 </span>
             </div>
         </td>
-        <td className="p-2 flex-col justify-start text-left items-center">
+        <td className="p-2 flex-col justify-center text-left items-center">
             <span
                 style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }}
-                className="font-inter font-normal"
+                className="font-inter font-normal flex  justify-center"
             >
-                {student.branch}
+                {student.institute}
             </span>
             <br />
             <span
                 style={{ color: "#5E5873BF", fontSize: "14px" }}
-                className="font-inter font-normal"
+                className="font-inter font-normal flex  justify-center"
             >
-                {student.batch}
+                {student.branch}
             </span>
         </td>
         <td className="p-2 flex justify-center">
@@ -299,7 +300,7 @@ const StudentRow = ({ student }) => (
                 className="w-12 h-12 rounded-full flex items-center justify-center text-white"
                 style={{ backgroundColor: "#0065C1" }}
             >
-                {student.allScore}
+                {student.currentScore}
             </div>
         </td>
         <td className="p-2">
@@ -373,34 +374,49 @@ const StudentRow = ({ student }) => (
 );
 
 function StudentTable() {
-    const [students, setStudents] = useState(studentsData);
+    const [students, setStudents] = useState([]);
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = React.useState(1);
     const [itemsPerPage, setItemsPerPage] = React.useState(8);
 
 
+
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/student_list/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                instituteName: "IIT Bhilai",                
-            })
-        }).then((response) => console.log(response.body))
-        .catch((error) => console.error("Error fetching data:", error));
+        async function fetchData() {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/all_students/', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+    
+                const data = await response.json();
+    
+                setStudents(data);
+                // console.log(data, 'server'); // Log the fetched data
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+    
+        fetchData();
     }, []);
 
     const filteredStudents = students.filter((student) => {
         const searchWords = search.toLowerCase().split(" ");
         return searchWords.every((word) =>
-            student.name.toLowerCase().includes(word) ||
+            student.firstName.toLowerCase().includes(word) ||
+            student.lastName.toLowerCase().includes(word) ||
             student.techStack.some((tech) => tech.toLowerCase().includes(word)) ||
             student.branch.toLowerCase().includes(word) ||
             student.email.toLowerCase().includes(word) ||
-            student.allScore.toString().includes(word) ||
-            student.batch.toLowerCase().includes(word)
+            student.currentScore.toString().includes(word) ||
+            student.institute.toLowerCase().includes(word)
         );
     });
 
@@ -435,11 +451,11 @@ function StudentTable() {
                                 </th>
                                 <th className="p-2 font-inter font-normal text-sm">
                                     <FontAwesomeIcon
-                                        icon={faGraduationCap}
+                                        icon={faUniversity}
                                         color="#0065C1"
                                         className="mr-2"
                                     />
-                                    Batch
+                                    Institue/ Branch
                                 </th>
                                 <th className="p-2 font-inter font-normal text-sm">
                                     <FontAwesomeIcon
