@@ -1,0 +1,47 @@
+.Landing-Left{
+    display: flex;
+    justify-content: space-between;
+    margin: 10% 0 4% 0;
+    flex: 0.7;
+    padding-left: 10%;
+}
+.Landing-Left-1{
+    flex:1;
+    padding-top: 6%;
+}
+.LandingPage{
+    display: flex;
+    flex-direction: column;
+}
+.Landing-Right{
+    flex: 0.3;
+    margin: 3%;
+    margin-right: 17%;
+    
+}
+.landingUp{
+    display: flex;
+    flex-direction: row;
+}
+
+.text-container{
+    display: inline-block;
+}
+.sponsors{
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+    
+}
+.sponsorimg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsor{
+    margin: 1%;
+    height: 10vh !important;
+    width: auto;
+}
