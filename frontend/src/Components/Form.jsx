@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const nav = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,6 +19,9 @@ const LoginForm = () => {
     // You can add your logic here to handle form submission
     console.log('Email:', email);
     console.log('Password:', password);
+  };
+  const handleAuthClick = () => {
+    nav(`/uni1`);
   };
 
   return (
@@ -38,7 +43,7 @@ const LoginForm = () => {
         />
         <div className="flex-col justify-start items-start gap-5 flex">
           <div className="text-sky-600 text-opacity-75 text-[11px] font-semibold font-inter">Forgot Password?</div>
-          <button type="submit" className="w-[85px] px-4 py-1 bg-gradient-to-r from-sky-600 to-sky-500 rounded-[5px] justify-center items-center gap-[3px] inline-flex">
+          <button onClick={handleAuthClick}  className="w-[85px] px-4 py-1 bg-gradient-to-r from-sky-600 to-sky-500 rounded-[5px] justify-center items-center gap-[3px] inline-flex">
             <div className="text-white text-[13px] font-bold font-inter">Login</div>
           </button>
         </div>
