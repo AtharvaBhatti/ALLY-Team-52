@@ -1,0 +1,32 @@
+/* LandingNavbar.css */
+
+.Landing-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 4em;
+  }
+  
+  .Landing-Logo img {
+    max-width: 100px; /* Adjust the max-width as needed */
+  }
+  
+  .Landing-navbar-links {
+    display: flex;
+  }
+  
+  .Landing-navbar-links a {
+    color:  rgba(0, 101, 193, 1);
+    text-decoration: none;
+    padding: 1em;
+    margin-left: 3em;
+    font-weight: bolder;
+  }
+  
+  .Landing-Login-button {
+    margin-left: auto; /* Push the Login button to the right */
+    background-color:  rgba(0, 101, 193, 1);
+    padding: 0.7em 2em 0.7em 2em;
+    border-radius: 6%;
+  }
+  
