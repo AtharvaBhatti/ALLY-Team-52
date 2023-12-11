@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { hackathon } from "../assets/images";
 import Sidebar from "../Components/Sidebar.jsx";
 import ScrollDialog from '../Components/Team_Popup.jsx';
+import Navbar from "../Components/Navbar";
 
 const Hackathons = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -30,6 +31,9 @@ const Hackathons = () => {
 
 
   return (
+    <>
+    <Navbar/>
+    
     <div className='flex '>
       <div className="w-[250px] z-1 ">
         <Sidebar />
@@ -77,7 +81,7 @@ const Hackathons = () => {
                     className="h-[250px] w-full object-cover"
                   />
                 </div>
-                <div className="md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
+                <div className="md:flex justify-center gap-4 px-8 py-4 shadow-lg rounded-lg bg-white">
                   <div>
                     <div className="text-sky-600 text-xl font-bold font-inter">
                       {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short' })}
@@ -87,7 +91,7 @@ const Hackathons = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-sky-600 text-[20px] font-bold font-inter">
+                    <div className="text-sky-600 text-[20px] font-bold font-inter hover:text-sky-800 hover:underline cursor-pointer">
                       {event.oneLiner}
                     </div>
                     <div className="text-neutral-600 text-[15px] font-normal font-inter">
@@ -104,7 +108,7 @@ const Hackathons = () => {
                 <ScrollDialog onClose={handleCloseDialog} seminarDetails={{ title, description, date }} />
             )}
     </div>
-
+    </>
   );
 };
 

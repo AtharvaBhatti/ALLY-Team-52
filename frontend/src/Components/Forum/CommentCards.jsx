@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { dummyuser } from "../../assets/images";
 
 const CommentCard = ({ postid: postid }) => {
   const nav = useNavigate();
@@ -112,11 +113,11 @@ const CommentCard = ({ postid: postid }) => {
         <div className="forum-post-card" key={c.id}>
           <div className="forum-post-header">
             <div className="forum-user-info">
-              {/* <img
-                src={c.user_img}
+              <img
+                src={dummyuser}
                 alt="User Image"
                 className="forum-user-image"
-              ></img> */}
+              ></img>
               <div className="forum-user-details">
                 <div className="forum-user-name">{c.user}</div>
                 <div className="forum-last-seen">5 min Ago</div>

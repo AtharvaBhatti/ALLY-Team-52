@@ -4,7 +4,7 @@ const courses = [
   {
     id: 1,
     tag: "github",
-    author: "John Doe",
+    author: "Dhruv Rathee",
     date: "10 July 2023",
     time: "2 min",
     title:"Complete Web Development Course 2023",
@@ -17,7 +17,7 @@ const courses = [
   {
     id: 2,
     tag: "github",
-    author: "John Doe",
+    author: "Harman Singh",
     date: "9 July 2023",
     time: "3 min",
     title:"Machine Learning with Artificial Intelligence",
@@ -30,10 +30,10 @@ const courses = [
   {
     id: 3,
     tag: "github",
-    author: "John Doe",
+    author: "Gagan Gupta",
     date: "8 July 2023",
     time: "4 min",
-    title:"Complete Web Development Course 2023",
+    title:"Web3 Blockchain Summer Bootcamp",
     description:
       "The user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     content:
@@ -43,10 +43,10 @@ const courses = [
   {
     id: 4,
     tag: "github",
-    author: "John Doe",
+    author: "Angela Yu",
     date: "7 July 2023",
     time: "5 min",
-    title:"Machine Learning with Artificial Intelligence",
+    title:"Make your own GPT by Gagan Raj",
     description:
       "User acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     content:

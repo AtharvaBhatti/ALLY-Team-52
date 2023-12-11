@@ -1,10 +1,10 @@
-import { posts, userimg } from "../images";
+import { posts, dummyuser } from "../images";
 
 const articles = [
   {
     id: 1,
     tag: "github",
-    author:"John Doe",
+    author:"Rohit Kapoor",
     date: "10 July 2023",
     time: "2 min",
     title:
@@ -14,12 +14,13 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
+  
   {
     id: 2,
     tag: "github",
-    author:"John Doe",
+    author:"Priya Patel",
     date: "9 July 2023",
     time: "3 min",
     title:
@@ -29,12 +30,12 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 3,
     tag: "github",
-    author:"John Doe",
+    author:"Ankit Verma",
     date: "8 July 2023",
     time: "4 min",
     title:
@@ -44,12 +45,12 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 4,
     tag: "github",
-    author:"John Doe",
+    author:"Deepika Singh",
     date: "7 July 2023",
     time: "5 min",
     title:
@@ -59,11 +60,11 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 5,
-    author:"John Doe",
+    author:"Rajesh Khanna",
     tag: "dsai",
     date: "16 April 2023",
     time: "6 min",
@@ -74,12 +75,12 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 6,
     tag: "dsai",
-    author:"John Doe",
+    author:"Neha Sharma",
     date: "17 April 2023",
     time: "7 min",
     title:
@@ -89,12 +90,12 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 7,
     tag: "web dev",
-    author:"John Doe",
+    author:"Arjun Singhania",
     date: "16 October 2022",
     time: "6 min",
     title:
@@ -104,12 +105,12 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   {
     id: 8,
     tag: "dsai",
-    author:"John Doe",
+    author:"Pooja Mehta",
     date: "17 December 2022",
     time: "6 min",
     title:
@@ -119,7 +120,7 @@ const articles = [
     content:
       "Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.Redefined the user acquisition and redesigned the onboarding experience, all within 3 working weeks.",
     postimage: posts,
-    authorimg : userimg
+    authorimg : dummyuser
   },
   
 ];

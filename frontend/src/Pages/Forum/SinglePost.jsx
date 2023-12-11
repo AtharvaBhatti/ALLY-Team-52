@@ -1,6 +1,6 @@
 import "./SinglePost.css";
 import React, { useEffect, useState } from "react";
-import { filter, posts, arrow } from "../../assets/images";
+import { filter, posts, arrow, dummyuser } from "../../assets/images";
 import Sidebar from "../../Components/Sidebar.jsx";
 import CommentCard from "../../Components/Forum/CommentCards.jsx";
 import "./ForumPage.css";
@@ -99,17 +99,17 @@ const SinglePost = () => {
               </div>
               <div className="forum-info-dots">
                 <div className="forum-user-info">
-                  {/* <img src={post.user_img} alt="Post Image" class="forum-user-image"></img> */}
+                  <img src={dummyuser} alt="Post Image" class="forum-user-image"></img>
                   <div className="forum-user-details">
-                    <div className="forum-user-name">{post.content}</div>
-                    <div className="forum-last-seen">{post.content}</div>
+                    <div className="forum-user-name">{post.postedBy===4?"Ronit Roy":"Ashish Ranjan"}</div>
+                    <div className="forum-last-seen">16 Hours Ago</div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="SPForum-Content">
-              <div class="SPForum-Heading">{post.content}</div>
+              <div class="SPForum-Heading">Got promoted to SDE - III at Google!!!</div>
 
               <p>{post.content}</p>
               {/* <img src={posts} alt="Post Image" class="SPForum-Image"></img> */}

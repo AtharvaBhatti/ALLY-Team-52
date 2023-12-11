@@ -4,7 +4,7 @@ import { logo, userimg } from "../assets/images";
 import { useNavigate } from "react-router-dom";
 
 
-const user = { username: "John Doe", avatar: userimg };
+const user = { username: "Harshith Chunduri", avatar: userimg };
 
 
 const Navbar = () => {

@@ -29,7 +29,7 @@ function App() {
   }, []);
   return (
     <div>
-      {isUni1Route ? <Navbar /> : <LandingNavbar />}
+      
       
       <BrowserRouter>
         <Routes>

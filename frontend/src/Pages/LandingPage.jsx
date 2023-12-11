@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import LoginForm from '../Components/Form';
 import './LandingPage.css'
-
+import LandingNavbar from "../Components/LandingNavbar.jsx";
 
 
 
 const LandingPage = () => {
   
-  return (
+  return (<>
+    <LandingNavbar />
+      
     <div className='bg-[#F3F6FF] m-0 p-0 min-h-screen'>
       <div className='LandingPage'>
         <div className="landingUp">
@@ -67,7 +69,7 @@ const LandingPage = () => {
           </div>
           <div className="sponsors">
             <div className="text-sky-600 text-[30px] py-6 font-semibold font-inter justify-center flex  items-center">
-              OUR SPONSORS
+              Our Partners
             </div>
             <div className="sponsorimg">
 
@@ -91,6 +93,7 @@ const LandingPage = () => {
         </div>
         </div>
       </div>
+      </>
   );
 };
 

@@ -72,7 +72,7 @@ export default function ScrollDialog({ onClose, seminarDetails }) {
                 {studentList.map((student, index) => (
                   <TableRow key={index}>
                     <TableCell>{index + 1}</TableCell>
-                    <TableCell>{student.name}</TableCell>
+                    <TableCell>{student.firstName} {student.lastName}</TableCell>
                     <TableCell>{student.yearsOfExperience}</TableCell>
                     <TableCell>
                       <Checkbox />

@@ -5,6 +5,7 @@ import "./ForumPage.css";
 import { useNavigate } from "react-router-dom";
 import ForumRightBar from "../../Components/Forum/ForumRightBar.jsx";
 import ForumCards from "../../Components/Forum/ForumCards.jsx";
+import Navbar from "../../Components/Navbar";
 
 const ForumPage = ({ tag }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,6 +44,8 @@ const ForumPage = ({ tag }) => {
   }, []);
 
   return (
+    <>
+    <Navbar /> 
     <div className="forumPage">
       <div className="sideBar">
         <Sidebar />
@@ -88,6 +91,7 @@ const ForumPage = ({ tag }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
@@ -104,6 +108,7 @@ const CustomDropdown = ({ options, value, onChange }) => {
   };
 
   return (
+    
     <div className="relative">
       <div
         onClick={handleToggleDropdown}
@@ -130,6 +135,7 @@ const CustomDropdown = ({ options, value, onChange }) => {
         </div>
       )}
     </div>
+    
   );
 };
 

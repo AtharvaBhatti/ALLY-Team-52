@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { filter, userimg } from '../../assets/images';
+import { filter, userimg, dummyuser } from '../../assets/images';
 import './ForumCards.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -75,14 +75,14 @@ const handleLike = (post) => {
         <div className="forum-post-card" key={post.id}>
           <div className="forum-post-header">
             <div className="forum-user-info">
-              {/* <img
-                src={forum.user_img}
+              <img
+                src={dummyuser}
                 alt="User Image"
                 className="forum-user-image"
-              ></img> */}
+              ></img>
               <div className="forum-user-details">
-                <div className="forum-user-name">{post.content}</div>
-                <div className="forum-last-seen">{post.content}</div>
+                <div className="forum-user-name">{post.postedBy===4?"Ronit Roy":"Ashish Ranjan"}</div>
+                <div className="forum-last-seen">16 hours ago</div>
               </div>
             </div>
             <div
@@ -113,7 +113,7 @@ const handleLike = (post) => {
           </div>
           <div className="forum-post-content">
             <div className="forum-question" onClick={() => handleclick(post)}>
-              {post.content}
+              Got promoted to SDE - III at Google!!! 
             </div>
             <div className="forum-answer" onClick={() => handleclick(post)}>
               {truncateText(post.content, 200)}

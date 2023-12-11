@@ -13,7 +13,7 @@ const SeminarListItem = ({ title, description, date, imageUrl }) => {
 
 
     return (
-        <div className="max-w-xs rounded overflow-hidden shadow-lg">
+        <div className="max-w-xs rounded overflow-hidden shadow-lg mx-3 my-3">
             <img className="w-full" src={imageUrl} alt={title} />
 
             <div className="px-6 py-2">

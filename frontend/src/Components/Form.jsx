@@ -17,7 +17,7 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === 'pradip@gmail.com' && password === 'hp123') {
+    if (email === 'harshith@gmail.com' && password === 'hp123') {
 
       nav('/uni1');
       window.location.reload();
