@@ -10,36 +10,36 @@ import Navbar from "../Components/Navbar";
 const Seminars = () => {
   const seminars = [
     {
-      title: "Seminar 1",
-      description: "Description for Seminar 1",
+      title: "How to Master Group Discussions",
+      description: "Unlock the secrets to confidently navigate and excel in group discussions. Learn effective communication strategies and tips to stand out in a crowd.",
       date: "January 15, 2024",
       imageUrl:
         "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650",
     },
     {
-      title: "Seminar 2",
-      description: "Description for Seminar 2",
+      title: "The Art of Effective Communication",
+      description: "Join us for this seminar as we delve into the essentials of impactful communication. Elevate your speaking skills and make a lasting impression.",
       date: "February 20, 2023",
       imageUrl:
         "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650",
     },
     {
-      title: "Seminar 3",
-      description: "Description for Seminar 2",
+      title: "Strategies for Successful Networking",
+      description: "Discover the power of networking and its role in personal and professional growth. This seminar is your guide to building meaningful connections.",
       date: "February 20, 2024",
       imageUrl:
         "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650",
     },
     {
-      title: "Seminar 4",
-      description: "Description for Seminar 2",
+      title: "Navigating Career Transitions with Confidence",
+      description: "Provides insights on smoothly transitioning between career phases. Learn how to adapt, evolve, and make the most of new opportunities",
       date: "December 10, 2023",
       imageUrl:
         "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650",
     },
     {
-      title: "Seminar 5",
-      description: "Description for Seminar 2",
+      title: "Mastering Time Management for Peak Performance",
+      description: "Join us in this workshop to explore effective time management techniques. Unlock the secrets to increased productivity and a balanced life.",
       date: "February 20, 2023",
       imageUrl:
         "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/church%2C-church-conference%2C-new-year-eve-servi-design-template-ce92388ba63492622a656f0b29ea2449_screen.jpg?ts=1694613650",

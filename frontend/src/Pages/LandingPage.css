@@ -45,3 +45,12 @@
     height: 10vh !important;
     width: auto;
 }
+
+body{
+    
+    background-image: url('../assets/images/bg.jpg'); 
+    background-attachment: fixed;
+    background-size:cover;
+    background-blend-mode:lighten;
+    
+  }

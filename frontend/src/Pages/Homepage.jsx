@@ -86,7 +86,7 @@ const Homepage = () => {
         <Sidebar />
       </div>
       <div className='flex-1'>
-        <div className='bg-[#F3F6FF]  m-0 p-0 min-h-fit'>
+        <div className=' m-0 p-0 min-h-fit'>
 
           <div className='flex flex-col justify-center mx-2 md:mx-16 py-8 '>
             <div className='flex z-0 space-x-4 items-center mb-4'>

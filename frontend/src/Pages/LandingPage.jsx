@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (<>
     <LandingNavbar />
       
-    <div className='bg-[#F3F6FF] m-0 p-0 min-h-screen'>
+    <body className='lpbg m-0 p-0'>
       <div className='LandingPage'>
         <div className="landingUp">
 
@@ -68,7 +68,7 @@ const LandingPage = () => {
           </div>
           </div>
           <div className="sponsors">
-            <div className="text-sky-600 text-[30px] py-6 font-semibold font-inter justify-center flex  items-center">
+            <div className="text-sky-600 text-[40px] py-4 font-semibold font-inter justify-center flex  items-center" style={{color:" white"}}>
               Our Partners
             </div>
             <div className="sponsorimg">
@@ -92,7 +92,7 @@ const LandingPage = () => {
           </div>
         </div>
         </div>
-      </div>
+      </body>
       </>
   );
 };
