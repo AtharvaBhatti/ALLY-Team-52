@@ -127,3 +127,4 @@ class Projects(models.Model):
     status=models.BooleanField() # yes/no
     mentoredBy = models.CharField(max_length=100)
     interestedBy= models.CharField(max_length=100)
+    techStack = models.TextField(default='[]')

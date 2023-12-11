@@ -67,7 +67,7 @@ const Homepage = () => {
 
   useEffect(() => {
     // Fetch data from your API endpoint
-    fetch('http://127.0.0.1:8000/get_hackathon/IIT%20Bhilai/') // Replace with your API endpoint
+    fetch('http://127.0.0.1:8000/get_hackathon/University/') // Replace with your API endpoint
       .then((response) => response.json())
       .then((data) => setHackathonData(data))
       .catch((error) => console.error("Error fetching data:", error));
