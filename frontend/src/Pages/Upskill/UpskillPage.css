@@ -6,7 +6,7 @@ body{
 }
 .upskillMain{
     width: 80% !important;
-    padding: 2%;
+    padding: 2% 0;
 }
 .upskillHeading{
     color: rgba(0, 101, 193, 1);
@@ -16,13 +16,11 @@ body{
     font-size: 2.91vh;
     color: rgba(33, 33, 47, 1);
     font-weight: 600;
-    line-height: 7.73vh;
 }
 .upskillSubheading2{
     font-size: 2.91vh;
     color: rgba(0, 101, 193, 1);
     font-weight: 600;
-    line-height: 7.73vh;
 }
 .upskillFilter{
     margin-left: auto !important;
@@ -31,11 +29,11 @@ body{
 .upskill-middleSection{
     width: 100% !important;
     display: flex;
-    padding-left: 3%;
+    
 }
 .upskill-cards{
     min-width: 70%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .page-upskill-tag {
     background-color: #f3f3f3;

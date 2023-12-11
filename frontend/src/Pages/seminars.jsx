@@ -5,6 +5,7 @@ import "./seminars.css";
 import { useNavigate } from "react-router-dom";
 import ForumRightBar from "../Components/Forum/ForumRightBar.jsx";
 import SeminarListItem from "../Components/seminarListCard.jsx";
+import Navbar from "../Components/Navbar";
 
 const Seminars = () => {
   const seminars = [
@@ -88,12 +89,14 @@ const Seminars = () => {
   });
 
   return (
+    <>
+    <Navbar /> 
     <div>
       <div className="forumPage">
         <Sidebar />
         <div className=""></div>
         <div className="forumMain ">
-          <div className="flex space-x-4 items-center mb-4 filtersButton ">
+          <div className="flex space-x-4 items-center mb-4 filtersButton sem">
             <div className="text-[#0065C1] text-xl font-bold pb-3">
               Seminars
             </div>
@@ -115,7 +118,7 @@ const Seminars = () => {
             {/* Custom Dropdown */}
           </div>
 
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4 sem">
             {filteredSeminars.map((seminar, index) => (
               <SeminarListItem
                 key={index}
@@ -129,6 +132,7 @@ const Seminars = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

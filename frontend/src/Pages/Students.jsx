@@ -4,6 +4,7 @@ import Sidebar from "../Components/Sidebar.jsx";
 import SearchIcon from "@mui/icons-material/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OverlayTrigger, Tooltip} from "react-bootstrap";
+import Navbar from "../Components/Navbar.jsx";
 import {
     faGraduationCap,
     faUser,
@@ -12,7 +13,7 @@ import {
     faMessage,
     faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
-import userImage from "../assets/images/user.png";
+import dummyuser from "../assets/images/profile.png";
 
 // Dummy data
 const studentsData = [
@@ -211,7 +212,7 @@ const studentsData = [
 // import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = ({ setSearch, setCurrentPage}) => (
-    <div className="flex items-center h-16">
+    <div className="flex items-center h-16 mx-3 my-3">
         <input
             type="text"
             placeholder="Search..."
@@ -263,10 +264,11 @@ function getBrightness(color) {
 
 
 const StudentRow = ({ student }) => (
+
     <tr className="border-b-2 border-gray-200  m-14 " onClick={()=>console.log(student.name)}>
         <td className="p-2 flex items-center justify-start font-inter font-normal">
             <img
-                src={userImage}
+                src={dummyuser}
                 alt="Profile"
                 className="w-12 h-12 rounded-full mr-2"
             />
@@ -428,11 +430,13 @@ function StudentTable() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
+        <>
+    <Navbar /> 
         <div className="flex">
-            <div className="sideBar w-1/4 relative">
+            <div className="sideBar w-1/6 relative">
                 <Sidebar />
             </div>
-            <div className="flex flex-col flex-grow items-center w-3/4">
+            <div className="flex flex-col flex-grow items-center w-3/4 mx-3 my-3">
                 <div className="w-full mr-10">
                 <SearchBar setSearch={setSearch} setCurrentPage={setCurrentPage} />
                 </div>
@@ -505,6 +509,7 @@ function StudentTable() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

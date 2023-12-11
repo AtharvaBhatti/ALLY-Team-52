@@ -4,6 +4,7 @@ import Posts from '../Components/Posts';
 import Sidebar from "../Components/Sidebar.jsx";
 import { hackathon } from "../assets/images";
 import ScrollDialog from '../Components/Team_Popup.jsx';
+import Navbar from "../Components/Navbar";
 
 const FeaturedPosts = ({ isSelected, onClick }) => (
   <div
@@ -77,6 +78,9 @@ const Homepage = () => {
   const date = '12-12-1122';
 
   return (
+    <>
+    <Navbar /> 
+    
     <div className='flex '>
       <div className="w-[250px] z-1 ">
         <Sidebar />
@@ -169,7 +173,7 @@ const Homepage = () => {
       </div>
 
     </div>
-
+    </>
   );
 };
 

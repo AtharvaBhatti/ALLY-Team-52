@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "../Components/Navbar.jsx";
 import {
   faGraduationCap,
   faUser,
@@ -16,7 +17,7 @@ import {
   faHourglassHalf,
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
-import userImage from "../assets/images/user.png";
+import dummyuser from "../assets/images/profile.png";
 
 // Dummy data
 const alumniData = [
@@ -214,7 +215,7 @@ const alumniData = [
 
 
 const SearchBar = ({ setSearch, setCurrentPage }) => (
-  <div className="flex items-center h-16">
+  <div className="mx-3 my-3 flex items-center h-16">
     <input
       type="text"
       placeholder="Search..."
@@ -271,7 +272,7 @@ const AluminiRow = ({ alumni }) => (
   >
     <td className="p-2 flex items-center justify-start font-inter font-normal">
       <img
-        src={userImage}
+        src={dummyuser}
         alt="Profile"
         className="w-12 h-12 rounded-full mr-2"
       />
@@ -433,11 +434,13 @@ function AluminTable() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
+    <Navbar /> 
     <div className="flex">
-      <div className="sideBar w-1/4 relative">
+      <div className="sideBar w-1/6 relative">
         <Sidebar />
       </div>
-      <div className="flex flex-col flex-grow items-center w-3/4">
+      <div className="flex flex-col flex-grow items-center w-3/4 mx-5 my-5 ">
         <div className="w-full mr-10">
           <SearchBar setSearch={setSearch} setCurrentPage={setCurrentPage} />
         </div>
@@ -515,6 +518,7 @@ function AluminTable() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

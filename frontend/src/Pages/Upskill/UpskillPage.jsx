@@ -5,6 +5,7 @@ import "./UpskillPage.css";
 import { useNavigate } from "react-router-dom";
 import UpskilBigCards from "../../Components/Upskill/UpskillBigCards.jsx";
 import UpskilSmallCards from "../../Components/Upskill/UpskillSmallCards.jsx";
+import Navbar from "../../Components/Navbar";
 
 const UpskillPage = ({ tag }) => {
   const [filterBy, setFilterBy] = useState("");
@@ -65,12 +66,14 @@ useEffect(() => {
 
 
   return (
+    <>
+    <Navbar/>
     <div className="upskillPage md:mt-4 flex justify-between">
       <div className="sideBar">
         <Sidebar />
       </div>
       <div className="upskillMain">
-        <div className="flex justify-between mx-4 md:mx-16 py-8">
+        <div className="flex justify-between mx-4  py-8">
           <div>
             <div>
               <span className="font-inter text-[1rem] font-semibold upskillHeading">
@@ -100,7 +103,7 @@ useEffect(() => {
             ))}
           </div>
         </div>
-        <div className="justify-between mx-4 md:mx-16 py-8">
+        <div className="justify-between mx-4  py-8">
           <span className="font-inter upskillSubheading1 upskillOngoing">
             Ongoing{" "}
           </span>
@@ -117,6 +120,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
