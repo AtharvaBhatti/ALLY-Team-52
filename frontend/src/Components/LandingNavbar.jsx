@@ -4,7 +4,7 @@ import logo from "../assets/images/logo.png"; // Replace with the actual path to
 
 const LandingNavbar = () => {
   return (
-    <div className="bg-[#F3F6FF] Landing-navbar">
+    <div className="Landing-navbar">
       <div className="Landing-Logo">
         <img src={logo} alt="Logo" /> 
       </div>

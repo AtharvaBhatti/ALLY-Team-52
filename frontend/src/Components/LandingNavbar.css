@@ -1,6 +1,7 @@
 /* LandingNavbar.css */
 
 .Landing-navbar {
+  background-color: white !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
