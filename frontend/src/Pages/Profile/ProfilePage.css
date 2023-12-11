@@ -1,4 +1,56 @@
-.profile{
+.profile {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    padding: 6em;
+    border-radius: 15px; /* Optional: Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
     margin-left: 34.96vh;
     margin-top: 5vh;
-}
+  }
+  
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  .profile h2 {
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  .profile p {
+    margin-bottom: 0.3em;
+  }
+  
+  /* Customize the styling of the table as needed */
+  .profile table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add border for a clean look */
+  
+    /* Add additional styling for table headers, rows, and cells */
+  }
+  
+  .profile th, .profile td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add border between rows */
+  }
+  
+  .profile th {
+    background-color: #f2f2f2; /* Optional: Add a light gray background to headers */
+  }
+  
+  /* Add more styles based on your table content */
+  .centerUser{
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+
+  }
+  .centerUser h1{
+    font-weight: bolder;
+    font-size: xx-large;
+  }

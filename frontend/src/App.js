@@ -47,7 +47,7 @@ function App() {
           <Route path="/uni1/alumni" element={<Alumini />}></Route>
           <Route path="/uni1/upskill" element={<Upskill />}></Route>
           <Route path="/uni1/seminars" element={<Seminars />}></Route>
-          <Route path="/uni1/profile" element={<Profile />}></Route>
+          <Route path="/uni1/profile/:name" element={<Profile />}></Route>
           <Route path="/uni1/message" element={<MessagingComponent />}></Route>
 
 

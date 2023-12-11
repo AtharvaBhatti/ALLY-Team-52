@@ -142,9 +142,9 @@ const Homepage = () => {
                     className="h-[250px] w-full object-cover"
                   />
                 </div>
-                <div className="md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
+                <div className="px-6 md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
                   <div>
-                    <div className="text-sky-600 text-xl font-bold font-inter">
+                    <div className="  text-sky-600 text-xl font-bold font-inter">
                       {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short' })}
                     </div>
                     <div className="text-black text-3xl font-bold font-inter">
