@@ -113,7 +113,7 @@ const handleLike = (post) => {
           </div>
           <div className="forum-post-content">
             <div className="forum-question" onClick={() => handleclick(post)}>
-              Got promoted to SDE - III at Google!!! 
+            {post.postedBy===4?"My Experience at GSoC 2023 was incredible!!":"Got promoted to SDE - III at Google!!!"} 
             </div>
             <div className="forum-answer" onClick={() => handleclick(post)}>
               {truncateText(post.content, 200)}

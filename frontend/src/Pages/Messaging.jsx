@@ -50,7 +50,7 @@ const MessagingComponent = () => {
 
   return (
     <div className="flex h-screen p-2 ">
-      <div className="w-1/5">
+      <div className="w-1/6">
         <Sidebar />
       </div>
       {/* Sidebar with names of people */}

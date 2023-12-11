@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { logo, userimg } from "../assets/images";
 import { useNavigate } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 
 const user = { username: "Harshith Chunduri", avatar: userimg };
@@ -39,7 +40,8 @@ const Navbar = () => {
         </a>
 
         {/* Right side */}
-        <div className="flex z-50 items-center">
+        <div className="flex z-50 items-center cursor-pointer" onClick={toggleDropdown}
+                onBlur={closeDropdown}>
           {/* Greeting and Avatar */}
           <div className="flex p-2 md:p-4 rounded-full bg-white items-center mr-4">
             <img
@@ -54,8 +56,7 @@ const Navbar = () => {
             {/* Dropdown */}
             <div className="z-50 relative">
               <button
-                onClick={toggleDropdown}
-                onBlur={closeDropdown}
+                
                 className="text-[#0065C1] focus:outline-none"
               >
                 &#x25BE;{" "}
@@ -68,6 +69,12 @@ const Navbar = () => {
                     <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer" onClick={handleClickProfile}>
                       Your Profile
                     </li>
+                    <Link to="/uni1/message"><li
+                      className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer"
+                      
+                    >
+                      Messages
+                    </li></Link>
                     <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer">
                       Settings
                     </li>
