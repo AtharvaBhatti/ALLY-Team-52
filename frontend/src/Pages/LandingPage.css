@@ -51,5 +51,6 @@ body{
     background-image: url('../assets/images/bg.jpg'); 
     background-attachment: fixed;
     background-size:cover;
-    background-blend-mode:overlay;
+    background-blend-mode:lighten;
+    
   }
