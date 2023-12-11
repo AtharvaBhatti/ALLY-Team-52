@@ -13,10 +13,8 @@ import Upskill from "./Pages/Upskill/UpskillPage.jsx";
 import Students from "./Pages/Students.jsx";
 import Alumini from "./Pages/Alumini.jsx";
 import Seminars from "./Pages/seminars.jsx";
-
+import Profile from "./Pages/Profile/ProfilePage.jsx";
 import MessagingComponent from "./Pages/Messaging.jsx"
-
-import Profile from "./Pages/profilePage.jsx";
 
 
 function App() {
