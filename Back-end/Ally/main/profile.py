@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response # any python data we pass into it will be rendered out as json data by response
 from rest_framework.decorators import api_view
-from .models import UserDetails,Courses
+from .models import UserDetails,Courses ,TechStacks
 from .serializers import  UserProfileSerializer
 import json
 @api_view(['GET'])
@@ -13,7 +13,12 @@ def viewUser(request, userID):
         serializer =UserProfileSerializer(user_instance)
         data=[] # [0] will be user details ecpet courses and projects , [1] will be courses , [2] will be prjects
         data.append(serializer.data)
+        for user in data:
+            TechStack = []
+            for techStack in user['techStack']:
+                TechStack.append(TechStacks.objects.get(id=techStack).name)
 
+            user['techStack'] = TechStack
 
         completed_courses=[]
         incomplete_courses=[]
