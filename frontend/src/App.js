@@ -16,6 +16,9 @@ import Seminars from "./Pages/seminars.jsx";
 import Profile from "./Pages/Profile/ProfilePage.jsx";
 import MessagingComponent from "./Pages/Messaging.jsx"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment } from "@fortawesome/free-solid-svg-icons";
+
 
 function App() {
   const [isUni1Route, setIsUni1Route] = useState(false);
@@ -50,6 +53,27 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+      <div onClick={()=>
+        {
+          window.location.href = "/uni1/message"
+        }}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          width: "50px",
+          height: "50px",
+          borderRadius: "50%",
+          backgroundColor: "#0065C1",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <FontAwesomeIcon icon={faComment} style={{ fontSize: "24px" }} />
+      </div>
     </div>
   );
 }
