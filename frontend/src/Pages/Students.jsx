@@ -5,6 +5,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { OverlayTrigger, Tooltip} from "react-bootstrap";
 import Navbar from "../Components/Navbar.jsx";
+import { useNavigate } from 'react-router-dom';
+
 import {
     faGraduationCap,
     faUser,
@@ -14,200 +16,6 @@ import {
     faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
 import dummyuser from "../assets/images/profile.png";
-
-// Dummy data
-const studentsData = [
-    {
-        id: 1,
-        name: "Goldy Rogers",
-        email: "goldyrogers@gmail.com",
-        batch: "2021-2025",
-        branch: "Computer Science",
-        allScore: 95,
-        techStack: ["Angular", "Dyjango", "NextJs"],
-    },
-    {
-        id: 2,
-        name: "Nishant",
-        email: "nishantVerma@gmail.com",
-        batch: "2019-2023",
-        branch: "Data Science",
-        allScore: 95,
-        techStack: ["Web", "Android", "iOS", "Machine Learning"],
-    },
-    {
-        id: 3,
-        name: "Ojus",
-        email: "goelojus@gmail.com",
-        batch: "2021-2025",
-        branch: "Computer Science",
-        allScore: 95,
-        techStack: ["Web", "Android", "iOS"],
-    },
-    {
-        id: 4,
-        name: "Saurav",
-        email: "jhasaurav@gmail.com",
-        batch: "2021-2025",
-        branch: "Mechanical Science",
-        allScore: 95,
-        techStack: ["Matlab", "Android", "Swift", "Linux"],
-    },
-    {
-        id: 5,
-        name: "Goldy Nishchay",
-        email: "nishchay@gmail.com",
-        batch: "2021-2025",
-        branch: "Biological Science",
-        allScore: 95,
-        techStack: ["MongoDB", "Node", "iOS"],
-    },
-    {
-        id: 6,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS", "Python"],
-    },
-    {
-        id: 7,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Kotlin", "iOS"],
-    },
-    {
-        id: 8,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS", "Java"],
-    },
-    {
-        id: 9,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS", "Sql", ],
-    },
-    {
-        id: 10,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS, React",],
-    },
-    {
-        id: 11,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS", "React", "Angular", "Vue"],
-    },
-    {
-        id: 12,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS", "React"],
-    },
-    {
-        id: 13,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 14,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 15,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 16,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2024",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 17,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2020-2024",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 18,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 19,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 20,
-        name: "Omendra",
-        email: "om369@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 95,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    {
-        id: 21,
-        name: "Sudeep",
-        email: "sudeep@gmail.com",
-        batch: "2021-2025",
-        branch: "Electrical Science",
-        allScore: 99,
-        techStack: ["Arduino", "Android", "iOS"],
-    },
-    // Add more students as needed
-];
 
 // import SearchIcon from '@mui/icons-material/Search';
 
@@ -263,7 +71,15 @@ function getBrightness(color) {
 }
 
 
-const StudentRow = ({ student }) => (
+const StudentRow = ({ student }) => {
+    const navigate = useNavigate();
+  
+    const redirectToProfile = () => {
+      // Redirect to the student's profile page dynamically
+      navigate(`/uni1/profile/${student.id}`);
+    };
+  
+    return (
 
     <tr className="border-b-2 border-gray-200  m-14 " onClick={()=>console.log(student.name)}>
         <td className="p-2 flex items-center justify-start font-inter font-normal">
@@ -273,7 +89,7 @@ const StudentRow = ({ student }) => (
                 className="w-12 h-12 rounded-full mr-2"
             />
             <div className="flex-col justify-start text-left">
-                <span style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }}>
+                <span className="hover:underline cursor-pointer" style={{ color: "#0065C1", fontSize: "16px", textAlign: "left" }} onClick={redirectToProfile}>
                     {student.firstName+" "+student.lastName}
                 </span>
                 <br />
@@ -373,7 +189,7 @@ const StudentRow = ({ student }) => (
              < FontAwesomeIcon icon = {faMessage} color = "#0065C1" className = "" />
                 </td>
     </tr>
-);
+)};
 
 function StudentTable() {
     const [students, setStudents] = useState([]);
