@@ -9,10 +9,6 @@ def projectTeamRecommendations(request, projectID):
     try:
 
         project_instance=Projects.objects.get(id=projectID)
-        """
-        AI recommendation model to be built here
-        returning hardcoded reponse for now
-        """
         recommendedUsers=[1,2,3]
         userList=[]
         for userID in recommendedUsers:
@@ -42,7 +38,6 @@ def sendProjectInvite(request):
         project_instance =Projects.objects.get(id=project_id)
 
         user_instance = UserDetails.objects.get(id=user_id)
-        
 
 
         conversation_instance = Conversation()
@@ -57,7 +52,6 @@ def sendProjectInvite(request):
         conversation_instance.sentBy=messenger_instance
 
         conversation_instance.save()
-        
         return Response("Invite Sent Successfully", status=status.HTTP_200_OK)
 
 
