@@ -31,7 +31,7 @@ def api_root(request, format=None):
                 "create_hackathon", request=request, format=format
             ),
             "list_hackathon": reverse(
-                "list_hackathon",args=["IIT Bhilai"], request=request, format=format
+                "list_hackathon",args=["University"], request=request, format=format
             ),
             "register_hackathon": reverse(
                 "register_hackathon", request=request, format=format
@@ -56,7 +56,7 @@ def api_root(request, format=None):
                 "register_seminar", request=request, format=format
             ),
             "list_seminar": reverse(
-                "list_seminar", args=["IIT Bhilai"], request=request, format=format
+                "list_seminar", args=["University"], request=request, format=format
             ),
             "view_seminar": reverse(
                 "view_seminar", args=[1,1], request=request, format=format
