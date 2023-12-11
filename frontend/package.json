@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "core-js-pure": "^3.34.0",
     "flowbite-react": "^0.7.0",
+    "mdb-react-ui-kit": "^7.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
