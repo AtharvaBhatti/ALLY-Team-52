@@ -1,6 +1,7 @@
 import logo from './logo.png';
 import user from './userimg.png';
 import dummyuser from './profile.png';
+import seminar from './seminar.jpg'
 import code from './code.png';
 import seminar from './seminar.jpg'
 import filter from './filter.png';
