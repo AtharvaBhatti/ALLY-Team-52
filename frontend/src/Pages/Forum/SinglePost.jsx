@@ -109,7 +109,7 @@ const SinglePost = () => {
             </div>
 
             <div class="SPForum-Content">
-              <div class="SPForum-Heading">Got promoted to SDE - III at Google!!!</div>
+              <div class="SPForum-Heading">{post.postedBy===4?"My Experience at GSoC 2023 was incredible!!":"Got promoted to SDE - III at Google!!!"} </div>
 
               <p>{post.content}</p>
               {/* <img src={posts} alt="Post Image" class="SPForum-Image"></img> */}
