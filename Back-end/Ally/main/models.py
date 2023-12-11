@@ -18,6 +18,7 @@ class UserDetails(models.Model):
     email = models.CharField(max_length=100)
     mobileNo = models.CharField(max_length=100)
     about = models.CharField(max_length=100)
+    description = models.TextField(default='')
     type = models.CharField(max_length=100, choices=ROLE_CHOICES)
     institute = models.CharField(max_length=100)
     yearOfPassing = models.CharField(max_length=100)
