@@ -41,49 +41,7 @@ const ProfilePage = ({ tag }) => {
     endorsements: 10,
     courses: ['React Basics', 'Node.js Fundamentals', 'Bootstrap Mastery'],
   };
-//   useEffect(() => {
-//     const apiUrl = "http://localhost:8000/course_list/";
 
-//     fetch(apiUrl)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! Status: ${response.status}`);
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setcourses(data);
-//         setLoading(false);
-//       })
-//       .catch((error) => console.error("Error fetching data:", error));
-//   }, []);
-
-// useEffect(() => {
-//   const apiUrl = "http://localhost:8000/view_userprofile/1/";
-
-//   fetch(apiUrl)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error(`HTTP error! Status: ${response.status}`);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       try {
-//         // Parse the JSON string in the 'courses' property
-//         const coursesArray = JSON.parse(data.courses);
-
-//         // Assuming coursesArray is an array of objects with a 'courseId' property
-//         const courseIds = coursesArray.map((course) => course.courseId);
-
-//         setregcourses(courseIds);
-//         console.log(courseIds);
-//       } catch (error) {
-//         console.error("Error parsing JSON:", error);
-//       }
-//     })
-//     .catch((error) => console.error("Error fetching data:", error));
-// }, []);
 
   return (
     <>
