@@ -87,14 +87,14 @@ useEffect(() => {
               <span className="font-inter upskillSubheading2">Course</span>
             </div>
           </div>
-          <div>
+          {/* <div>
             <CustomDropdown
               options={filterOptions}
               value={filterBy || "Filters"}
               onChange={handleFilterChange}
               className="upskillFilter"
             />
-          </div>
+          </div> */}
         </div>
         <div className="upskill-middleSection">
           <div className="Upskill-cards-container">
@@ -103,14 +103,14 @@ useEffect(() => {
             ))}
           </div>
         </div>
-        <div className="justify-between mx-4  py-8">
+        {/* <div className="justify-between mx-4  py-8">
           <span className="font-inter upskillSubheading1 upskillOngoing">
             Ongoing{" "}
           </span>
           <span className="font-inter upskillSubheading2 upskillOngoing">
             Course
           </span>
-        </div>
+        </div> */}
         <div className="upskill-middleSection">
           <div className="Upskill-cards-container">
             {regcourses.map((courseid) => (

@@ -6,7 +6,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 
 
-const user = { username: "Harshith Chunduri", avatar: userimg };
+const user = { username: "John Doe", avatar: userimg };
 
 
 const Navbar = () => {
