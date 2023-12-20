@@ -64,7 +64,7 @@ return (
 
             {isDropdownOpen && (
               <div className="absolute right-0 z-[100] mt-6 w-48 bg-white rounded shadow-lg">
-                <ul><Link to="/uni1/profile">
+                <ul><Link to="/uni1/profile/1">
                   <li className="py-2 z-50 px-4 hover:bg-gray-200 cursor-pointer" >
                     Your Profile
                   </li></Link>

@@ -63,9 +63,9 @@ const Hackathons = () => {
               </span>
             </div>
             <div>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
+              {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
                 Create Team
-              </button>
+              </button> */}
 
             </div>
           </div>

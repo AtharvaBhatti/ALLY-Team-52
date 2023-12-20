@@ -13,7 +13,7 @@ const LandingNavbar = () => {
         <a href="https://trumio.ai/why-trumio/">Why Us?</a>
         <a href="https://trumio.ai/how-it-works/">How it Works</a>
       </nav>
-      <div className="Landing-Login-button">
+      <div className="Landing-Login-button text-white font-bold">
         <a href="https://trumio.ai/login">Login</a>
       </div>
     </div>

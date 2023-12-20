@@ -67,7 +67,7 @@ const LandingPage = () => {
             </div>
           </div>
           </div>
-          <div className="sponsors">
+          {/* <div className="sponsors">
             <div className="text-sky-600 text-[40px] py-4 font-semibold font-inter justify-center flex  items-center" style={{color:" white"}}>
               Our Partners
             </div>
@@ -90,7 +90,7 @@ const LandingPage = () => {
               <img src="https://www.pngall.com/wp-content/uploads/14/Zoom-PNG.png"style={{height: "10vh", width: "auto"}}  alt="" />
             </div>
           </div>
-        </div>
+        </div> */}
         </div>
       </body>
       </>

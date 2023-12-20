@@ -79,100 +79,100 @@ const Homepage = () => {
 
   return (
     <>
-    <Navbar /> 
-    
-    <div className='flex '>
-      <div className="w-[250px] z-1 ">
-        <Sidebar />
-      </div>
-      <div className='flex-1'>
-        <div className=' m-0 p-0 min-h-fit'>
+      <Navbar />
 
-          <div className='flex flex-col justify-center mx-2 md:mx-16 py-8 '>
-            <div className='flex z-0 space-x-4 items-center mb-4'>
-              {/* Search Input */}
-              <input
-                type='text'
-                placeholder='Search'
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className='p-3 relative border placeholder:text-blue-500 placeholder:font-bold w-full border-gray-300 rounded-full pl-10'
-              />
+      <div className='flex '>
+        <div className="w-[250px] z-1 ">
+          <Sidebar />
+        </div>
+        <div className='flex-1'>
+          <div className=' m-0 p-0 min-h-fit'>
 
-              <CustomDropdown
-                options={filterOptions}
-                value={filterBy || 'Filters'}
-                onChange={handleFilterChange}
-              />
-            </div>
+            <div className='flex flex-col justify-center mx-2 md:mx-16 py-8 '>
+              <div className='flex z-0 space-x-4 items-center mb-4'>
+                {/* Search Input */}
+                <input
+                  type='text'
+                  placeholder='Search'
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className='p-3 relative border placeholder:text-blue-500 placeholder:font-bold w-full border-gray-300 rounded-full pl-10'
+                />
 
-            {/* Tabs */}
-            <div className='flex w-fit border-b-2 border-black space-x-4'>
-              <FeaturedPosts
-                isSelected={selectedTab === 'Featured Posts'}
-                onClick={() => handleTabChange('Featured Posts')}
-              />
-              <Hackathons
-                isSelected={selectedTab === 'Hackathons'}
-                onClick={() => handleTabChange('Hackathons')}
-              />
-              <ListedProjects
-                isSelected={selectedTab === 'Listed Projects'}
-                onClick={() => handleTabChange('Listed Projects')}
-              />
-            </div>
-
-            {/* Content based on the selected tab */}
-            {selectedTab === 'Featured Posts' && (
-              <div className='my-4'>
-                <Posts />
+                <CustomDropdown
+                  options={filterOptions}
+                  value={filterBy || 'Filters'}
+                  onChange={handleFilterChange}
+                />
               </div>
-            )}
-            {selectedTab === 'Hackathons' && (
-              <div className='mt-4'>
-              
-              <div className="md:flex md:gap-6 md:my-8 my-8 mb-40 mx-8">
-            {/* Display hackathonData */}
-            {hackathonData.map((event) => (
-              <div key={event.startDate} className="md:w-[320px] w-full mb-8 md:mb-0">
-                <div className="h-[250px] shadow-lg">
-                  <img
-                    src={hackathon}
-                    alt=""
-                    className="h-[250px] w-full object-cover"
-                  />
+
+              {/* Tabs */}
+              <div className='flex w-fit border-b-2 border-black space-x-4'>
+                <FeaturedPosts
+                  isSelected={selectedTab === 'Featured Posts'}
+                  onClick={() => handleTabChange('Featured Posts')}
+                />
+                <Hackathons
+                  isSelected={selectedTab === 'Hackathons'}
+                  onClick={() => handleTabChange('Hackathons')}
+                />
+                <ListedProjects
+                  isSelected={selectedTab === 'Listed Projects'}
+                  onClick={() => handleTabChange('Listed Projects')}
+                />
+              </div>
+
+              {/* Content based on the selected tab */}
+              {selectedTab === 'Featured Posts' && (
+                <div className='my-4'>
+                  <Posts />
                 </div>
-                <div className="px-6 md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
-                  <div>
-                    <div className="  text-sky-600 text-xl font-bold font-inter">
-                      {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short' })}
-                    </div>
-                    <div className="text-black text-3xl font-bold font-inter">
-                      {new Date(event.startDate).getDate()}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-sky-600 text-[20px] font-bold font-inter">
-                      {event.oneLiner}
-                    </div>
-                    <div className="text-neutral-600 text-[15px] font-normal font-inter">
-                      {event.description}
-                    </div>
+              )}
+              {selectedTab === 'Hackathons' && (
+                <div className='mt-4'>
+
+                  <div className="md:flex md:gap-6 md:my-8 my-8 mb-40 mx-8">
+                    {/* Display hackathonData */}
+                    {hackathonData.map((event) => (
+                      <div key={event.startDate} className="md:w-[320px] w-full mb-8 md:mb-0">
+                        <div className="h-[250px] shadow-lg">
+                          <img
+                            src={hackathon}
+                            alt=""
+                            className="h-[250px] w-full object-cover"
+                          />
+                        </div>
+                        <div className="px-6 md:flex justify-center gap-4 py-4 shadow-lg rounded-lg bg-white">
+                          <div>
+                            <div className="  text-sky-600 text-xl font-bold font-inter">
+                              {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short' })}
+                            </div>
+                            <div className="text-black text-3xl font-bold font-inter">
+                              {new Date(event.startDate).getDate()}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-sky-600 text-[20px] font-bold font-inter">
+                              {event.oneLiner}
+                            </div>
+                            <div className="text-neutral-600 text-[15px] font-normal font-inter">
+                              {event.description}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-              </div>
-            )}
-            {selectedTab === 'Listed Projects' && (
-              <div className='mt-4'>Content for Listed Projects</div>
-            )}
+              )}
+              {selectedTab === 'Listed Projects' && (
+                <div className='mt-4'>Content for Listed Projects</div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div>
     </>
   );
 };
