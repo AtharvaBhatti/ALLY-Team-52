@@ -102,7 +102,7 @@ useEffect(() => {
               <UpskilBigCards course={course} />
             ))}
           </div>
-        </div>
+        </div >
         {/* <div className="justify-between mx-4  py-8">
           <span className="font-inter upskillSubheading1 upskillOngoing">
             Ongoing{" "}
